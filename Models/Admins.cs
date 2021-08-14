@@ -20,5 +20,14 @@ namespace eProject.Models
         [Required(ErrorMessage = "Password is required!")]
         [StringLength(20, MinimumLength = 1, ErrorMessage = "Password from 1 to 20 chacracters!")]
         public string Password { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Fullname from 1 to 50 chacracters!")]
+        public string Fullname { get; set; }
+
+        [Required(ErrorMessage = "Email is required!")]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Email from 1 to 50 chacracters!")]
+        public string Email { get; set; }
+        public string Images { get; set; }
     }
 }

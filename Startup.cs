@@ -29,6 +29,12 @@ namespace eProject
             services.AddDbContext<StationeryContext>(options => options.UseSqlServer(url));
             services.AddScoped<IUsersServices, UsersServices>();
             services.AddScoped<IItemServices, ItemServices>();
+            services.AddScoped<IAdminServices, AdminServices>();
+            services.AddScoped<ICategoryServices, CategoryServices>();
+            services.AddScoped<IDepartmentServices, DepartmentServices>();
+            services.AddScoped<IRequestServices, RequestServices>();
+            services.AddScoped<IRoleServices, RoleServices>();
+            services.AddScoped<ISupplierServices, SupplierServices>();
             services.AddControllersWithViews();
         }
 
@@ -53,7 +59,7 @@ namespace eProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Item}/{action=Index}/{id?}");
+                    pattern: "{controller=Admin}/{action=Login}/{id?}");
             });
         }
     }

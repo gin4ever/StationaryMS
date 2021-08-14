@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using eProject.Repository;
-using eProject.Models; 
 namespace eProject.Services
 {
     public class ItemServices : IItemServices
