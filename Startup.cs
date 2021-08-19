@@ -25,7 +25,7 @@ namespace eProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string url = "server=DESKTOP-TEK2ARS\\SQLEXPRESS;database=stationerydb;uid=sa;pwd=123";
+            string url = "server=sgn-ginnyn-lx\\ginny;database=stationerydb;uid=sa;pwd=Xuanha2912@";
             services.AddDbContext<StationeryContext>(options => options.UseSqlServer(url));
             services.AddScoped<IUsersServices, UsersServices>();
             services.AddScoped<IItemServices, ItemServices>();
@@ -59,7 +59,7 @@ namespace eProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Admin}/{action=Login}/{id?}");
+                    pattern: "{controller=Item}/{action=Index}/{id?}");
             });
         }
     }
