@@ -18,5 +18,6 @@ namespace eProject.Models
         [Required(ErrorMessage = "Quantity is required!")]
         [Range(1,1000, ErrorMessage = "Quantity must from 1 to 1000 items!")]
         public int Quantity { get; set; }
+        public decimal Total { get; set; }
     }
 }

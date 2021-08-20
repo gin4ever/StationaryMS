@@ -10,7 +10,8 @@ namespace eProject.Services
     {
         List<Admins> GetAdmins();
         Admins checkLogin(Admins admin);
-        Admins GetAdmin(int id);
+        Admins GetAdmin(string uname);
         Admins createAdmin(Admins newAdmin);
+        bool updateAdmin(Admins editAdmin);
     }
 }

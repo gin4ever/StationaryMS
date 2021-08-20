@@ -29,6 +29,21 @@ namespace eProject.Services
             }
         }
 
+        public bool DeleteCategory(int id)
+        {
+            var model = context.Category.SingleOrDefault(m => m.Category_Id.Equals(id));
+            if (model != null)
+            {
+                context.Category.Remove(model);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public List<Category> GetCategories()
         {
             return context.Category.ToList();
@@ -36,12 +51,31 @@ namespace eProject.Services
 
         public Category GetCategory(int id)
         {
-            throw new NotImplementedException();
+            var model = context.Category.SingleOrDefault(m => m.Category_Id.Equals(id));
+            if (model != null)
+            {
+                return model;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public bool UpdateCategory(Category category)
+        public bool UpdateCategory(Category editCategory)
         {
-            throw new NotImplementedException();
+            var model = context.Category.SingleOrDefault(m => m.Category_Id.Equals(editCategory.Category_Id));
+            if (model != null)
+            {
+                model.Description = editCategory.Description;
+                model.Status = editCategory.Status;
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

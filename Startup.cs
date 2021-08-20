@@ -35,6 +35,10 @@ namespace eProject
             services.AddScoped<IRequestServices, RequestServices>();
             services.AddScoped<IRoleServices, RoleServices>();
             services.AddScoped<ISupplierServices, SupplierServices>();
+            services.AddScoped<IRequestItemServices, RequestItemServices>();
+            services.AddScoped<IItemCategorySupplierServices, ItemCategorySupplierServices>();
+            services.AddScoped<IUserRoleDepartment, UserRoleDepartment>();
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -54,6 +58,7 @@ namespace eProject
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

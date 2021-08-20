@@ -17,5 +17,18 @@ namespace eProject.Services
         {
             return context.Request.ToList();
         }
+
+        public Request GetRequest(int id)
+        {
+            var model = context.Request.SingleOrDefault(m => m.Request_Id.Equals(id));
+            if (model != null)
+            {
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

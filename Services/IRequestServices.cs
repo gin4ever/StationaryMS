@@ -9,5 +9,6 @@ namespace eProject.Services
     public interface IRequestServices
     {
         List<Request> GetRequests();
+        Request GetRequest(int id);
     }
 }

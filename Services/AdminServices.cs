@@ -51,9 +51,9 @@ namespace eProject.Services
             }
         }
 
-        public Admins GetAdmin(int id)
+        public Admins GetAdmin(string uname)
         {
-            var model = context.Admins.SingleOrDefault(m => m.Admin_Id.Equals(id));
+            var model = context.Admins.SingleOrDefault(m => m.Username.Equals(uname));
             if (model != null)
             {
                 return model;
@@ -67,6 +67,25 @@ namespace eProject.Services
         public List<Admins> GetAdmins()
         {
             return context.Admins.ToList();
+        }
+
+        public bool updateAdmin(Admins editAdmin)
+        {
+            var model = context.Admins.SingleOrDefault(m => m.Admin_Id.Equals(editAdmin.Admin_Id));
+            if (model != null)
+            {
+                model.Username = editAdmin.Username;
+                model.Password = PinCodeSecurity.pinEncrypt(editAdmin.Password);
+                model.Fullname = editAdmin.Fullname;
+                model.Email = editAdmin.Email;
+                model.Images = editAdmin.Images;
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
