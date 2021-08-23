@@ -1,0 +1,81 @@
+﻿@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    Users user = null;
+    List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
+    if (json != null)
+    {
+        JArray jsonResponse = JArray.Parse(json);
+
+        foreach (var item in jsonResponse)
+        {
+            JObject cartResult = (JObject)item;
+            listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
+        }
+    }
+    if (json_user_detail != null)
+    {
+        JObject jsonResponse = JObject.Parse(json_user_detail);
+        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
+    }
+}
+
+@model IEnumerable<eProject.Models.RequestDetail>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Request_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Request_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

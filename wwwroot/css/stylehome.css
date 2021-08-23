@@ -1,0 +1,86 @@
+﻿
+/*--- HOME ---*/
+.card-footer a {
+    text-decoration: none;
+}
+/* --- About Us --- */
+.year {
+    font-size: 4em;
+    font-weight: 1000;
+    -webkit-text-stroke: 2px #f55d2c;
+    -webkit-text-fill-color: white;
+    -webkit-animation: fill 0.5s infinite alternate;
+}
+
+.about-content p {
+    margin-top: 24px !important;
+    line-height: 26px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #3e3f5e;
+    text-align: left;
+}
+
+.about-img {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+    .about-img img {
+        width: 60%;
+    }
+
+.about-steps-group {
+    padding: 29px 0 59px;
+}
+
+.about-step {
+    text-align: center;
+    padding: 0 20px;
+    margin-top: 30px;
+}
+
+.about-step-img img {
+    height: 60px;
+}
+
+.about-step h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2b2f4c;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.about-step p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3e3f5e;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 26px;
+}
+.joinus h3 {
+    color: #f55d2c;
+    padding-bottom:30px;
+}
+.joinus h2 {
+    padding: 20px 2px 2px;
+}
+
+.scl-btn {
+    font-size: 14px;
+    background: #2b2f4c;
+    color: #fff;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    padding: 12px 0;
+    text-align: center;
+}
+
+/*--- Login page ---*/

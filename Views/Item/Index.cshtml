@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Index";
     var pageList = (IPagedList)ViewBag.data;
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
 }
 
 
@@ -27,6 +28,7 @@
             <th>Category_Id</th>
             <th>SupplierCode</th>
             <th>Images</th>
+            <th>Select</th>
         </tr>
         @foreach (var item in ViewBag.data)
         {
@@ -39,6 +41,7 @@
                 <td>@item.Category_Id</td>
                 <td>@item.SupplierCode</td>
                 <td>@item.Images</td>
+                <td></td>
             </tr>
         }
     </table>

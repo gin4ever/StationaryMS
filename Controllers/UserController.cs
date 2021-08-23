@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 using eProject.Models;
 using eProject.Services;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+
 namespace eProject.Controllers
 {
     public class UserController : Controller
@@ -15,16 +19,45 @@ namespace eProject.Controllers
         {
             this.services = services;
         }
-        public IActionResult Index()
+        public IActionResult Index(string name)
         {
-            var model = services.GetUsers();
-            return View(model);
+
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //lấy session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+
+                if (user != null)
+                {
+                    ViewBag.session = HttpContext.Session.GetString("username");
+                    var listAdmin = services.GetUsers();
+                    if (string.IsNullOrEmpty(name))
+                    {
+                        return View(listAdmin);
+                    }
+                    else
+                    {
+                        listAdmin = services.GetUsers().Where(a => a.Username.ToLower().Contains(name.ToLower())).ToList();
+                        return View(listAdmin);
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
+            }
+            return View();
         }
 
         public IActionResult AdminIndexUser()
         {
             var model = services.GetUsers();
             return View(model);
+
         }
 
         [HttpGet]
@@ -38,51 +71,84 @@ namespace eProject.Controllers
         {
             try
             {
-                if (services.checkLogin(user) != null)
+                var model = new Users
                 {
-                    return RedirectToAction("Profile", user);
+                    Username = user.Username,
+                    Password = user.Password
+                };
+
+                Users acc = services.checkLogin(model);
+                if (acc != null)
+                {
+                    HttpContext.Session.SetInt32("id", user.User_Id);
+                    HttpContext.Session.SetString("username", user.Username);
+                    HttpContext.Session.SetString("password", user.Password);
+                    HttpContext.Session.SetString("user_session", JsonConvert.SerializeObject(acc));
+                    return RedirectToAction("Index","Request");
                 }
                 else
                 {
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Index", "Login");
                 }
+                
             }
             catch (Exception e)
             {
-                ViewBag.Msg = e.Message;
+                return RedirectToAction("Index", "Login");
             }
-            return View();
+
+
         }
 
+        //log out
         [HttpGet]
-        public IActionResult Profile(Users user)
+        public IActionResult Logout()
         {
-            var model = services.GetUser(user.Username);
-            return View(model);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
-
+    
+        //hien thi profile
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Profile(string uname)
         {
+            //string json_user_session = HttpContext.Session.GetString("user_session");
+            //JObject jsonResponseUser = null;
+            //Users user = null;
+            //if (json_user_session != null)
+            //{
+            //    //lấy session User
+            //    jsonResponseUser = JObject.Parse(json_user_session);
+            //    user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+
+            //    if (user != null)
+            //    {
+            //        ViewBag.session = HttpContext.Session.GetString("username");
+            //        var model = services.GetUser(uname);
+            //        return View(model);
+            //    }
+            //    else
+            //    {
+            //        return RedirectToAction("Login", "User");
+            //    }
+            //}
+
+
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //lấy session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+            }
+            ViewBag.session = HttpContext.Session.GetString("username");
+            ViewBag.data = services.GetUser(uname);
             return View();
+           
         }
 
-        [HttpPost]
-        public IActionResult Create(Users newUser)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    services.createUser(newUser);
-                    ModelState.AddModelError(string.Empty, "Congratulation!");
-                }
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError(string.Empty, e.Message);
-            }
-            return View();
-        } 
     }
 }

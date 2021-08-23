@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sgn-ginnyn\\StationaryMS\\eProject.csproj": {}
+    "C:\\Users\\sgn-ginnyn\\Desktop\\StationaryMS\\eProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sgn-ginnyn\\StationaryMS\\eProject.csproj": {
+    "C:\\Users\\sgn-ginnyn\\Desktop\\StationaryMS\\eProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sgn-ginnyn\\StationaryMS\\eProject.csproj",
+        "projectUniqueName": "C:\\Users\\sgn-ginnyn\\Desktop\\StationaryMS\\eProject.csproj",
         "projectName": "eProject",
-        "projectPath": "C:\\Users\\sgn-ginnyn\\StationaryMS\\eProject.csproj",
+        "projectPath": "C:\\Users\\sgn-ginnyn\\Desktop\\StationaryMS\\eProject.csproj",
         "packagesPath": "C:\\Users\\sgn-ginnyn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sgn-ginnyn\\StationaryMS\\obj\\",
+        "outputPath": "C:\\Users\\sgn-ginnyn\\Desktop\\StationaryMS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -46,6 +46,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
