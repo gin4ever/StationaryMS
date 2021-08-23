@@ -53,7 +53,7 @@
     </div>
     <div class="all-product-grid">
         <div class="container">
-            <form method="POST" action="@Url.Action("SubmitRequest", "Request")">
+            <form method="POST" action="@Url.Action("Submit", "Request")">
                 <div class="row">
                     <div class="col-md-12">
                         @if (@ViewBag.Alert != null && @ViewBag.Alert.ToString().Length > 0)
@@ -75,43 +75,44 @@
                     <div class="col-lg-5 col-md-4">
                         <div id="checkout_wizard" class="checkout accordion left-chck145">
                             <div class="checkout-step">
-                                <div class="checkout-card" id="headingFour">
-                                    <span class="checkout-step-number">3</span>
-                                    <h4 class="checkout-step-title">
-                                        <button class="wizard-btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Payment</button>
-                                    </h4>
+                                @*<div class="checkout-card" id="headingFour">
+            <span class="checkout-step-number">3</span>
+            <h4 class="checkout-step-title">
+                <button class="wizard-btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Payment</button>
+            </h4>
+        </div>*@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="pymnt_title mb-12">
+                                                    <h4>Reason of your request</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" style="display:block">
+                                                <div class="form-group mt-1">
+                                                    <div class="ui search focus">
+                                                        <div class="ui left icon input swdh11 swdh19">
+                                                            <textarea class="form-control" name="Reason" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="next-btn16 hover-btn">Finish request</button>
                                 </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#checkout_wizard">
+
+                                @*<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#checkout_wizard">
                                     <div class="checkout-step-body">
                                         <div class="payment_method-checkout">
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="pymnt_title mb-4">
-                                                                    <h4>Credit / Debit Card</h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-group mt-1">
-                                                                    <label class="control-label">Holder Name*</label>
-                                                                    <div class="ui search focus">
-                                                                        <div class="ui left icon input swdh11 swdh19">
-                                                                            <textarea class="form-control" name="Reason" rows="3"></textarea>
 
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit" class="next-btn16 hover-btn">Finish order</button>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>

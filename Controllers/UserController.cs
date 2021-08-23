@@ -78,11 +78,15 @@ namespace eProject.Controllers
                 };
 
                 Users acc = services.checkLogin(model);
+                int countRole = services.CountRole(acc);
                 if (acc != null)
                 {
                     HttpContext.Session.SetInt32("id", user.User_Id);
                     HttpContext.Session.SetString("username", user.Username);
                     HttpContext.Session.SetString("password", user.Password);
+                    HttpContext.Session.SetInt32("approver", user.Department_Id);
+                    HttpContext.Session.SetInt32("currentRole", user.Role_Id);
+
                     HttpContext.Session.SetString("user_session", JsonConvert.SerializeObject(acc));
                     return RedirectToAction("Index","Request");
                 }

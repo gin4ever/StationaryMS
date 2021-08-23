@@ -41,20 +41,14 @@ namespace eProject.Controllers
             Users user = null;
             if (json_user_session != null)
             {
-                //lấy session User
+                //get session User
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
-                //test xem co session khong
-                messages.Add(uname);
-                TempData["alert"] = "danger";
-                TempData["message"] = messages;
-                ViewBag.Alert = TempData["alert"];
-                ViewBag.Message = TempData["message"];
-            }
+                    }
 
-            //hien thi noi dung
-            int pageSize = 4;
+            //show content
+            int pageSize = 10;
             int pageNumber = page ?? 1;
             if (string.IsNullOrEmpty(keyword))
             {
@@ -93,7 +87,7 @@ namespace eProject.Controllers
                 ViewBag.Message = TempData["message"];
             }
 
-                int pageSize = 4;
+                int pageSize = 10;
                 int pageNumber = page ?? 1;
                 if (string.IsNullOrEmpty(itemName))
                 {
@@ -165,7 +159,21 @@ namespace eProject.Controllers
         
         public IActionResult Submit()
         {
-      
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
             //notification
             ViewBag.Alert = TempData["alert"];
             ViewBag.Message = TempData["message"];
@@ -174,7 +182,8 @@ namespace eProject.Controllers
 
 
         [HttpPost]
-        public IActionResult SubmitRequest(Checkout checkout)
+        [ActionName("Submit")]
+        public IActionResult SubmitRequest(Request request)
         {
 
             List<string> messages = new List<string>();
@@ -191,11 +200,6 @@ namespace eProject.Controllers
                 {
                     return RedirectToAction("Index", "Login");
                 }
-                //test xem co session khong
-                messages.Add(user.Username);
-                TempData["alert"] = "danger";
-                TempData["message"] = messages;
-             
             }
             //  get cart session 
             List<CartItem> listCart = new List<CartItem>();
@@ -218,65 +222,52 @@ namespace eProject.Controllers
                 TempData["message"] = messages;
             }
 
-            // create order with item list and quantity
-            Request request = new Request();
+           
             if (user != null)
             {
+                request.Reason = request.Reason;
+                request.DateRequest = DateTime.Now;
+                request.Status = "Pending";
                 request.User_Id = user.User_Id;
-                //test xem co session khong
-                messages.Add(request.User_Id.ToString());
-                TempData["alert"] = "danger";
-                TempData["message"] = messages;
-            }
-         
-            request.Reason = checkout.Reason;
-            request.DateRequest = DateTime.Now;
-            request.Status = "Pending";
-            int request_id = services.SaveRequest(request);
-            //test xem co session khong
-            messages.Add(request_id.ToString());
-            TempData["alert"] = "danger";
-            TempData["message"] = messages;
-            if (request_id > 0)
-            {
-                messages.Add(user.Username);
-                TempData["alert"] = "danger";
-                TempData["message"] = messages;
-            //    // create relationship among RequestDetail , Request and Item
-            //    foreach (CartItem cart in listCart)
-            //    {
-            //        //RequestDetail reqDetail = new RequestDetail
-            //        //{
-            //        //    Id = request_id,
-            //        //    ItemCode = cart.Item.ItemCode,
-            //        //    Price = cart.Price,
-            //        //    Quantity = cart.Quantity
-            //        //};
-            //        //requestdetailservices.SaveRequestDetail(reqDetail);
-            //        ////test xem co session khong
-                   
-            //    }
+                request.ApprovedDate = null;
+                var requestID = services.SaveRequest(request);
 
-            //    // remove cart session 
-            //    HttpContext.Session.Remove("cart");
+                if (requestID > 0)
+                {
+                    // create relationship among RequestDetail , Request and Item
+                    foreach (CartItem cart in listCart)
+                    {
+                        RequestDetail reqDetail = new RequestDetail
+                        {
+                            Request_Id = requestID,
+                            ItemCode = cart.Item.ItemCode,
+                            Price = cart.Price,
+                            Quantity = cart.Quantity
+                        };
+                        requestdetailservices.SaveRequestDetail(reqDetail);
+                    }
 
-            //    // return success message
-            //    messages.Add("Check out success. Click <a href='" + Url.Action("Detail", "Request", new { request_id = request_id }) + "'><u>here</u></a> to review your request");
-            //    TempData["alert"] = "success";
-            //    TempData["message"] = messages;
-            //}
-            //else
-            //{
-            //    // return failure message
-            //    messages.Add("Can not submit order");
-            //    TempData["alert"] = "danger";
-            //    TempData["message"] = messages;
-            }
-            return RedirectToAction("Submit", "Request");
+                    // remove cart session 
+                    HttpContext.Session.Remove("cart");
 
+                    // return success message
+                    messages.Add("Check out success. Click <a href='" + Url.Action("Details", "Request", new { request_id = requestID }) + "'><u>here</u></a> to review your request");
+                    TempData["alert"] = "success";
+                    TempData["message"] = messages;
+                }
+                else
+                {
+                    // return failure message
+                    messages.Add("Can not submit order");
+                    TempData["alert"] = "danger";
+                    TempData["message"] = messages;
+                }
+                    return RedirectToAction("Index", "Request");
+                }
+            return View();
         }
 
-        [HttpGet]
+       
         [Route("Index/Details/{id?}")]
         public IActionResult Details(int id, int? page, string itemName)
         {
@@ -285,27 +276,44 @@ namespace eProject.Controllers
             Users user = null;
             if (json_user_session != null)
             {
-                //lấy session User
+                //get session User
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
             }
 
-            int pageSize = 4;
+            int pageSize = 10;
             int pageNumber = page ?? 1;
             if (string.IsNullOrEmpty(itemName))
             {
-                var itemList = requestdetailservices.GetRequestDetails(id).ToPagedList(pageNumber, pageSize);
-                ViewBag.data = itemList;
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
+                return View();
             }
             else
             {
-                var itemList = requestdetailservices.GetRequestDetails(id).Where
-                    (a => a.Request_Id.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
-                ViewBag.data = itemList;
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
+                    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+                c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+                c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
             }
             return View();
         }
+
+
+        //public IActionResult Edit (Request request)
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public IActionResult Edit(Request request)
+        //{
+        //    return View();
+        //}
 
     }
 }

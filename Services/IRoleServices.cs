@@ -9,6 +9,7 @@ namespace eProject.Services
     public interface IRoleServices
     {
         List<Role> GetRoles();
+        //int CountRole(int department);
 
     }
 }

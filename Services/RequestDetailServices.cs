@@ -16,9 +16,9 @@ namespace eProject.Services
             this.context = context;
         }
 
-        public List<RequestDetail> GetRequestDetails(int Id)
+        public List<RequestDetail> GetRequestDetails(int reqId)
         {
-            List<RequestDetail> listRequestDetail = context.RequestDetail.Where(i => i.Id.Equals(Id)).ToList();
+            List<RequestDetail> listRequestDetail = context.RequestDetail.Where(i => i.Request_Id.Equals(reqId)).ToList();
             return listRequestDetail;
         }
 

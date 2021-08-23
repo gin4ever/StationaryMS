@@ -49,7 +49,7 @@
                                     <div class="quantity buttons_added">
                                         <input type="hidden" name="id" value="@cart.Item.Description" />
                                         <input type="button" value="-" class="minus minus-btn">
-                                        <input type="number" step="1" name="quantity" value="@cart.Quantity" class="input-text qty text">
+                                        <input readonly type="number" step="1" name="quantity" value="@cart.Quantity" class="input-text qty text">
                                         <input type="button" value="+" class="plus plus-btn">
                                     </div>
                                     <div class="cart-item-price">$@cart.Item.Price </div>

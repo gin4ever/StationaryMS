@@ -13,5 +13,7 @@ namespace eProject.Services
         Users createUser(Users newUser);
         Users GetUser(string uname);
         bool UpdateProfile(Users editUser);
+
+        int CountRole(Users department);
     }
 }

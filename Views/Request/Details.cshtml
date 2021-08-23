@@ -8,6 +8,7 @@
     Users user = null;
     List<CartItem> listCart = new List<CartItem>();
     decimal total_money = 0;
+    decimal a = 0;
     if (json != null)
     {
         JArray jsonResponse = JArray.Parse(json);
@@ -25,57 +26,52 @@
     }
 }
 
-@model IEnumerable<eProject.Models.RequestDetail>
 
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
 @{
     ViewData["Title"] = "Details";
+    var pageList = (IPagedList)ViewBag.itemList;
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
 }
 
-<h1>Details</h1>
+<h2>Details</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="itemName" placeholder="Enter status..." />
+        <input type="submit" value="Search" class="btn-info" />
+    }
+</div>
+
+Page @Html.PagedListPager(pageList, page => Url.Action("Details", new { page }))
+
+
 <table class="table">
-    <thead>
+    <tr>
+        <th>Request ID</th>
+        <th>Item Code</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+
+    @foreach (var item in ViewBag.itemList)
+    {
+        a = item.Price * item.Quantity;
+        total_money += item.Price * item.Quantity;
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Request_Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
+            <td>@item.Request_Id</td>
+            <td>@item.ItemCode</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+
+            <td>@a</td>
+
         </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Request_Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ItemCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
+    }
+
 </table>
+<div>Total amount of Request = @total_money</div>
+

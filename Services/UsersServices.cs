@@ -74,5 +74,15 @@ namespace eProject.Services
         {
             throw new NotImplementedException();
         }
+
+
+
+        public int CountRole(Users department)
+        {
+            return context.Users.Where(i => i.Department_Id.Equals(department.Department_Id)).ToList().Count;
+        }
+
+
+
     }
 }

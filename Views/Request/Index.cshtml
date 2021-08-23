@@ -48,35 +48,18 @@
 </div>
 
 Page @Html.PagedListPager(pageList, page => Url.Action("Index", new { page }))
-
-@if (@ViewBag.Alert != null && @ViewBag.Alert.ToString().Length > 0)
+@if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
 {
-    <div class="alert alert-@ViewBag.Alert">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <ul>
-            @foreach (var message in @ViewBag.Message)
-            {
-                <li>@Html.Raw(@message)</li>
-            }
+    <table class="table">
+        <tr>
+            <th>Request ID</th>
+            <th>Date Request</th>
+            <th>Approved Date</th>
+            <th>Status</th>
+            <th>Reason</th>
+            <th>Action</th>
+        </tr>
 
-
-        </ul>
-    </div>
-}
-else
-{<div>Hello</div>}
-<table class="table">
-    <tr>
-        <th>Request ID</th>
-        <th>Date Request</th>
-        <th>Approved Date</th>
-        <th>Status</th>
-        <th>Reason</th>
-        <th>Action</th>
-
-    </tr>
-    @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
-    {
         @foreach (var item in ViewBag.itemList)
         {
             <tr>
@@ -92,8 +75,15 @@ else
                 </td>
             </tr>
         }
-    }
 
 
 
-</table>
+     
+
+
+
+    </table>
+            }
+            else { 
+<p>There is no request</p>
+}

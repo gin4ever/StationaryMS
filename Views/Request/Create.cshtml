@@ -45,20 +45,7 @@
 </div>
 
 Page @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
-@if (@ViewBag.Alert != null && @ViewBag.Alert.ToString().Length > 0)
-{
-    <div class="alert alert-@ViewBag.Alert">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <ul>
-            @foreach (var message in @ViewBag.Message)
-            {
-                <li>@Html.Raw(@message)</li>
-            }
 
-
-        </ul>
-    </div>          
-}else{<div>Hello</div>}
 <table class="table">
     <tr>
         <th>Item Code</th>
@@ -87,7 +74,7 @@ Page @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
                         <div class="quantity buttons_added">
                             <input type="hidden" name="id" value="@item.ItemCode" />
                             <input type="button" value="-" class="minus minus-btn">
-                            <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+                            <input readonly type="number" step="1" name="quantity" value="1" class="input-text qty text">
                             <input type="button" value="+" class="plus plus-btn">
                         </div>
                         <button type="submit" name="button" value="add" class="btn btn-link btn-xs float-right">

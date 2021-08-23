@@ -17,15 +17,20 @@ namespace eProject.Models
         [StringLength(250, MinimumLength = 1, ErrorMessage = "Reason from 1 to 250 chacracters!")]
         public string Reason { get; set; }
 
-        [Required]
-        public DateTime DateRequest { get; set; }
-         [Required(ErrorMessage ="Status is required!")]
-        [StringLength(20, MinimumLength = 1, ErrorMessage = "Status from 1 to 20 chacracters!")]public string Status { get; set; }
+        public DateTime DateRequest {
+            get; set;
+        }
+
+        [Required(ErrorMessage ="Status is required!")]
+        
+        [StringLength(20, MinimumLength = 1, 
+            ErrorMessage = "Status from 1 to 20 chacracters!")]
+        public string Status { get; set; }
+        
         public int User_Id { get; set; }
-        [Required]
-        public DateTime ApprovedDate { get; set; }
 
-       
-
+        public DateTime? ApprovedDate {
+            get; set;
+        }
     }
 }
