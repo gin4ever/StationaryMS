@@ -1,0 +1,99 @@
+﻿@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    Users user = null;
+    List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
+    if (json != null)
+    {
+        JArray jsonResponse = JArray.Parse(json);
+
+        foreach (var item in jsonResponse)
+        {
+            JObject cartResult = (JObject)item;
+            listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
+        }
+    }
+    if (json_user_detail != null)
+    {
+        JObject jsonResponse = JObject.Parse(json_user_detail);
+        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
+    }
+}
+
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@{
+    ViewData["Title"] = "Index";
+    var pageList = (IPagedList)ViewBag.itemList;
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+
+<h2>Request List</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="keyword" placeholder="Enter status..." />
+        <input type="submit" value="Search" class="btn-info" />
+    }
+</div>
+
+Page @Html.PagedListPager(pageList, page => Url.Action("Index", new { page }))
+
+@if (@ViewBag.Alert != null && @ViewBag.Alert.ToString().Length > 0)
+{
+    <div class="alert alert-@ViewBag.Alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <ul>
+            @foreach (var message in @ViewBag.Message)
+            {
+                <li>@Html.Raw(@message)</li>
+            }
+
+
+        </ul>
+    </div>
+}
+else
+{<div>Hello</div>}
+<table class="table">
+    <tr>
+        <th>Request ID</th>
+        <th>Date Request</th>
+        <th>Approved Date</th>
+        <th>Status</th>
+        <th>Reason</th>
+        <th>Action</th>
+
+    </tr>
+    @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
+    {
+        @foreach (var item in ViewBag.itemList)
+        {
+            <tr>
+                <td>@item.Request_Id</td>
+                <td>@item.DateRequest</td>
+                <td>@item.ApprovedDate</td>
+                <td>@item.Status</td>
+                <td>@item.Reason</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "CreateRequest", new { id = item.Request_Id })
+                    @Html.ActionLink("Details", "Details", "Request", new { id = item.Request_Id })
+                    @Html.ActionLink("Withdraw", "Details", "Request", new { id = item.Request_Id })
+                </td>
+            </tr>
+        }
+    }
+
+
+
+</table>

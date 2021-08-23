@@ -35,6 +35,14 @@ namespace eProject
             services.AddScoped<IRequestServices, RequestServices>();
             services.AddScoped<IRoleServices, RoleServices>();
             services.AddScoped<ISupplierServices, SupplierServices>();
+            services.AddScoped<IRequestDetailServices, RequestDetailServices>();//add scope RequestDetailService
+           
+            services.AddHttpContextAccessor();
+            // set session
+            services.AddDistributedMemoryCache();
+
+            // set up life time for session
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -50,6 +58,8 @@ namespace eProject
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+            app.UseSession();
+
 
             app.UseRouting();
 
@@ -59,7 +69,7 @@ namespace eProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Item}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=Login}/{id?}");
             });
         }
     }
