@@ -1,0 +1,48 @@
+﻿@model IEnumerable<eProject.Models.Role>
+
+@{
+    ViewData["Title"] = "AdminIndexRole";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>Role Information</h1>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="rname" placeholder="Enter Role name..." />
+        <input type="submit" value="Search" class="btn-info" />
+    }
+</div>
+
+<p>
+    <a asp-action="AdminCreateRole">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Role_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+            <td>
+                <a asp-action="AdminEditRole" asp-route-id="@item.Role_Id">Edit</a> |
+                <a asp-action="AdminDeleteRole" asp-route-id="@item.Role_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

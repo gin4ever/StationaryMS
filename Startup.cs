@@ -25,10 +25,26 @@ namespace eProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string url = "server=DESKTOP-TEK2ARS\\SQLEXPRESS;database=stationerydb;uid=sa;pwd=123";
+            string url = "server=dao-hanh\\SQLEXPRESS;database=stationerydb;uid=sa;pwd=daovanhanh123";
             services.AddDbContext<StationeryContext>(options => options.UseSqlServer(url));
             services.AddScoped<IUsersServices, UsersServices>();
             services.AddScoped<IItemServices, ItemServices>();
+            services.AddScoped<IAdminServices, AdminServices>();
+            services.AddScoped<ICategoryServices, CategoryServices>();
+            services.AddScoped<IDepartmentServices, DepartmentServices>();
+            services.AddScoped<IRequestServices, RequestServices>();
+            services.AddScoped<IRoleServices, RoleServices>();
+            services.AddScoped<ISupplierServices, SupplierServices>();
+            services.AddScoped<IRequestItemServices, RequestItemServices>();
+            services.AddScoped<IItemCategorySupplierServices, ItemCategorySupplierServices>();
+            services.AddScoped<IUserRoleDepartment, UserRoleDepartment>();
+            services.AddScoped<IRequestDetailServices, RequestDetailServices>();//add scope RequestDetailService
+
+            services.AddSession();
+
+            services.AddHttpContextAccessor();
+            services.AddDistributedMemoryCache();
+
             services.AddControllersWithViews();
         }
 
@@ -48,12 +64,13 @@ namespace eProject
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Item}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=Login}/{id?}");
             });
         }
     }

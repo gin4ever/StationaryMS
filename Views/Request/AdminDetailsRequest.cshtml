@@ -1,0 +1,65 @@
+﻿@model eProject.Models.vRequestItem
+
+@{
+    ViewData["Title"] = "AdminDetailsRequest";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>Request Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request_Id)
+        </dd>
+        <dt class="col-sm-2">
+            Item Code
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItemCode)
+        </dd>
+        <dt class="col-sm-2">
+            Item Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Unit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Unit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Images)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/@Url.Content(Model.Images)" width="100" />
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="AdminIndexRequest">Back to List</a>
+</div>

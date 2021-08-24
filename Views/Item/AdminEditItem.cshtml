@@ -1,0 +1,74 @@
+﻿@model eProject.Models.Item
+
+@{
+    ViewData["Title"] = "AdminEditItem";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>Edit Item</h1>
+
+<h4>Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AdminEditItem" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ItemCode" />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Unit" class="control-label"></label>
+                <input asp-for="Unit" class="form-control" />
+                <span asp-validation-for="Unit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Category List:</label>
+                <select asp-for="Category_Id"
+                        asp-items="(IEnumerable<SelectListItem>)ViewBag.listCat"
+                        class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Supplier List:</label>
+                <select asp-for="SupplierCode"
+                        asp-items="(IEnumerable<SelectListItem>)ViewBag.listSup"
+                        class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Role List:</label>
+                <select asp-for="Role_Id"
+                        asp-items="(IEnumerable<SelectListItem>)ViewBag.listRole"
+                        class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Images" class="control-label"></label>
+                <img src="~/@Url.Content(Model.Images)" width="100" />
+                <input type="file" name="file" id="file" asp-for="Images" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AdminIndexItem">Back to List</a>
+    <h3 style="color:red">@ViewBag.Msg</h3>
+</div>
+

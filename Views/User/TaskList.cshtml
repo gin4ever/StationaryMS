@@ -1,0 +1,47 @@
+﻿@model IEnumerable<eProject.Models.Request>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Task List</h1>
+
+<p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Request ID
+            </th>
+            <th>
+                Requester
+            </th>
+            <th>
+                Request Date
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Request_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRequest)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Request_Id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

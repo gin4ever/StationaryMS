@@ -1,0 +1,576 @@
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\appsettings.json
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.exe
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.deps.json
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.runtimeconfig.json
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.runtimeconfig.dev.json
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ref\eProject.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.Views.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.Views.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\JetBrains.Annotations.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Convention.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Hosting.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Runtime.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.TypedParts.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\X.PagedList.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.AssemblyReference.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.AssemblyInfoInputs.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.AssemblyInfo.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.CoreCompileInputs.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorAssemblyInfo.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorAssemblyInfo.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\staticwebassets\eProject.StaticWebAssets.Manifest.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\staticwebassets\eProject.StaticWebAssets.xml
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\scopedcss\bundle\eProject.styles.css
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.TagHelpers.input.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.TagHelpers.output.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorCoreGenerate.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Create.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Details.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Login.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\OldLogin.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminCreateCategory.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminEditCategory.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminIndexCategory.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminCreateDepartment.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminEditDepartment.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminIndexDepartment.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminCreateItem.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminDetailsItem.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminEditItem.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminIndexItem.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\Index.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Create.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Login.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Profile.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Report\Index.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\AdminDetailsRequest.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\AdminIndexRequest.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminCreateRole.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminEditRole.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminIndexRole.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_header.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Admin.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Login.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminCreateSupplier.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminEditSupplier.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminIndexSupplier.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\AdminDetailUser.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\AdminIndexUser.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Profile.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorTargetAssemblyInfo.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorTargetAssemblyInfo.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.Views.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.CopyComplete
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\ref\eProject.dll
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.pdb
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.genruntimeconfig.cache
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\ChangePassword.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\FAQ.cshtml.g.cs
+C:\Users\Dao Hanh\Downloads\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\TaskList.cshtml.g.cs
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\appsettings.Development.json
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\appsettings.json
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.exe
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.deps.json
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.runtimeconfig.json
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.runtimeconfig.dev.json
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ref\eProject.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.pdb
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.Views.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.Views.pdb
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Humanizer.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\JetBrains.Annotations.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Convention.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Hosting.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Runtime.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.TypedParts.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\X.PagedList.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csprojAssemblyReference.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.AssemblyInfoInputs.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.AssemblyInfo.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.CoreCompileInputs.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.MvcApplicationPartsAssemblyInfo.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.MvcApplicationPartsAssemblyInfo.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorAssemblyInfo.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorAssemblyInfo.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\staticwebassets\eProject.StaticWebAssets.Manifest.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\staticwebassets\eProject.StaticWebAssets.xml
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\scopedcss\bundle\eProject.styles.css
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.TagHelpers.input.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.TagHelpers.output.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorCoreGenerate.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Create.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Details.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Login.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\OldLogin.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminCreateCategory.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminEditCategory.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminIndexCategory.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminCreateDepartment.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminEditDepartment.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminIndexDepartment.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminCreateItem.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminDetailsItem.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminEditItem.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminIndexItem.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\Index.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Create.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Login.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Profile.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Report\Index.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\AdminDetailsRequest.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\AdminIndexRequest.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminCreateRole.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminEditRole.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminIndexRole.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_header.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Admin.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Login.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminCreateSupplier.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminEditSupplier.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminIndexSupplier.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\AdminDetailUser.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\AdminIndexUser.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\ChangePassword.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\FAQ.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Profile.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\TaskList.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorTargetAssemblyInfo.cache
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorTargetAssemblyInfo.cs
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.Views.pdb
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.CopyComplete
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.dll
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\ref\eProject.dll
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.pdb
+C:\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.genruntimeconfig.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.AssemblyReference.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.AssemblyInfoInputs.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.AssemblyInfo.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.CoreCompileInputs.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.MvcApplicationPartsAssemblyInfo.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.MvcApplicationPartsAssemblyInfo.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorAssemblyInfo.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorAssemblyInfo.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\staticwebassets\eProject.StaticWebAssets.Manifest.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\staticwebassets\eProject.StaticWebAssets.xml
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\scopedcss\bundle\eProject.styles.css
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.TagHelpers.input.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.TagHelpers.output.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorCoreGenerate.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Create.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Details.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Edit.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\Login.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Admin\OldLogin.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminCreateCategory.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminEditCategory.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Category\AdminIndexCategory.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminCreateDepartment.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminEditDepartment.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Department\AdminIndexDepartment.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminCreateItem.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminDetailsItem.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminEditItem.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\AdminIndexItem.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Item\Index.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Create.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Login.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Login\Profile.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Report\Index.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\AdminDetailsRequest.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\AdminIndexRequest.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\Create.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\Details.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\Index.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Request\Submit.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminCreateRole.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminEditRole.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Role\AdminIndexRole.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_header.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Admin.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Login.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_Layout_User.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_OrderDetail.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminCreateSupplier.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminEditSupplier.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Supplier\AdminIndexSupplier.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\AdminDetailUser.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\AdminIndexUser.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\ChangePassword.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\FAQ.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\Profile.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\User\TaskList.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorTargetAssemblyInfo.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.RazorTargetAssemblyInfo.cs
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.dll
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\ref\eProject.dll
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.pdb
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\appsettings.Development.json
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\appsettings.json
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.exe
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.deps.json
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.runtimeconfig.json
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.runtimeconfig.dev.json
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ref\eProject.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.pdb
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.Views.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\eProject.Views.pdb
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Humanizer.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\JetBrains.Annotations.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Convention.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Hosting.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.Runtime.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Composition.TypedParts.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Runtime.Caching.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\X.PagedList.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.Views.pdb
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.CopyComplete
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.genruntimeconfig.cache

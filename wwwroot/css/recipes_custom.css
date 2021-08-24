@@ -1,0 +1,68 @@
+﻿.default-dt {
+    background: #2b2f4c;
+}
+.title129 h1 {
+    font-weight: 700;
+    margin-top: 12px !important;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+}
+
+.title129 h2 {
+    margin-top: 24px !important;
+}
+
+.pagination li {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.btn-submit-recipe:hover {
+    color: antiquewhite !important;
+}
+
+.btn-submit-recipe {
+    font-size: 16px !important;
+}
+
+.pagination ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.pagination li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+.pagination li:last-child {
+    border-right: none;
+}
+
+.pagination li a, .pagination li span {
+    display: block;
+    color: Black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.pagination li a:hover:not(.active) {
+    background-color: #f55d2c;
+}
+
+.pagination .active {
+    padding: 0 !important;
+    background-color: #f55d2c;
+}
+
+.banner_detail_recipe {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

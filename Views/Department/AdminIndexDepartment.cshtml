@@ -1,0 +1,55 @@
+﻿@model IEnumerable<eProject.Models.Department>
+
+@{
+    ViewData["Title"] = "AdminIndexDepartment";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>Departments List</h1>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="dname" placeholder="Enter Department name..." />
+        <input type="submit" value="Search" class="btn-info" />
+    }
+</div>
+
+<p>
+    <a asp-action="AdminCreateDepartment">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Department_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Budget)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Budget)
+            </td>
+            <td>
+                <a asp-action="AdminEditDepartment" asp-route-id="@item.Department_Id">Edit</a> |
+                <a asp-action="AdminDeleteDepartment" asp-route-id="@item.Department_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
