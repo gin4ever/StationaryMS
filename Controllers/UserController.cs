@@ -135,12 +135,12 @@ namespace eProject.Controllers
             return RedirectToAction("Login");
         }
 
-        [HttpGet]
-        public IActionResult Profile(Users user)
-        {
-            var model = services.GetUser(user.Username);
-            return View(model);
-        }
+        //[HttpGet]
+        //public IActionResult Profile(Users user)
+        //{
+        //    var model = services.GetUser(user.Username);
+        //    return View(model);
+        //}
 
         [HttpGet]
         public IActionResult Create()
@@ -149,24 +149,26 @@ namespace eProject.Controllers
         }
 
         //hien thi profile
-        //[HttpGet]
-        //public IActionResult Profile(string uname)
-        //{
-        //    string json_user_session = HttpContext.Session.GetString("user_session");
-        //    JObject jsonResponseUser = null;
-        //    Users user = null;
-        //    if (json_user_session != null)
-        //    {
-        //        //lấy session User
-        //        jsonResponseUser = JObject.Parse(json_user_session);
-        //        user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
-        //        ViewBag.session = HttpContext.Session.GetString("username");
-        //    }
-        //    ViewBag.session = HttpContext.Session.GetString("username");
-        //    ViewBag.data = services.GetUser(uname);
-        //    return View();
+        [HttpGet]
+        public IActionResult Profile(string uname)
+        {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //lấy session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                var model = services.GetUser(user.Username);
+                return View(model);
+            }
+            ViewBag.session = HttpContext.Session.GetString("username");
+            ViewBag.data = services.GetUser(uname);
+            return View();
 
-        //}
+        }
 
         [HttpGet]
         public IActionResult AdminDetailUser(int id)
@@ -202,7 +204,7 @@ namespace eProject.Controllers
             Users user = null;
             if (json_user_session != null)
             {
-                //lấy session User
+                //lấy session Admin
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
 
@@ -214,7 +216,7 @@ namespace eProject.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Login", "Profile");
+                    return RedirectToAction("User", "Profile");
                 }
             }
             return View();

@@ -574,3 +574,4 @@ D:\dowload\StationaryMS-chi-branch\bin\Debug\net5.0\runtimes\win\lib\netstandard
 D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.Views.pdb
 D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.csproj.CopyComplete
 D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\eProject.genruntimeconfig.cache
+D:\dowload\StationaryMS-chi-branch\obj\Debug\net5.0\Razor\Views\Report\Report.cshtml.g.cs
