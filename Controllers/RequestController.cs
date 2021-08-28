@@ -217,13 +217,30 @@ namespace eProject.Controllers
             {
                 request.Reason = request.Reason;
                 request.DateRequest = DateTime.Now;
-                request.Status = "Pending";
                 request.User_Id = user.User_Id;
                 request.ApprovedDate = null;
                 int approverRole = user.Role_Id + 1;
                 int deptcode = user.Department_Id;
-                Users approverId = userservices.GetUserByRoleID(approverRole, deptcode);
-                request.Approver = approverId.User_Id;
+                try
+                {
+                    Users approverId = userservices.GetUserByRoleID(approverRole, deptcode);
+                    if (approverId!=null)
+                    {
+                        request.Approver = approverId.User_Id;
+                        request.Status = "Pending";
+                    }
+                    else
+                    {
+                        request.Approver = user.User_Id;
+                        request.Status = "Approved";
+                        request.ApprovedDate = DateTime.Now;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
                 
                 var requestID = services.SaveRequest(request);
 
