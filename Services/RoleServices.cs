@@ -17,7 +17,11 @@ namespace eProject.Services
         {
             return context.Role.ToList();
         }
+        public int CountRole(Department department)
+        {
+            return context.Role.Where(i => i.Role_Id.Equals(department.Department_Id)).ToList().Count;
 
-      
+        }
+
     }
 }

@@ -11,10 +11,12 @@ namespace eProject.Services
         List<Request> GetRequests();
 
         Request GetRequest(int id);
-        bool UpdateRequest(Request request);
-      //  int SaveRequest(Request request);
+   
+        bool ApproveRequest(Request request);
         int SaveRequest(Request request);
         int CountRequest(int user_id);
         List<Request> GetRequestsByUserId(int user_id);
+
+        bool DeleteRequest(int rqId);
     }
 }

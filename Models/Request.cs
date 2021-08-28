@@ -32,5 +32,7 @@ namespace eProject.Models
         public DateTime? ApprovedDate {
             get; set;
         }
+        public int Approver { get; set; }
+
     }
 }

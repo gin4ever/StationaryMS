@@ -1183,7 +1183,7 @@ i.icon1 {
 	z-index: 1110;
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: 400px;
+	width: 250px;
 	transition: margin .4s ease-out;
 	-webkit-transition: margin .4s ease-out;
 	-moz-transition: margin .4s ease-out;
@@ -1192,7 +1192,7 @@ i.icon1 {
 
 .bs-canvas-left {
 	left: 0;
-	margin-left: -400px;
+	margin-left: -250px;
 }
 
 
@@ -1213,10 +1213,11 @@ i.icon1 {
     font-weight: 600;
 }
 
-.main-cart-title span{
-	color: #f69733;
-    margin-left: 5px;
-}
+    .main-cart-title span {
+        color: #2b2f4c;
+        margin-left: 5px;
+        font-weight: 700;
+    }
 
 .bs-canvas-body {
     background: #f7f7f7;
@@ -1282,11 +1283,11 @@ i.icon1 {
 }
 
 .main-total-cart span {
-	color: #f55d2c;
+    color: #2b2f4c;
     font-size: 18px;
     margin-left: auto;
     font-weight: 700;
-	line-height: 24px;
+    line-height: 24px;
 }
 
 .checkout-cart {
@@ -1307,24 +1308,28 @@ i.icon1 {
 }
 
 .cart-checkout-btn {
-	display: inline-block;
+    display: inline-block;
     margin-bottom: 0;
     margin-left: auto;
     padding: 10px 15px;
     border-radius: 5px;
     font-size: 14px;
     color: #fff;
-    background: #f55d2c;
+    background: #17a2b8;
     font-weight: 500;
 }
 
 .cart-item {
 	display: flex;
-	padding: 20px;
+	padding: 10px;
 	background: #fff;
 	border-bottom: 1px solid #efefef;
 }
 
+.right-cart-dt-body {
+    height: 500px;
+    overflow-y: auto;
+}
 .cart-item:last-child {
 	border-bottom: 0;
 }
@@ -1334,7 +1339,8 @@ i.icon1 {
 }
 
 .cart-product-img {
-    width: 130px;
+    width: 88px;
+    height:88px;
 	position: relative;
 }
 
@@ -1358,15 +1364,16 @@ i.icon1 {
 }
 
 .cart-text {
-	margin-left: 20px;
-	width: 100%;
+	margin-left: 10px;
+	width: 70%;
 	position: relative;
 }
 
 .cart-text h4 {
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 700;
 	line-height: 24px;
+    width: 70%;
 	color: #2b2f4c;
 	text-align: left;
 	margin-bottom: 10px;
@@ -1449,14 +1456,14 @@ i.icon1 {
  display: inline-block; }
 
 .quantity .input-text.qty {
-	width: 35px;
-    height: 30px;
-    padding: 0 5px;
+	width: 24px;
+    height: 25px;
+    padding: 0 2px;
     text-align: center;
     background-color: transparent;
     border: 0;
-    margin-left: -4px;
-    margin-right: -4px;
+    margin-left: -2px;
+    margin-right: -2px;
     background: #fff;
     font-size: 12px;
 	font-weight: 500;
@@ -1480,17 +1487,17 @@ i.icon1 {
 	 box-shadow: none;
 }
 
-.quantity.buttons_added .minus,
-.quantity.buttons_added .plus {
-    padding: 6px 10px 5px;
-    height: 30px;
-    background-color: #2b2f4c;
-    border: 0;
-	color: #fff;
-    cursor: pointer;
-    border-radius: 3px;
-	width: 30px;
-}
+    .quantity.buttons_added .minus,
+    .quantity.buttons_added .plus {
+        padding: 6px 10px 5px;
+        height: 24px;
+        background-color: #17a2b8;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 1px;
+        width: 24px;
+    }
 
 .quantity.buttons_added .minus-btn {
 	border-top-left-radius: 3px;
@@ -1541,13 +1548,13 @@ i.icon1 {
 
 
 .cart-item-price {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 24px;
-    color: #f55d2c;
+    color: #2b2f4c;
     text-align: right;
-	display: inline-flex;
-	margin-left: auto;
+    display: inline-flex;
+    margin-left: 5px;
 }
 
 .cart-item-price span {
@@ -1583,25 +1590,25 @@ i.icon1 {
     color: #fff !important;
     opacity: 1 !important;
 }
-		
+
 .side-cart-header {
-    background: #2b2f4c;
+    background: #17a2b8;
     color: #fff;
-	position: sticky;
+    position: sticky;
     top: 0;
 }
 
 .main-cart-title {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .bs-canvas-body {
-    background: #f9f9f9;
+    background: #fff;
     position: absolute;
     width: 100%;
     top: 48px;
-    bottom: 190px;
+    /*bottom: 190px;*/
     overflow-y: scroll;
 }
 
@@ -1763,10 +1770,12 @@ i.icon1 {
 .wrapper {
 /*    padding-top: 128px;*/
 	padding-bottom: 50px;
+    background-color:#fff;
 }
 
 .wrapper-blog {
     padding-top: 60px !important;
+    background-color: #fff;
 }
 
 .main-banner-slider {
@@ -3116,7 +3125,7 @@ label.control-label {
 .form-control:focus {
     outline: none !important;
     box-shadow: none !important;
-	border: 1px solid #f55d2c !important;
+    border: 1px solid #17a2b8 !important;
 }
 
 .address-btns {
@@ -3138,13 +3147,13 @@ label.control-label {
 .next-btn16 {
     height: 40px;
     padding: 9px 20px;
-    border: 1px solid #f55d2c;
-    background: #f55d2c;
+    border: 1px solid #17a2b8;
+    background: #17a2b8;
     color: #fff;
     border-radius: 5px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-	display: inline-block;
+    display: inline-block;
 }
 
 .time-radio {

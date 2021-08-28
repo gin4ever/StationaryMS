@@ -319,4 +319,6 @@ C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\User\Index
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Create.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Submit.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Details.cshtml.g.cs
+C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Edit.cshtml.g.cs
+C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Update.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\eProject.csproj.AssemblyReference.cache

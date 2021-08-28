@@ -65,6 +65,20 @@ namespace eProject.Services
 
         }
 
+        public Users GetUserByRoleID(int RoleID, int deptcode)
+        {
+            var model = context.Users.FirstOrDefault(u => u.Role_Id.Equals(RoleID) && u.Department_Id.Equals(deptcode));
+            if (model != null)
+            {
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
         public List<Users> GetUsers()
         {
             return context.Users.ToList();

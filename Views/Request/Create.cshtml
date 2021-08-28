@@ -4,7 +4,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
-    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_session");
     Users user = null;
     List<CartItem> listCart = new List<CartItem>();
     decimal total_money = 0;
@@ -29,61 +29,99 @@
 
 @{
     ViewData["Title"] = "Create";
-    var pageList = (IPagedList)ViewBag.data;
+    var pageList = (IPagedList)ViewBag.itemList;
     Layout = "~/Views/Shared/_Layout_User.cshtml";
 }
 
 
-<h2>Item List</h2>
-
-<div>
-    @using (Html.BeginForm())
-    {
-        <input type="text" name="itemName" placeholder="Enter status..." />
-        <input type="submit" value="Search" class="btn-info" />
-    }
-</div>
-
-Page @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
-
-<table class="table">
-    <tr>
-        <th>Item Code</th>
-        <th>Images</th>
-        <th>Description</th>
-        <th>SupplierCode</th>
-        <th>Unit</th>
-        <th>Category_Id</th>
-        <th>Select</th>
-
-    </tr>
-    @foreach (var item in ViewBag.data)
-    {
-        <tr>
-            <td>@item.ItemCode</td>
-            <td>
-                <img src="~/@Url.Content(item.Images)" width="100" />
-            </td>
-            <td>@item.Description</td>
-            <td>@item.SupplierCode</td>
-            <td>@item.Unit</td>
-            <td>@item.Category_Id</td>
-            <td align="left">
-                <div class="qty-cart">
-                    <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-10">
-                        <div class="quantity buttons_added">
-                            <input type="hidden" name="id" value="@item.ItemCode" />
-                            <input type="button" value="-" class="minus minus-btn">
-                            <input readonly type="number" step="1" name="quantity" value="1" class="input-text qty text">
-                            <input type="button" value="+" class="plus plus-btn">
-                        </div>
-                        <button type="submit" name="button" value="add" class="btn btn-link btn-xs float-right">
-                            <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-                        </button>
-                    </form>
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Request")">Index</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create</li>
+                        </ol>
+                    </nav>
                 </div>
-            </td>
-        </tr>
-    }
-</table>
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="text-center" style="padding:10px">
+            @using (Html.BeginForm())
+            {
+                <input type="text" style="height:30px" name="itemName" placeholder="Enter item description..." />
+                <input type="submit" value="Search" class="btn-info" />
+            }
+        </div>
+
+    </div>
+    @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
+    {
+        <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th>Item Code</th>
+                    <th>Images</th>
+                    <th>Description</th>
+                    <th>Price (in USD)</th>
+                    <th>Unit</th>
+                    <th>SupplierCode</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.itemList)
+                {
+                    <tr>
+                        <td>@item.ItemCode</td>
+                        <td>
+                            <img src="~/@Url.Content(item.Images)" width="100" />
+                        </td>
+                        <td>@item.Description</td>
+                        <td>@item.Price</td>
+                        <td>@item.Unit</td>
+                        <td>@item.SupplierCode</td>
+                        <td align="left">
+                            <div class="qty-cart">
+                                <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-10">
+                                    <div class="quantity buttons_added">
+                                        <input type="hidden" name="id" value="@item.ItemCode" />
+                                        <input type="button" value="-" class="minus minus-btn">
+                                        <input readonly type="number" step="1" name="quantity" value="1" class="input-text qty text">
+                                        <input type="button" value="+" class="plus plus-btn">
+                                    </div>
+                                    <button type="submit" name="button" value="add" class="btn btn-link btn-xs float-right">
+                                        <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p style="text-align:center">There is no Result</p>
+    }
+    <div class="col-md-12" style="text-align:center">
+        <div class="blog-more-btn">
+            <div class="pagination-area text-center">
+                <nav aria-label="navigation" style="margin:auto">
+                    <h3 style="color:darkblue; font-size:14px">
+                        @if (pageList != null)
+                        {
+                            @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
+                        }
+                    </h3>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

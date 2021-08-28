@@ -4,7 +4,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
-    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_session");
     Users user = null;
     List<CartItem> listCart = new List<CartItem>();
     decimal total_money = 0;
@@ -277,7 +277,7 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color:#fff">
             @RenderBody()
             <partial name="_OrderDetail" />
         </div>
@@ -341,6 +341,6 @@
     <script src="~/js/custom.js"></script>
     <script src="~/js/product.thumbnail.slider.js"></script>
     <script src="~/js/offset_overlay.js"></script>
-    <script src="~/js/night-mode.js"></script>
+    @*<script src="~/js/night-mode.js"></script>*@
 </body>
 </html>

@@ -9,9 +9,12 @@ namespace eProject.Services
     public class RequestServices : IRequestServices
     {
         private StationeryContext context;
-        public RequestServices(StationeryContext context)
+        private StationeryContext detailcontext;
+
+        public RequestServices(StationeryContext context, StationeryContext detailcontext)
         {
             this.context = context;
+            this.detailcontext = detailcontext;
         }
         public List<Request> GetRequests()
         {
@@ -28,15 +31,13 @@ namespace eProject.Services
         public Request GetRequest(int id)
         {
             return context.Request.SingleOrDefault(a => a.Request_Id == id);
-
         }
 
 
         public List<Request> GetRequestsByUserId(int user_id)
         {
-            List<Request> requestByUser = context.Request.Where(i => i.User_Id.Equals(user_id)).OrderBy(a => a.DateRequest).ToList();
+            List<Request> requestByUser = context.Request.Where(i => i.User_Id.Equals(user_id)).OrderByDescending(a => a.DateRequest).ToList();
             return requestByUser;
-
         }
 
         public int SaveRequest(Request request)
@@ -54,7 +55,7 @@ namespace eProject.Services
 
         }
 
-        public bool UpdateRequest(Request request)
+        public bool ApproveRequest(Request request)
         {
             var model = context.Request.SingleOrDefault(a => a.Request_Id == request.Request_Id);
             if (model == null)
@@ -68,10 +69,28 @@ namespace eProject.Services
         }
 
 
-
-
-
-
-
+        public bool DeleteRequest(int rqId)
+        {
+            var delequest = context.Request.SingleOrDefault(m => m.Request_Id.Equals(rqId));
+          
+            if (delequest != null)
+            {
+                List<RequestDetail> listRequestDetail = detailcontext.RequestDetail.Where(i => i.Request_Id.Equals(delequest.Request_Id)).ToList();
+                var count = listRequestDetail.Count();
+                for (int i = 0; i < count; i++)
+                {
+                    detailcontext.RequestDetail.Remove(listRequestDetail[i]);
+                    detailcontext.SaveChanges();
+                }
+                
+                context.Request.Remove(delequest);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

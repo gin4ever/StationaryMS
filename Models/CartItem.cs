@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace eProject.Models
 {
-    [Serializable]
+   
     public class CartItem
     {
         public Item Item { get; set; }

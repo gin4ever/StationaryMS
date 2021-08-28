@@ -10,5 +10,10 @@ namespace eProject.Services
     {
         List<RequestDetail>  GetRequestDetails(int Id);
         bool SaveRequestDetail(RequestDetail requestDetail);
+        void UpdateRequestDetail(RequestDetail editRequest);
+        RequestDetail GetItem(int rqId);
+        bool DelItem(int rqId);
+        
+
     }
 }

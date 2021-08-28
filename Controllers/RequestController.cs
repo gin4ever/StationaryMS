@@ -61,8 +61,8 @@ namespace eProject.Controllers
                 (c => c.Status.ToUpper().Contains(keyword.ToUpper()) ||
                 c.Status.ToLower().Contains(keyword.ToLower()) ||
                 c.Status.Equals(keyword)).ToList().ToPagedList(pageNumber, pageSize);
-                return View();
             }
+            return View();
         }
 
         //create new request
@@ -78,29 +78,22 @@ namespace eProject.Controllers
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
-               
-                //test xem co session khong
-                messages.Add(user.Username);
-                TempData["alert"] = "danger";
-                TempData["message"] = messages;
-                ViewBag.Alert = TempData["alert"];
-                ViewBag.Message = TempData["message"];
             }
 
                 int pageSize = 10;
                 int pageNumber = page ?? 1;
                 if (string.IsNullOrEmpty(itemName))
                 {
-                    var itemList = itemServices.GetItems().ToPagedList(pageNumber, pageSize);
-                    ViewBag.data = itemList;
+                    ViewBag.itemList = itemServices.GetItems().Where(a=>a.Role_Id.Equals(user.Role_Id)).ToPagedList(pageNumber, pageSize);
+                    return View();
                 }
                 else
                 {
-                    var itemList = itemServices.GetItems().Where
-                        (a => a.Description.Contains(itemName)).OrderByDescending(a => a.Price).ToList().ToPagedList(pageNumber, pageSize);
-                    ViewBag.data = itemList;
+                    ViewBag.itemList = itemServices.GetItems().Where
+                        (a => a.Role_Id.Equals(user.Role_Id)&&( a.Description.Equals(itemName)||a.Description.ToUpper().Contains(itemName.ToUpper())||
+                        a.Description.ToLower().Contains(itemName.ToLower()))).OrderByDescending(a => a.Price).ToList().ToPagedList(pageNumber, pageSize);
                 }
-                return View();
+            return View();
         }
 
 
@@ -134,7 +127,6 @@ namespace eProject.Controllers
                         break;
                     }
                 }
-
                 listCart.RemoveAt(delete_index);
             }
             else
@@ -174,6 +166,7 @@ namespace eProject.Controllers
                     return RedirectToAction("Index", "Login");
                 }
             }
+
             //notification
             ViewBag.Alert = TempData["alert"];
             ViewBag.Message = TempData["message"];
@@ -215,14 +208,11 @@ namespace eProject.Controllers
                     listCart.Add(cart);
                     total_amount += cart.Price * cart.Quantity;
                 }
-
-                //test xem co session khong
-                messages.Add(user.Username);
-                TempData["alert"] = "danger";
-                TempData["message"] = messages;
             }
-
-           
+            else
+            {
+                return RedirectToAction("Create", "Request");
+            }
             if (user != null)
             {
                 request.Reason = request.Reason;
@@ -230,11 +220,16 @@ namespace eProject.Controllers
                 request.Status = "Pending";
                 request.User_Id = user.User_Id;
                 request.ApprovedDate = null;
+                int approverRole = user.Role_Id + 1;
+                int deptcode = user.Department_Id;
+                Users approverId = userservices.GetUserByRoleID(approverRole, deptcode);
+                request.Approver = approverId.User_Id;
+                
                 var requestID = services.SaveRequest(request);
 
                 if (requestID > 0)
                 {
-                    // create relationship among RequestDetail , Request and Item
+                    // add info into request detail
                     foreach (CartItem cart in listCart)
                     {
                         RequestDetail reqDetail = new RequestDetail
@@ -242,7 +237,8 @@ namespace eProject.Controllers
                             Request_Id = requestID,
                             ItemCode = cart.Item.ItemCode,
                             Price = cart.Price,
-                            Quantity = cart.Quantity
+                            Quantity = cart.Quantity,
+                            Total = cart.Quantity * cart.Price
                         };
                         requestdetailservices.SaveRequestDetail(reqDetail);
                     }
@@ -251,7 +247,7 @@ namespace eProject.Controllers
                     HttpContext.Session.Remove("cart");
 
                     // return success message
-                    messages.Add("Check out success. Click <a href='" + Url.Action("Details", "Request", new { request_id = requestID }) + "'><u>here</u></a> to review your request");
+                    messages.Add("Submit success. Click <a href='" + Url.Action("Details", "Request", new { id=requestID }) + "'><u>here</u></a> to review your request");
                     TempData["alert"] = "success";
                     TempData["message"] = messages;
                 }
@@ -262,12 +258,11 @@ namespace eProject.Controllers
                     TempData["alert"] = "danger";
                     TempData["message"] = messages;
                 }
-                    return RedirectToAction("Index", "Request");
-                }
-            return View();
+            }
+            return RedirectToAction("Submit", "Request");
         }
 
-       
+
         [Route("Index/Details/{id?}")]
         public IActionResult Details(int id, int? page, string itemName)
         {
@@ -285,16 +280,26 @@ namespace eProject.Controllers
                     return RedirectToAction("Index", "Login");
                 }
             }
-
             int pageSize = 10;
             int pageNumber = page ?? 1;
+            //count total amount of request
+            List<RequestDetail> item = requestdetailservices.GetRequestDetails(id).ToList();
+            int count = item.ToList().Count;
+            decimal TotalAmount = 0;
+            for (int i = 0; i < count; i++)
+            {
+                TotalAmount += item[i].Total;
+            }
+
             if (string.IsNullOrEmpty(itemName))
             {
                 ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
+                ViewBag.requestTotal = TotalAmount;
                 return View();
             }
             else
             {
+                ViewBag.requestTotal = TotalAmount;
                 ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
                     (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
                 c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
@@ -302,18 +307,115 @@ namespace eProject.Controllers
             }
             return View();
         }
+        //create temp database for edit
+        [HttpGet]
+        [Route("Index/Edit/{id?}")]
+        public IActionResult Edit(RequestDetail req, int? page, string itemName)
+        {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
+            //count total amount of request
+            List<RequestDetail> item = requestdetailservices.GetRequestDetails(req.Id).ToList();
+                int count = item.ToList().Count;
+                decimal TotalAmount = 0;
+                for (int i = 0; i < count; i++)
+                {
+                    TotalAmount += item[i].Total;
+                }
+                int pageSize = 10;
+                int pageNumber = page ?? 1;
+                if (string.IsNullOrEmpty(itemName))
+                {
+                    ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).ToList().ToPagedList(pageNumber, pageSize);
+                    ViewBag.requestTotal = TotalAmount;
+                return View();
+                }
+                else
+                {
+                    ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).Where
+                        (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+                    c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+                    c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
+                    ViewBag.requestTotal = TotalAmount;
+            }
+                return View();
+            
+        }
+
+        [Route("Index/Edit/Update/{req?}")]
+        public IActionResult Update(int req)
+        {
+            var model =requestdetailservices.GetItem(req);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Update")]
+        public IActionResult UpdateItem(RequestDetail request)
+        {
+            RequestDetail model = requestdetailservices.GetItem(request.Id);
+            model.Quantity = request.Quantity;
+            requestdetailservices.UpdateRequestDetail(model);
+            return Redirect(Request.Headers["Referer"].ToString());
+
+            //try
+            //{
+            //    RequestDetail model = requestdetailservices.GetItem(request.Id);
+            //    if (ModelState.IsValid)
+            //    {
+            //        model.Quantity = request.Quantity;
+            //        requestdetailservices.UpdateRequestDetail(model);
+            //        return Redirect(Request.Headers["Referer"].ToString());
+            //    }
+            //    else
+            //    {
+            //        ViewBag.Msg = "Fail";
+            //    }
+            //}
+            //catch (System.Exception e)
+            //{
+
+            //    ViewBag.Msg = e.Message;
+            //}
+        }
 
 
-        //public IActionResult Edit (Request request)
-        //{
-        //    return View();
-        //}
 
-        //[HttpPost]
-        //public IActionResult Edit(Request request)
-        //{
-        //    return View();
-        //}
+
+        //delete item in Request
+        public IActionResult DeleteRequest(int id)
+        {
+            services.DeleteRequest(id);
+            return RedirectToAction("Index");
+        }
+
+        //delete item in RequestDetail
+        public IActionResult DelItem(int id)
+        {
+            var model = requestdetailservices.GetItem(id);
+            var requestId = model.Request_Id;
+            List<RequestDetail> detail = requestdetailservices.GetRequestDetails(requestId).ToList();
+            int countRequestItem = detail.Where(n => n.Request_Id.Equals(model.Request_Id)).ToList().Count;
+                requestdetailservices.DelItem(id);
+                if (countRequestItem == 1)
+                {
+                    return RedirectToAction("Index");
+                }
+                return Redirect(Request.Headers["Referer"].ToString());
+        }
+
 
     }
 }

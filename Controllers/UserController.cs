@@ -154,5 +154,32 @@ namespace eProject.Controllers
            
         }
 
+
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Users newUser)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    services.createUser(newUser);
+                    ModelState.AddModelError(string.Empty, "Congratulation!");
+                }
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(string.Empty, e.Message);
+            }
+            return View();
+        }
+
     }
 }
