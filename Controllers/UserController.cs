@@ -94,7 +94,6 @@ namespace eProject.Controllers
                 {
                     return RedirectToAction("Index", "Login");
                 }
-                
             }
             catch (Exception e)
             {
@@ -116,28 +115,6 @@ namespace eProject.Controllers
         [HttpGet]
         public IActionResult Profile(string uname)
         {
-            //string json_user_session = HttpContext.Session.GetString("user_session");
-            //JObject jsonResponseUser = null;
-            //Users user = null;
-            //if (json_user_session != null)
-            //{
-            //    //lấy session User
-            //    jsonResponseUser = JObject.Parse(json_user_session);
-            //    user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
-
-            //    if (user != null)
-            //    {
-            //        ViewBag.session = HttpContext.Session.GetString("username");
-            //        var model = services.GetUser(uname);
-            //        return View(model);
-            //    }
-            //    else
-            //    {
-            //        return RedirectToAction("Login", "User");
-            //    }
-            //}
-
-
             string json_user_session = HttpContext.Session.GetString("user_session");
             JObject jsonResponseUser = null;
             Users user = null;

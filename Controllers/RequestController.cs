@@ -31,11 +31,9 @@ namespace eProject.Controllers
             var model = services.GetRequests();
             return View(model);
         }
-
-        public IActionResult Index(string uname, int? page, string keyword)
+        //request list
+        public IActionResult Index(int? page, string keyword)
         {
-            List<string> messages = new List<string>();
-
             string json_user_session = HttpContext.Session.GetString("user_session");
             JObject jsonResponseUser = null;
             Users user = null;
@@ -45,24 +43,24 @@ namespace eProject.Controllers
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
-                    }
-
-            //show content
-            int pageSize = 10;
-            int pageNumber = page ?? 1;
-            if (string.IsNullOrEmpty(keyword))
-            {
-                ViewBag.itemList = services.GetRequestsByUserId(user.User_Id).ToList().ToPagedList(pageNumber, pageSize);
-                 return View();
+                //show content
+                int pageSize = 10;
+                int pageNumber = page ?? 1;
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    ViewBag.itemList = services.GetRequestsByUserId(user.User_Id).ToList().ToPagedList(pageNumber, pageSize);
+                    return View();
+                }
+                else
+                {
+                    ViewBag.itemList = services.GetRequestsByUserId(user.User_Id).Where
+                    (c => c.Status.ToUpper().Contains(keyword.ToUpper()) ||
+                    c.Status.ToLower().Contains(keyword.ToLower()) ||
+                    c.Status.Equals(keyword)).ToList().ToPagedList(pageNumber, pageSize);
+                    return View();
+                }
             }
-            else
-            {
-                ViewBag.itemList = services.GetRequestsByUserId(user.User_Id).Where
-                (c => c.Status.ToUpper().Contains(keyword.ToUpper()) ||
-                c.Status.ToLower().Contains(keyword.ToLower()) ||
-                c.Status.Equals(keyword)).ToList().ToPagedList(pageNumber, pageSize);
-            }
-            return View();
+            return View("~/Views/User/Login.cshtml");
         }
 
         //create new request
@@ -96,7 +94,7 @@ namespace eProject.Controllers
             return View();
         }
 
-
+        //add selected item to cart
         [HttpGet]
         public IActionResult AddToCart(string id, int quantity, string button)
         {
@@ -148,7 +146,7 @@ namespace eProject.Controllers
             return Redirect(Request.Headers["Referer"].ToString());
         }
 
-        
+        //go to submit page
         public IActionResult Submit()
         {
             string json_user_session = HttpContext.Session.GetString("user_session");
@@ -173,7 +171,7 @@ namespace eProject.Controllers
             return View();
         }
 
-
+        //post request
         [HttpPost]
         [ActionName("Submit")]
         public IActionResult SubmitRequest(Request request)
@@ -279,7 +277,7 @@ namespace eProject.Controllers
             return RedirectToAction("Submit", "Request");
         }
 
-
+        //go to detail via ID
         [Route("Index/Details/{id?}")]
         public IActionResult Details(int id, int? page, string itemName)
         {
@@ -324,7 +322,8 @@ namespace eProject.Controllers
             }
             return View();
         }
-        //create temp database for edit
+        
+        //go to edit
         [HttpGet]
         [Route("Index/Edit/{id?}")]
         public IActionResult Edit(RequestDetail req, int? page, string itemName)
@@ -371,68 +370,77 @@ namespace eProject.Controllers
             
         }
 
-        [Route("Index/Edit/Update/{req?}")]
-        public IActionResult Update(int req)
-        {
-            var model =requestdetailservices.GetItem(req);
-            return View(model);
-        }
-
-        [HttpPost]
-        [ActionName("Update")]
-        public IActionResult UpdateItem(RequestDetail request)
-        {
-            RequestDetail model = requestdetailservices.GetItem(request.Id);
-            model.Quantity = request.Quantity;
-            requestdetailservices.UpdateRequestDetail(model);
-            return Redirect(Request.Headers["Referer"].ToString());
-
-            //try
-            //{
-            //    RequestDetail model = requestdetailservices.GetItem(request.Id);
-            //    if (ModelState.IsValid)
-            //    {
-            //        model.Quantity = request.Quantity;
-            //        requestdetailservices.UpdateRequestDetail(model);
-            //        return Redirect(Request.Headers["Referer"].ToString());
-            //    }
-            //    else
-            //    {
-            //        ViewBag.Msg = "Fail";
-            //    }
-            //}
-            //catch (System.Exception e)
-            //{
-
-            //    ViewBag.Msg = e.Message;
-            //}
-        }
-
-
-
-
-        //delete item in Request
+        //delete item in Request via View Index
         public IActionResult DeleteRequest(int id)
         {
             services.DeleteRequest(id);
             return RedirectToAction("Index");
         }
 
-        //delete item in RequestDetail
+        //delete item in RequestDetail via View Edit
         public IActionResult DelItem(int id)
         {
             var model = requestdetailservices.GetItem(id);
             var requestId = model.Request_Id;
             List<RequestDetail> detail = requestdetailservices.GetRequestDetails(requestId).ToList();
             int countRequestItem = detail.Where(n => n.Request_Id.Equals(model.Request_Id)).ToList().Count;
-                requestdetailservices.DelItem(id);
-                if (countRequestItem == 1)
-                {
-                    return RedirectToAction("Index");
-                }
-                return Redirect(Request.Headers["Referer"].ToString());
+            requestdetailservices.DelItem(id);
+            if (countRequestItem == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
+
+        //[HttpGet]
+        //[Route("Index/Edit/{req?}/Update/{id?}")]
+        public IActionResult Update(int id)
+        {
+            RequestDetail model = requestdetailservices.GetItem(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(RequestDetail request)
+        {
+            RequestDetail model = requestdetailservices.GetItem(request.Id);
+            requestdetailservices.UpdateRequestDetail(request);
+            return RedirectToAction("Edit", new { id = model.Request_Id });
         }
 
 
+        public IActionResult TaskList(int? page, string keyword)
+        {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                //show content
+                int pageSize = 10;
+                int pageNumber = page ?? 1;
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    
+                    List<Request> taskList = services.GetRequestsByApproverID(user.User_Id);
+                    ViewBag.itemList = taskList.ToPagedList(pageNumber, pageSize);
+                    return View();
+                }
+                //else
+                //{
+                //    ViewBag.itemList = services.GetRequestsByUserId(user.User_Id).Where
+                //    (c => c.Status.ToUpper().Contains(keyword.ToUpper()) ||
+                //    c.Status.ToLower().Contains(keyword.ToLower()) ||
+                //    c.Status.Equals(keyword)).ToList().ToPagedList(pageNumber, pageSize);
+                //    return View();
+                //}
+            }
+            return View("~/Views/User/Login.cshtml");
+        }
     }
 }

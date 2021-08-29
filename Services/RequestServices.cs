@@ -92,5 +92,14 @@ namespace eProject.Services
                 return false;
             }
         }
+
+
+        public List<Request> GetRequestsByApproverID(int user_id)
+        {
+            List<Request> requestByApprover = context.Request.Where(i => i.Approver.Equals(user_id)).OrderByDescending(a => a.DateRequest).ToList();
+            return requestByApprover;
+        }
+
+
     }
 }

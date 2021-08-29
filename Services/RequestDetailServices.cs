@@ -39,20 +39,23 @@ namespace eProject.Services
             }
         }
 
-        public void UpdateRequestDetail(RequestDetail request)
+        public bool UpdateRequestDetail(RequestDetail request)
         {
-            var editrequest = context.RequestDetail.SingleOrDefault(i => i.ItemCode.Equals(request.ItemCode));
-            var udpdaterequest = requestcontext.Request.SingleOrDefault(m => m.Request_Id.Equals(editrequest.Request_Id));
+            var editrequest = context.RequestDetail.SingleOrDefault(i => i.Id.Equals(request.Id));
+            
             if (editrequest != null)
             {
                 editrequest.Quantity = request.Quantity;
+                editrequest.Total = editrequest.Price * request.Quantity;
                 context.SaveChanges();
                 requestcontext.SaveChanges();
+                return true;
             }
             else
             {
-                //
+                return false;
             }
+            
         }
 
         public RequestDetail GetItem(int rqId)

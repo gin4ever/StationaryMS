@@ -49,79 +49,79 @@
             </div>
         </div>
     </div>
-
-    <div class="container">
-        <div class="text-center" style="padding:10px">
-            @using (Html.BeginForm())
-            {
-                <input type="text" style="height:30px" name="itemName" placeholder="Enter item description..." />
-                <input type="submit" value="Search" class="btn-info" />
-            }
-        </div>
-
-    </div>
-    @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
-    {
-        <table class="table table-bordered" border="1">
-            <thead>
-                <tr>
-                    <th>Item Code</th>
-                    <th>Images</th>
-                    <th>Description</th>
-                    <th>Price (in USD)</th>
-                    <th>Unit</th>
-                    <th>SupplierCode</th>
-                    <th>Select</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in ViewBag.itemList)
+    <div style="margin-left: 10px; margin-right: 10px">
+        <div class="container">
+            <div class="text-center" style="padding:10px">
+                @using (Html.BeginForm())
                 {
-                    <tr>
-                        <td>@item.ItemCode</td>
-                        <td>
-                            <img src="~/@Url.Content(item.Images)" width="100" />
-                        </td>
-                        <td>@item.Description</td>
-                        <td>@item.Price</td>
-                        <td>@item.Unit</td>
-                        <td>@item.SupplierCode</td>
-                        <td align="left">
-                            <div class="qty-cart">
-                                <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-10">
-                                    <div class="quantity buttons_added">
-                                        <input type="hidden" name="id" value="@item.ItemCode" />
-                                        <input type="button" value="-" class="minus minus-btn">
-                                        <input readonly type="number" step="1" name="quantity" value="1" class="input-text qty text">
-                                        <input type="button" value="+" class="plus plus-btn">
-                                    </div>
-                                    <button type="submit" name="button" value="add" class="btn btn-link btn-xs float-right">
-                                        <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                    <input type="text" style="height:30px" name="itemName" placeholder="Enter item description..." />
+                    <input type="submit" value="Search" class="btn-info" />
                 }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p style="text-align:center">There is no Result</p>
-    }
-    <div class="col-md-12" style="text-align:center">
-        <div class="blog-more-btn">
-            <div class="pagination-area text-center">
-                <nav aria-label="navigation" style="margin:auto">
-                    <h3 style="color:darkblue; font-size:14px">
-                        @if (pageList != null)
-                        {
-                            @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
-                        }
-                    </h3>
-                </nav>
+            </div>
+        </div>
+        @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
+        {
+            <table class="table table-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th>Item Code</th>
+                        <th>Images</th>
+                        <th>Description</th>
+                        <th>Price (in USD)</th>
+                        <th>Unit</th>
+                        <th>SupplierCode</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.itemList)
+                    {
+                        <tr>
+                            <td>@item.ItemCode</td>
+                            <td>
+                                <img src="~/@Url.Content(item.Images)" width="100" />
+                            </td>
+                            <td>@item.Description</td>
+                            <td>@item.Price</td>
+                            <td>@item.Unit</td>
+                            <td>@item.SupplierCode</td>
+                            <td align="left">
+                                <div class="qty-cart">
+                                    <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-10">
+                                        <div class="quantity buttons_added">
+                                            <input type="hidden" name="id" value="@item.ItemCode" />
+                                            <input type="button" value="-" class="minus minus-btn">
+                                            <input readonly type="number" step="1" name="quantity" value="1" class="input-text qty text">
+                                            <input type="button" value="+" class="plus plus-btn">
+                                        </div>
+                                        <button type="submit" name="button" value="add" class="btn btn-link btn-xs float-right">
+                                            <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p style="text-align:center">There is no Result</p>
+        }
+        <div class="col-md-12" style="text-align:center">
+            <div class="blog-more-btn">
+                <div class="pagination-area text-center">
+                    <nav aria-label="navigation" style="margin:auto">
+                        <h3 style="color:darkblue; font-size:14px">
+                            @if (pageList != null)
+                            {
+                                @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
+                            }
+                        </h3>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    </div>

@@ -322,3 +322,5 @@ C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\De
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Edit.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Update.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\eProject.csproj.AssemblyReference.cache
+C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Login.cshtml.g.cs
+C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\TaskList.cshtml.g.cs
