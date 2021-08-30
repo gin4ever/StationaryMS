@@ -16,5 +16,9 @@ namespace eProject.Models
         [Required(ErrorMessage = "RoleName is required!")]
         [StringLength(20, MinimumLength = 1, ErrorMessage = "RoleName from 1 to 20 chacracters!")]
         public string RoleName { get; set; }
+
+
+        [Required(ErrorMessage = "Budget is required!")]
+        public decimal RoleBudget { get; set; }
     }
 }

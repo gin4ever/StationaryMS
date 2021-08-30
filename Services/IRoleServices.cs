@@ -10,6 +10,7 @@ namespace eProject.Services
     {
         List<Role> GetRoles();
         int CountRole(Department department);
-
+        Role GetRole(int id);
+        Role highestRole();
     }
 }

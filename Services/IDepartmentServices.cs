@@ -9,5 +9,6 @@ namespace eProject.Services
     public interface IDepartmentServices
     {
         List<Department> GetDepartments();
+        Department GetDepartment(int id);
     }
 }

@@ -1327,7 +1327,7 @@ i.icon1 {
 }
 
 .right-cart-dt-body {
-    height: 500px;
+    height: 300px;
     overflow-y: auto;
 }
 .cart-item:last-child {

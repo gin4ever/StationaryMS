@@ -23,5 +23,17 @@ namespace eProject.Services
 
         }
 
+        public Role GetRole(int id)
+        {
+            return context.Role.SingleOrDefault(a => a.Role_Id == id);
+        }
+
+        public Role highestRole()
+        {
+            var role = context.Role.ToList();
+            int count = role.Count();
+            var highestroleId = context.Role.SingleOrDefault(a=>a.Role_Id.Equals(role[count].Role_Id));
+            return highestroleId;
+        }
     }
 }

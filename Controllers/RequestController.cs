@@ -19,12 +19,16 @@ namespace eProject.Controllers
         private IRequestDetailServices requestdetailservices;
         private IItemServices itemServices;
         private IUsersServices userservices;
-        public RequestController(IRequestServices services, IRequestDetailServices requestdetailservices, IItemServices itemServices, IUsersServices userservices)
+        private IDepartmentServices departmentservices;
+        private IRoleServices roleservices;
+        public RequestController(IRoleServices roleservices, IDepartmentServices departmentservices, IRequestServices services, IRequestDetailServices requestdetailservices, IItemServices itemServices, IUsersServices userservices)
         {
             this.services = services;
             this.requestdetailservices = requestdetailservices;
             this.itemServices = itemServices;
             this.userservices = userservices;
+            this.departmentservices = departmentservices;
+            this.roleservices = roleservices;
         }
         public IActionResult AdminIndexRequest()
         {
@@ -82,13 +86,13 @@ namespace eProject.Controllers
                 int pageNumber = page ?? 1;
                 if (string.IsNullOrEmpty(itemName))
                 {
-                    ViewBag.itemList = itemServices.GetItems().Where(a=>a.Role_Id.Equals(user.Role_Id)).ToPagedList(pageNumber, pageSize);
+                    ViewBag.itemList = itemServices.GetItems().Where(a=>a.Role_Id<=(user.Role_Id)).ToPagedList(pageNumber, pageSize);
                     return View();
                 }
                 else
                 {
                     ViewBag.itemList = itemServices.GetItems().Where
-                        (a => a.Role_Id.Equals(user.Role_Id)&&( a.Description.Equals(itemName)||a.Description.ToUpper().Contains(itemName.ToUpper())||
+                        (a => a.Role_Id<=(user.Role_Id)&&( a.Description.Equals(itemName)||a.Description.ToUpper().Contains(itemName.ToUpper())||
                         a.Description.ToLower().Contains(itemName.ToLower()))).OrderByDescending(a => a.Price).ToList().ToPagedList(pageNumber, pageSize);
                 }
             return View();
@@ -393,7 +397,6 @@ namespace eProject.Controllers
         }
 
         //[HttpGet]
-        //[Route("Index/Edit/{req?}/Update/{id?}")]
         public IActionResult Update(int id)
         {
             RequestDetail model = requestdetailservices.GetItem(id);
@@ -410,7 +413,7 @@ namespace eProject.Controllers
         }
 
 
-        public IActionResult TaskList(int? page, string keyword)
+        public IActionResult TaskList(int? page, string Submit, DateTime fromDate, DateTime toDate)
         {
             string json_user_session = HttpContext.Session.GetString("user_session");
             JObject jsonResponseUser = null;
@@ -421,24 +424,239 @@ namespace eProject.Controllers
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
+                List<Request> taskList = services.GetRequestsByApproverID(user.User_Id).Where(a => a.Status.Equals("Pending") || a.Status.Equals("Forwarded")).ToList();
                 //show content
                 int pageSize = 10;
                 int pageNumber = page ?? 1;
-                if (string.IsNullOrEmpty(keyword))
+                if (Submit ==null || Submit.Equals("Search"))
                 {
-                    
-                    List<Request> taskList = services.GetRequestsByApproverID(user.User_Id);
                     ViewBag.itemList = taskList.ToPagedList(pageNumber, pageSize);
                     return View();
                 }
-                //else
-                //{
-                //    ViewBag.itemList = services.GetRequestsByUserId(user.User_Id).Where
-                //    (c => c.Status.ToUpper().Contains(keyword.ToUpper()) ||
-                //    c.Status.ToLower().Contains(keyword.ToLower()) ||
-                //    c.Status.Equals(keyword)).ToList().ToPagedList(pageNumber, pageSize);
-                //    return View();
-                //}
+                else
+                {
+                    ViewBag.itemList = taskList.Where(a=>(a.DateRequest >= fromDate) && (a.DateRequest<= toDate)).ToPagedList(pageNumber, pageSize);
+                    return View();
+                }
+            }
+            return View("~/Views/User/Login.cshtml");
+        }
+
+        [HttpGet]
+        public IActionResult Action(int id, int? page, string itemName)
+        {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+            //count total amount of request
+            List<RequestDetail> item = requestdetailservices.GetRequestDetails(id).ToList();
+            Request req = services.GetRequest(item[0].Request_Id);
+            int count = item.ToList().Count;
+            decimal TotalAmount = 0;
+            for (int i = 0; i < count; i++)
+            {
+                TotalAmount += item[i].Total;
+            }
+            if (string.IsNullOrEmpty(itemName))
+            {
+                ViewBag.reqId = req.Request_Id;
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
+                ViewBag.requestTotal = TotalAmount;
+                //notification
+                ViewBag.AlertAction = TempData["alerta"];
+                ViewBag.MessageAction = TempData["messagea"];
+                return View();
+            }
+            else
+            {
+                ViewBag.requestTotal = TotalAmount;
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
+                    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+                c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+                c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
+                //notification
+                ViewBag.AlertAction = TempData["alerta"];
+                ViewBag.MessageAction = TempData["messagea"];
+            }
+
+            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Action(RequestDetail requestdetail,  string submit)
+        {
+            List<string> mess = new List<string>();
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
+            //search for nex approver
+            int approverRole = user.Role_Id + 1;
+            //search current department
+            int deptcode = user.Department_Id;
+            //get highest role in company
+            List<Role> HighestApproberId = roleservices.GetRoles().OrderByDescending(a => a.Role_Id).ToList();
+            var highestRole = HighestApproberId[0].Role_Id;
+            //search UserID of next approver
+            Users approverId = userservices.GetUserByRoleID(approverRole, deptcode);
+            //get budget of current approver
+            var budget = roleservices.GetRole(user.Role_Id).RoleBudget;
+
+            //get model of current request
+            Request req = services.GetRequest(requestdetail.Id);
+            //find List of requestdetail in this request
+            List<RequestDetail> getitems = requestdetailservices.GetRequestDetails(requestdetail.Id).ToList();
+            //count number of requestdetail in this request
+            int count = getitems.Count;
+            //count total amount of request
+            decimal TotalAmount = 0;
+            for (int i = 0; i < count; i++)
+            {
+                TotalAmount += getitems[i].Total;
+            }
+            
+            //proceed approver action
+            if (approverId != null)
+            {
+                if (TotalAmount <= budget && submit.Equals("Approve"))
+                {
+                    req.Status = "Approved";
+                    req.ApprovedDate = DateTime.Now;
+                    // return success message
+                    mess.Add("Approve action is succeeded.");
+                    TempData["alerta"] = "success";
+                    TempData["messagea"] = mess;
+
+                }
+                else if (TotalAmount >= budget && submit.Equals("Approve"))
+                {
+                    // return error message
+                    mess.Add("Can not approve over your Role Limitation");
+                    TempData["alerta"] = "danger";
+                    TempData["messagea"] = mess;
+                }
+                else if (TotalAmount > budget && submit.Equals("Forward"))
+                {
+                    req.Status = "Forwarded";
+                    req.ApprovedDate = DateTime.Now;
+                    req.Approver = approverId.User_Id;
+
+                    // return success message
+                    mess.Add("Forward to " + @approverId.Username);
+                    TempData["alerta"] = "success";
+                    TempData["messagea"] = mess;
+                }
+                else if (TotalAmount <= budget && submit.Equals("Forward"))
+                {
+                    // return error message
+                    mess.Add("Can not forward. This request amount is under your Role Limitation");
+                    TempData["alerta"] = "danger";
+                    TempData["messagea"] = mess;
+                }
+                else
+                {
+                    req.Status = "Rejected";
+                    req.ApprovedDate = DateTime.Now;
+                    // return success message
+                    mess.Add("Reject action is succeeded.");
+                    TempData["alerta"] = "success";
+                    TempData["messagea"] = mess;
+                }
+                services.UpdateRequest(req);
+                return RedirectToAction("Action", "Request");
+            }
+            else
+            {
+                
+                if (submit.Equals("Approved"))
+                {
+                    req.Status = "Approved";
+                    req.ApprovedDate = DateTime.Now;
+                    req.Approver = highestRole;
+                    // return success message
+                    mess.Add("Approve action is succeeded.");
+                    TempData["alerta"] = "success";
+                    TempData["messagea"] = mess;
+                }
+                else if (submit.Equals("Forward"))
+                {
+                    // return error message
+                    mess.Add("Can not forward. This request amount is under your Role Limitation");
+                    TempData["alerta"] = "danger";
+                    TempData["messagea"] = mess;
+                }
+                else
+                {
+                    req.Status = "Rejected";
+                    req.ApprovedDate = DateTime.Now;
+                    req.Approver = highestRole;
+                    // return success message
+                    mess.Add("Reject action is succeeded.");
+                    TempData["alerta"] = "success";
+                    TempData["messagea"] = mess;
+
+                }
+                services.UpdateRequest(req);
+                return RedirectToAction("Action", "Request");
+            }
+            
+        }
+
+        [HttpGet]
+        public IActionResult TaskHistory(int? page, string Submit, DateTime fromDate, DateTime toDate)
+        {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+
+                int pageSize = 10;
+                int pageNumber = page ?? 1;
+                List<Request> taskList = services.GetRequestsByApproverID(user.User_Id).Where(a => a.Status.Equals("Rejeted") || a.Status.Equals("Approved")).ToList();
+
+                if (Submit == null || Submit.Equals("Search"))
+                {
+                    ViewBag.itemList = taskList.ToList().ToPagedList(pageNumber, pageSize);
+                    return View();
+                }
+                else
+                {
+                    ViewBag.itemList = taskList.Where(a => (a.DateRequest >= fromDate) && (a.DateRequest <= toDate)).ToPagedList(pageNumber, pageSize);
+                    return View();
+                }
             }
             return View("~/Views/User/Login.cshtml");
         }

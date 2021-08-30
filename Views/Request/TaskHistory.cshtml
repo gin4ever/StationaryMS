@@ -41,7 +41,7 @@
                 <div class="col-md-10">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">Task List</li>
+                            <li class="breadcrumb-item active" aria-current="page">Task History</li>
                         </ol>
                     </nav>
                 </div>
@@ -93,7 +93,7 @@
                             <td>@item.Status</td>
                             <td>@item.Reason</td>
                             <td>
-                                @Html.ActionLink("Pending your action", "Action", "Request", new { id = item.Request_Id })
+                                @Html.ActionLink("View Details", "Details", "Request", new { id = item.Request_Id })
                             </td>
                         </tr>
                     }

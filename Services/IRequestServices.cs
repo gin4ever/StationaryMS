@@ -18,6 +18,8 @@ namespace eProject.Services
         List<Request> GetRequestsByUserId(int user_id);
 
         bool DeleteRequest(int rqId);
+        bool UpdateRequest(Request updateRequest);
         List<Request> GetRequestsByApproverID(int user_id);
+
     }
 }

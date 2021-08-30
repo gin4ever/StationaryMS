@@ -14,6 +14,12 @@ namespace eProject.Services
         {
             this.context = context;
         }
+
+        public Department GetDepartment(int id)
+        {
+            return context.Department.SingleOrDefault(a => a.Department_Id == id);
+        }
+
         public List<Department> GetDepartments()
         {
             return context.Department.ToList();
