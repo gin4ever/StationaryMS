@@ -71,7 +71,18 @@ namespace eProject.Services
 
         public bool UpdateProfile(Users editUser)
         {
-            throw new NotImplementedException();
+            var model = context.Users.SingleOrDefault(m => m.User_Id.Equals(editUser.User_Id));
+            if (model != null)
+            {
+                model.Password = PinCodeSecurity.pinEncrypt(editUser.Password);
+                model.Images = editUser.Images;
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

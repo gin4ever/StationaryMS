@@ -9,6 +9,7 @@ namespace eProject.Services
     public interface IRequestDetailServices
     {
         List<RequestDetail>  GetRequestDetails(int Id);
+        RequestDetail GetItem(int rqId);
         bool SaveRequestDetail(RequestDetail requestDetail);
     }
 }

@@ -1,9 +1,36 @@
-﻿
+﻿@model eProject.Models.Users
+
 @{
     ViewData["Title"] = "FAQ";
     Layout = "~/Views/Shared/_Layout_User.cshtml";
 }
 
+@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    Users user = null;
+    List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
+    if (json != null)
+    {
+        JArray jsonResponse = JArray.Parse(json);
+
+        foreach (var item in jsonResponse)
+        {
+            JObject cartResult = (JObject)item;
+            listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
+        }
+    }
+    if (json_user_detail != null)
+    {
+        JObject jsonResponse = JObject.Parse(json_user_detail);
+        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
+    }
+}
 <div class="wrapper">
     <div class="all-product-grid">
         <div class="container">
@@ -50,8 +77,8 @@
                                         Yes, our team will make sure you are satisfied with the results before anything is finalized.
                                     </p>
                                     <p>
-                                        Whether it is a design or a complete print order, 
-                                        you will be able to give the final approval to guarantee you are happy with the end result.  
+                                        Whether it is a design or a complete print order,
+                                        you will be able to give the final approval to guarantee you are happy with the end result.
                                     </p>
                                 </div>
                             </div>

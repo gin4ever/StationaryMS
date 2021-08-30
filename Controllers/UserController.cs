@@ -236,11 +236,11 @@ namespace eProject.Controllers
                         file.CopyToAsync(stream);
                         editUser.Images = "images/" + file.FileName;
                         services.UpdateProfile(editUser);
-                        return RedirectToAction("Profile");
+                        return RedirectToAction("Profile", "User");
                     }
                     else
                     {
-                        ViewBag.Msg = "Cannot update User";
+                        ViewBag.Msg = "Cannot change password";
                     }
                 }
             }
@@ -248,7 +248,7 @@ namespace eProject.Controllers
             {
                 ViewBag.Msg = e.Message;
             }
-            return View();
+            return RedirectToAction("Profile", "User");
         }
 
         public IActionResult FAQ()

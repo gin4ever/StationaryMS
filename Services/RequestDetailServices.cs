@@ -16,6 +16,19 @@ namespace eProject.Services
             this.context = context;
         }
 
+        public RequestDetail GetItem(int rqId)
+        {
+            var model = context.RequestDetail.SingleOrDefault(m => m.Id.Equals(rqId));
+            if (model != null)
+            {
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public List<RequestDetail> GetRequestDetails(int Id)
         {
             List<RequestDetail> listRequestDetail = context.RequestDetail.Where(i => i.Id.Equals(Id)).ToList();

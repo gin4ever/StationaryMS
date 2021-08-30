@@ -328,24 +328,39 @@ namespace eProject.Controllers
             Users user = null;
             if (json_user_session != null)
             {
-                //lấy session User
+                //get session User
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+            //count total amount of request
+            List<RequestDetail> item = requestdetailservices.GetRequestDetails(id).ToList();
+            int count = item.ToList().Count;
+            decimal TotalAmount = 0;
+            for (int i = 0; i < count; i++)
+            {
+                TotalAmount += item[i].Total;
             }
 
-            int pageSize = 4;
-            int pageNumber = page ?? 1;
             if (string.IsNullOrEmpty(itemName))
             {
-                var itemList = requestdetailservices.GetRequestDetails(id).ToPagedList(pageNumber, pageSize);
-                ViewBag.data = itemList;
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
+                ViewBag.requestTotal = TotalAmount;
+                return View();
             }
             else
             {
-                var itemList = requestdetailservices.GetRequestDetails(id).Where
-                    (a => a.Request_Id.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
-                ViewBag.data = itemList;
+                ViewBag.requestTotal = TotalAmount;
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
+                    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+                c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+                c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
             }
             return View();
         }

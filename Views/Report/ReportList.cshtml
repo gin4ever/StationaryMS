@@ -1,0 +1,84 @@
+﻿@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_session");
+    Users user = null;
+    List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
+    if (json != null)
+    {
+        JArray jsonResponse = JArray.Parse(json);
+
+        foreach (var item in jsonResponse)
+        {
+            JObject cartResult = (JObject)item;
+            listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
+        }
+    }
+    if (json_user_detail != null)
+    {
+        JObject jsonResponse = JObject.Parse(json_user_detail);
+        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
+    }
+}
+
+@{
+    ViewData["Title"] = "Report List";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+<div class="default-title mt-4">
+    <h2>Report List</h2>
+</div>
+<div>
+    @using (Html.BeginForm())
+    {
+@Html.Label("From:");
+<input type="datetime-local" name="fromDate" />
+                @Html.Label("To:");
+<input type="datetime-local" name="toDate" />
+                <input type="submit" value="Filter" name="Submit" class="btn-info" />
+                                @Html.Label("Get All Report:");
+                <input type="submit" value="Search" name="Submit" class="btn-info" />}
+</div>
+
+<div>
+    @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
+    {
+        <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Date Request</th>
+                    <th>Approved Date</th>
+                    <th>Status</th>
+                    <th>Reason</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.itemList)
+                {
+                    <tr>
+                        <td>@item.Request_Id</td>
+                        <td>@item.DateRequest</td>
+                        <td>@item.ApprovedDate</td>
+                        <td>@item.Status</td>
+                        <td>@item.Reason</td>
+                        <td>
+                            <a href="#" onclick="window.print(); return false;">Print</a> ||
+                            @Html.ActionLink("Details", "Details", "Request", new { id = item.Request_Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="#" onclick="window.print(); return false;">Print</a>
+    }
+    else
+    {
+        <p style="text-align:center">There is no Result</p>
+    }
+</div>

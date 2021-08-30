@@ -151,7 +151,6 @@
                                 <p>
                                     Request Management
                                     <i class="fas fa-angle-left right"></i>
-                                    @*<span class="badge badge-info right">6</span>*@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -181,7 +180,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="@Url.Action("TaskList","Report")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Items</p>
                                     </a>
@@ -212,13 +211,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/UI/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Create New</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Report", "Report")" class="nav-link">
+                                    <a href="@Url.Action("ReportList", "Report")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Report List</p>
                                     </a>

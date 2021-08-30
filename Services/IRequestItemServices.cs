@@ -10,5 +10,7 @@ namespace eProject.Services
     {
         List<vRequestItem> GetRequestItems();
         vRequestItem GetRequestItem(int id);
+        List<Request> GetRequestbyApprover(int approverID);
+        List<Request> GetReportByUserId(int user_id);
     }
 }
