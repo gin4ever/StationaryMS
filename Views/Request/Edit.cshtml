@@ -62,14 +62,28 @@
         </div>
         @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
         {
+            @if (@ViewBag.AlertDelItem != null && @ViewBag.AlertDelItem.ToString().Length > 0)
+            {
+                <div class="alert alert-@ViewBag.AlertDelItem">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <ul>
+                        @foreach (var delItem in @ViewBag.MessageDelItem)
+                        {
+                            <li>@Html.Raw(delItem)</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            <div id="inform" style="display:none">Delete Item succeeded!</div>
             <table class="table table-bordered" border="1">
                 <thead>
                     <tr>
                         <th>Request ID</th>
                         <th>Item Code</th>
                         <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total</th>
+                        <th>Price (USD)</th>
+                        <th>Total (USD)</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -86,7 +100,7 @@
                             <td>@item.Total</td>
                             <td>
                                 @Html.ActionLink("Update", "Update", "Request", new { req = item.Request_Id, id = item.Id })
-                                @Html.ActionLink("Delete", "DelItem", "Request", new { id = item.Id })
+                                @Html.ActionLink("Delete", "DelItem", "Request", new { id = item.Id }, new { @id = "deletebtn" })
                             </td>
                         </tr>
                     }
@@ -94,7 +108,7 @@
 
                 <tfoot>
                     <tr>
-                        <td colspan="4">Total amount of Request </td>
+                        <td colspan="4">Total amount of Request (USD): </td>
                         <td style="font-weight:bolder;color:coral">@ViewBag.requestTotal</td>
                     </tr>
                 </tfoot>
@@ -102,7 +116,11 @@
         }
         else
         {
-            <p style="text-align:center">There is no Result</p>
+            <div class="alert alert-warning">
+                <ul>
+                    <li>There is no Result</li>
+                </ul>
+            </div>
         }
         <div class="col-md-12">
             <div class="blog-more-btn">
@@ -120,5 +138,14 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#deletebtn").click(function () {
+            $("#inform").css("display","block")
+        });
+
+    });
+</script>*@

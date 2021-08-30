@@ -72,6 +72,18 @@
 
         @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
         {
+            @if (@ViewBag.AlertDelRequest != null && @ViewBag.AlertDelRequest.ToString().Length > 0)
+            {
+                <div class="alert alert-@ViewBag.AlertDelRequest">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <ul>
+                        @foreach (var delRequest in @ViewBag.MessageDelRequest)
+                        {
+                            <li>@Html.Raw(delRequest)</li>
+                        }
+                    </ul>
+                </div>
+            }
             <table class="table table-bordered" border="1">
                 <thead>
                     <tr>
@@ -102,7 +114,7 @@
                                     <a href="#" style="color:darkgray">Edit||</a>
                                 }
                                 @Html.ActionLink("Details||", "Details", "Request", new { id = item.Request_Id })
-                                @Html.ActionLink("Withdraw", "DeleteRequest", "Request", new { id = item.Request_Id })
+                                @Html.ActionLink("Remove", "DeleteRequest", "Request", new { id = item.Request_Id })
                             </td>
                         </tr>
                     }
@@ -111,25 +123,29 @@
         }
         else
         {
-            <p style="text-align:center">There is no Result</p>
+            <div class="alert alert-warning">
+                <ul>
+                    <li>There is no Result</li>
+                </ul>
+            </div>
         }
-    <div class="col-md-12">
-        <div class="blog-more-btn">
-            <div class="pagination-area text-center">
-                <nav aria-label="navigation">
-                    <div>
-                        <h3 style="color:darkblue; font-size:14px">
-                            @if (pageList != null)
-                            {
-                                @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
-                            }
+        <div class="col-md-12">
+            <div class="blog-more-btn">
+                <div class="pagination-area text-center">
+                    <nav aria-label="navigation">
+                        <div>
+                            <h3 style="color:darkblue; font-size:14px">
+                                @if (pageList != null)
+                                {
+                                    @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
+                                }
 
-                        </h3>
-                    </div>
-                </nav>
+                            </h3>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     
 </div>

@@ -32,7 +32,8 @@
                     total_money += cart.Item.Price * cart.Quantity;
                     <div class="cart-item">
                         <div class="cart-product-img">
-                            <img src="@cart.Item.Images" width="88" height="88">
+                            @*<img src="@cart.Item.Images" width="88" height="88">*@
+                            <img src="~/@Url.Content(cart.Item.Images)" width="88" height="88">
                         </div>
                         <div class="cart-text">
                             <h4>@cart.Item.Description</h4>
@@ -45,7 +46,7 @@
                                         <input type="number" step="1" name="quantity" value="@cart.Quantity" class="input-text qty text">
                                         <input type="button" value="+" class="plus plus-btn">
                                     </div>
-                                    <div class="cart-item-price">$@cart.Item.Price </div>
+                                    <div class="cart-item-price">USD @cart.Item.Price </div>
                                 </div>
                                 <button type="submit" name="button" value="delete" class="cart-close-btn"><i class="uil uil-multiply"></i></button>
                                 <button type="submit" name="button" value="update" class="btn btn-link btn-xs float-right"><span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span></button>

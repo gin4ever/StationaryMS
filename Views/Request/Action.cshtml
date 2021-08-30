@@ -49,7 +49,7 @@
         </div>
     </div>
     <div style="margin-left: 10px; margin-right: 10px">
-        <div class="container">
+        @*<div class="container">
             <div class="text-center" style="padding:10px">
                 @using (Html.BeginForm())
                 {
@@ -57,7 +57,7 @@
                     <input type="submit" value="Search" class="btn-info" />
                 }
             </div>
-        </div>
+        </div>*@
         <form method="POST" action="@Url.Action("Action", "Request")">
             <div class="row">
                 <div class="col-md-12">
@@ -77,21 +77,19 @@
             </div>
             @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
             {
-
                 <table class="table table-bordered" border="1">
                     <thead>
                         <tr>
                             <th>Request ID</th>
                             <th>Item Code</th>
                             <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Total</th>
+                            <th>Price (USD)</th>
+                            <th>Total (USD)</th>
                         </tr>
                     </thead>
 
                     @foreach (var item in ViewBag.itemList)
                     {
-
                         <tbody>
                             <tr>
                                 <td>@item.Request_Id</td>
@@ -104,7 +102,7 @@
                     }
                     <tfoot>
                         <tr>
-                            <td colspan="4">Total amount of Request</td>
+                            <td colspan="4">Total amount of Request (USD):</td>
                             <td style="font-weight:bolder;color:coral">@ViewBag.requestTotal</td>
                         </tr>
                     </tfoot>
@@ -116,10 +114,7 @@
                     <input type="submit" name="submit" value="Reject" class="btn-warning" />
                 </div>
             }
-            else
-            {
-                <p style="text-align:center">There is no Result</p>
-            }
+
         </form>
         <div class="col-md-12">
             <div class="blog-more-btn">

@@ -67,8 +67,8 @@
                         <th>Request ID</th>
                         <th>Item Code</th>
                         <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total</th>
+                        <th>Price (USD)</th>
+                        <th>Total (USD)</th>
                     </tr>
                 </thead>
 
@@ -87,7 +87,7 @@
                 }
                 <tfoot>
                     <tr>
-                        <td colspan="4">Total amount of Request</td>
+                        <td colspan="4">Total amount of Request  (USD)</td>
                         <td style="font-weight:bolder;color:coral">@ViewBag.requestTotal</td>
                     </tr>
                 </tfoot>
@@ -96,7 +96,11 @@
         }
         else
         {
-            <p style="text-align:center">There is no Result</p>
+            <div class="alert alert-warning">
+                <ul>
+                    <li>There is no Result</li>
+                </ul>
+            </div>
         }
         <div class="col-md-12">
             <div class="blog-more-btn">

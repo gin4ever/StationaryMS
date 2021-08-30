@@ -47,6 +47,10 @@ namespace eProject.Controllers
                 jsonResponseUser = JObject.Parse(json_user_session);
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
+
+                //notification
+                ViewBag.AlertDelRequest = TempData["alertmessDelRequest"];
+                ViewBag.MessageDelRequest = TempData["messagemessDelRequest"];
                 //show content
                 int pageSize = 10;
                 int pageNumber = page ?? 1;
@@ -61,8 +65,10 @@ namespace eProject.Controllers
                     (c => c.Status.ToUpper().Contains(keyword.ToUpper()) ||
                     c.Status.ToLower().Contains(keyword.ToLower()) ||
                     c.Status.Equals(keyword)).ToList().ToPagedList(pageNumber, pageSize);
-                    return View();
+                    
                 }
+
+                return View();
             }
             return View("~/Views/User/Login.cshtml");
         }
@@ -327,6 +333,50 @@ namespace eProject.Controllers
             return View();
         }
         
+
+        //delete item in Request via View Index
+        public IActionResult DeleteRequest(int id)
+        {
+            List<string> messDelRequest = new List<string>();
+            var req = services.GetRequest(id);
+            var status = req.Status;
+            DateTime today = DateTime.Now;
+            //we will proceed all request on 25th monthly, so user only can change it before 20 if it is not approved yet
+            DateTime cutoffdate = new DateTime(today.Year, today.Month, 20);
+            if (status== "Pending" || status =="Rejected")
+            {
+                services.DeleteRequest(id);
+                //notification
+                messDelRequest.Add("Remove action is succeeded.");
+                TempData["alertmessDelRequest"] = "success";
+                TempData["messagemessDelRequest"] = messDelRequest;
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                if (today < cutoffdate)
+                {
+                    services.DeleteRequest(id);
+                    //notification
+                    messDelRequest.Add("Remove action is succeeded.");
+                    TempData["alertmessDelRequest"] = "success";
+                    TempData["messagemessDelRequest"] = messDelRequest;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    //notification
+                    messDelRequest.Add("You missed cut off date.");
+                    TempData["alertmessDelRequest"] = "danger";
+                    TempData["messagemessDelRequest"] = messDelRequest;
+                    return RedirectToAction("Index");
+                }
+            }
+            //services.DeleteRequest(id);
+            //return RedirectToAction("Index");
+        }
+
+
         //go to edit
         [HttpGet]
         [Route("Index/Edit/{id?}")]
@@ -348,58 +398,96 @@ namespace eProject.Controllers
             }
             //count total amount of request
             List<RequestDetail> item = requestdetailservices.GetRequestDetails(req.Id).ToList();
-                int count = item.ToList().Count;
-                decimal TotalAmount = 0;
-                for (int i = 0; i < count; i++)
-                {
-                    TotalAmount += item[i].Total;
-                }
-                int pageSize = 10;
-                int pageNumber = page ?? 1;
-                if (string.IsNullOrEmpty(itemName))
-                {
-                    ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).ToList().ToPagedList(pageNumber, pageSize);
-                    ViewBag.requestTotal = TotalAmount;
-                return View();
-                }
-                else
-                {
-                    ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).Where
-                        (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
-                    c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-                    c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
-                    ViewBag.requestTotal = TotalAmount;
+            int count = item.ToList().Count;
+            decimal TotalAmount = 0;
+            for (int i = 0; i < count; i++)
+            {
+                TotalAmount += item[i].Total;
             }
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+
+            //notification
+            ViewBag.AlertDelItem = TempData["alertDelItem"];
+            ViewBag.MessageDelItem = TempData["messageDelItem"];
+
+            if (string.IsNullOrEmpty(itemName))
+            {
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).ToList().ToPagedList(pageNumber, pageSize);
+                ViewBag.requestTotal = TotalAmount;
+
                 return View();
-            
-        }
+            }
+            else
+            {
+                ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).Where
+                    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+                c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+                c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
+                ViewBag.requestTotal = TotalAmount;
+            }
 
-        //delete item in Request via View Index
-        public IActionResult DeleteRequest(int id)
-        {
-            services.DeleteRequest(id);
-            return RedirectToAction("Index");
-        }
+            return View(req);
 
+        }
         //delete item in RequestDetail via View Edit
         public IActionResult DelItem(int id)
         {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
+            List<string> messDelItem = new List<string>();
             var model = requestdetailservices.GetItem(id);
             var requestId = model.Request_Id;
             List<RequestDetail> detail = requestdetailservices.GetRequestDetails(requestId).ToList();
             int countRequestItem = detail.Where(n => n.Request_Id.Equals(model.Request_Id)).ToList().Count;
             requestdetailservices.DelItem(id);
+
+
             if (countRequestItem == 1)
             {
                 return RedirectToAction("Index");
             }
+            //notification
+            messDelItem.Add("Delete item action is succeeded.");
+            TempData["alertDelItem"] = "success";
+            TempData["messageDelItem"] = messDelItem;
+
             return Redirect(Request.Headers["Referer"].ToString());
         }
 
         //[HttpGet]
         public IActionResult Update(int id)
         {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
             RequestDetail model = requestdetailservices.GetItem(id);
+            //notification
+            ViewBag.AlertUpdate = TempData["alertu"];
+            ViewBag.MessageUpdate = TempData["messageu"];
             return View(model);
         }
 
@@ -407,9 +495,40 @@ namespace eProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(RequestDetail request)
         {
-            RequestDetail model = requestdetailservices.GetItem(request.Id);
-            requestdetailservices.UpdateRequestDetail(request);
-            return RedirectToAction("Edit", new { id = model.Request_Id });
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                ViewBag.session = HttpContext.Session.GetString("username");
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+            }
+            List<string> messUpdate = new List<string>();
+            var currentitemcode = request.Id;
+            var currentitemquantity = requestdetailservices.GetItem(currentitemcode).Quantity;
+            if (currentitemquantity!=request.Quantity)
+            {
+                requestdetailservices.UpdateRequestDetail(request);
+                //notification
+                messUpdate.Add("Item quantity is updated successfully!");
+                TempData["alertu"] = "success";
+                TempData["messageu"] = messUpdate;
+            }
+            else
+            {
+                //notification
+                messUpdate.Add("You have not changed your Item quantity yet.");
+                TempData["alertu"] = "danger";
+                TempData["messageu"] = messUpdate;
+            }
+            return Redirect(Request.Headers["Referer"].ToString());
+            //return RedirectToAction("Edit", new { id = model.Request_Id });
         }
 
 
@@ -470,27 +589,27 @@ namespace eProject.Controllers
             {
                 TotalAmount += item[i].Total;
             }
-            if (string.IsNullOrEmpty(itemName))
-            {
+            //if (string.IsNullOrEmpty(itemName))
+            //{
                 ViewBag.reqId = req.Request_Id;
                 ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
                 ViewBag.requestTotal = TotalAmount;
                 //notification
                 ViewBag.AlertAction = TempData["alerta"];
                 ViewBag.MessageAction = TempData["messagea"];
-                return View();
-            }
-            else
-            {
-                ViewBag.requestTotal = TotalAmount;
-                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
-                    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
-                c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-                c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
-                //notification
-                ViewBag.AlertAction = TempData["alerta"];
-                ViewBag.MessageAction = TempData["messagea"];
-            }
+            //    return View();
+            //}
+            //else
+            //{
+            //    ViewBag.requestTotal = TotalAmount;
+            //    ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
+            //        (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+            //    c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+            //    c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
+            //    //notification
+            //    ViewBag.AlertAction = TempData["alerta"];
+            //    ViewBag.MessageAction = TempData["messagea"];
+            //}
 
             
             return View();

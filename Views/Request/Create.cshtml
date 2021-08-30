@@ -82,7 +82,7 @@
                                 <img src="~/@Url.Content(item.Images)" width="100" />
                             </td>
                             <td>@item.Description</td>
-                            <td>@item.Price</td>
+                            <td>@item.Price (USD)</td>
                             <td>@item.Unit</td>
                             <td>@item.SupplierCode</td>
                             <td align="left">
@@ -107,7 +107,11 @@
         }
         else
         {
-            <p style="text-align:center">There is no Result</p>
+            <div class="alert alert-warning">
+                <ul>
+                    <li>There is no Result</li>
+                </ul>
+            </div>
         }
         <div class="col-md-12" style="text-align:center">
             <div class="blog-more-btn">
