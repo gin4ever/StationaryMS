@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using eProject.Services;
 using eProject.Repository;
 using Microsoft.EntityFrameworkCore;
+
 namespace eProject
 {
     public class Startup
@@ -39,6 +40,7 @@ namespace eProject
             services.AddScoped<IItemCategorySupplierServices, ItemCategorySupplierServices>();
             services.AddScoped<IUserRoleDepartment, UserRoleDepartment>();
             services.AddScoped<IRequestDetailServices, RequestDetailServices>();//add scope RequestDetailService
+            services.AddScoped<INotiServices, NotiServices>();
 
             services.AddSession();
 
@@ -46,6 +48,8 @@ namespace eProject
             services.AddDistributedMemoryCache();
 
             services.AddControllersWithViews();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +74,7 @@ namespace eProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=User}/{action=Login}/{id?}");
+                    pattern: "{controller=Admin}/{action=Login}/{id?}");
             });
         }
     }
