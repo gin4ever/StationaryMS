@@ -38,7 +38,13 @@ namespace eProject
             services.AddScoped<IRequestItemServices, RequestItemServices>();
             services.AddScoped<IItemCategorySupplierServices, ItemCategorySupplierServices>();
             services.AddScoped<IUserRoleDepartment, UserRoleDepartment>();
+            services.AddScoped<IRequestDetailServices, RequestDetailServices>();//add scope RequestDetailService
+
             services.AddSession();
+
+            services.AddHttpContextAccessor();
+            services.AddDistributedMemoryCache();
+
             services.AddControllersWithViews();
         }
 
@@ -64,7 +70,7 @@ namespace eProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Admin}/{action=Login}/{id?}");
+                    pattern: "{controller=User}/{action=Login}/{id?}");
             });
         }
     }

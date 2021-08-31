@@ -19,7 +19,7 @@ namespace eProject.Models
         public string Description { get; set; }
 
         [Required]
-        [Range(1,500, ErrorMessage = "Price from 1 to 500$!")]
+        [Range(typeof(decimal), "0", "500", ErrorMessage = "Price shoule be greater than 0 and lesser than 500$!")]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 

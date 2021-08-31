@@ -141,17 +141,21 @@ namespace eProject.Controllers
         [HttpPost]
         public IActionResult AdminCreateItem(Item newItem, IFormFile file)
         {
+            //int cnt = 0;
             try
             {
                 if (ModelState.IsValid)
                 {
                     if (file.Length > 0)
                     {
+
                         var filepath = Path.Combine("wwwroot/images", file.FileName);
                         var stream = new FileStream(filepath, FileMode.Create);
                         file.CopyToAsync(stream);
                         newItem.Images = "images/" + file.FileName;
                         services.CreateItem(newItem);
+                        //cnt = cnt + 1;
+                        //TempData["cnt"] = cnt;
                         return RedirectToAction("AdminIndexItem");
                     }
                     else

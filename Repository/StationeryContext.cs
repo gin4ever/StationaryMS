@@ -22,5 +22,6 @@ namespace eProject.Repository
         public DbSet<vRequestItem> vRequestItem { get; set; }
         public DbSet<vItemCategorySupplier> vItemCategorySupplier { get; set; }
         public DbSet<vUserRoleDepartment> vUserRoleDepartment { get; set; }
+        public DbSet<Noti> Noti { get; set; }
     }
 }

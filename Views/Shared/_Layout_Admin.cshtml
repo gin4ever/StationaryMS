@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="~/notification/ikr.notification.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -37,11 +38,6 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                     style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
-            </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
@@ -51,7 +47,7 @@
                         <img src="~/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">Admin</a>
                     </div>
                 </div>
 
@@ -64,7 +60,7 @@
                             <a asp-controller="Admin" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Dashboard
+                                    Admin
                                 </p>
                             </a>
                         </li>
@@ -153,17 +149,16 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            <p></p>
+            @*<div id="noti_Container"></div>*@
             <div style="margin-left:1em">
                 @RenderBody()
             </div>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2021 <a href="#">Group 2 FPT Aptech</a>.</strong>
             All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.5
-            </div>
         </footer>
 
         <!-- Control Sidebar -->
@@ -207,5 +202,33 @@
     <script src="~/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/dist/js/demo.js"></script>
+
+    <script src="~/notification/ikr.notificationPlugin.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#noti_Container").ikrNotificationSetup();
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "/Notifications/GetNotifications",
+            traditional: true,
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                var notifications = data;
+                $("#noti_Container").ikrNotificationCount({
+                    NotificationList: notifications,
+                    NotiFromPropName: "FromUserName",
+                    ListTitlePropName: "Title",
+                    ListBodyPropName: "Reason",
+                    ControllerName: "Notifications",
+                    ActionName: "AllNotifications"
+                });
+            },
+            error: function (xhr, status, error) {
+
+            }
+        });
+    });
+</script>
