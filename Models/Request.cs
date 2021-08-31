@@ -27,5 +27,8 @@ namespace eProject.Models
         [StringLength(20, MinimumLength = 1, ErrorMessage = "Status from 1 to 20 chacracters!")]
         public string Status { get; set; }
         public int User_Id { get; set; }
+        public int Approver { get; set; }
+        public bool IsRead { get; set; }
+        public string Title { get; set; }
     }
 }

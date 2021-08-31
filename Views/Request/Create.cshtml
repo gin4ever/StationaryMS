@@ -1,0 +1,102 @@
+﻿@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    Users user = null;
+    List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
+    if (json != null)
+    {
+        JArray jsonResponse = JArray.Parse(json);
+
+        foreach (var item in jsonResponse)
+        {
+            JObject cartResult = (JObject)item;
+            listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
+        }
+    }
+    if (json_user_detail != null)
+    {
+        JObject jsonResponse = JObject.Parse(json_user_detail);
+        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
+    }
+}
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Create";
+    var pageList = (IPagedList)ViewBag.data;
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+
+<h2>Item List</h2>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="itemName" placeholder="Enter status..." />
+        <input type="submit" value="Search" class="btn-info" />
+    }
+</div>
+
+Page @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
+@if (@ViewBag.Alert != null && @ViewBag.Alert.ToString().Length > 0)
+{
+    <div class="alert alert-@ViewBag.Alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <ul>
+            @foreach (var message in @ViewBag.Message)
+            {
+                <li>@Html.Raw(@message)</li>
+            }
+
+
+        </ul>
+    </div>          
+}else{<div>Hello</div>}
+<table class="table">
+    <tr>
+        <th>Item Code</th>
+        <th>Images</th>
+        <th>Description</th>
+        <th>SupplierCode</th>
+        <th>Unit</th>
+        <th>Category_Id</th>
+        <th>Select</th>
+
+    </tr>
+    @foreach (var item in ViewBag.data)
+    {
+        <tr>
+            <td>@item.ItemCode</td>
+            <td>
+                <img src="~/@Url.Content(item.Images)" width="100" />
+            </td>
+            <td>@item.Description</td>
+            <td>@item.SupplierCode</td>
+            <td>@item.Unit</td>
+            <td>@item.Category_Id</td>
+            <td align="left">
+                <div class="qty-cart">
+                    <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-10">
+                        <div class="quantity buttons_added">
+                            <input type="hidden" name="id" value="@item.ItemCode" />
+                            <input type="button" value="-" class="minus minus-btn">
+                            <input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+                            <input type="button" value="+" class="plus plus-btn">
+                        </div>
+                        <button type="submit" name="button" value="add" class="btn btn-link btn-xs float-right">
+                            <span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+                        </button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+

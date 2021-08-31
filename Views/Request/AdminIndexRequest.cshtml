@@ -1,0 +1,62 @@
+﻿@model IEnumerable<eProject.Models.Request>
+
+@{
+    ViewData["Title"] = "AdminIndexRequest";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>Request List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Request_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRequest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApprovedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Request_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRequest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Id)
+            </td>
+            <td>
+                <a asp-action="AdminDetailsRequest" asp-route-id="@item.Request_Id">Details</a>
+                @*<a asp-action="Delete" asp-route-id="@item.Request_Id">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

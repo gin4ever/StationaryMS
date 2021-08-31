@@ -1,0 +1,55 @@
+﻿@model IEnumerable<eProject.Models.Category>
+
+@{
+    ViewData["Title"] = "AdminIndexCategory";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>Categories List</h1>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="cname" placeholder="Enter category name..." />
+        <input type="submit" value="Search" class="btn-info" />
+    }
+</div>
+
+<p>
+    <a asp-action="AdminCreateCategory">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="AdminEditCategory" asp-route-id="@item.Category_Id">Edit</a> |
+                <a asp-action="AdminDeleteCategory" asp-route-id="@item.Category_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

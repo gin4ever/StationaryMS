@@ -12,5 +12,6 @@ namespace eProject.Services
         Category AddCategory(Category category);
         bool UpdateCategory(Category category);
         Category GetCategory(int id);
+        bool DeleteCategory(int id);
     }
 }

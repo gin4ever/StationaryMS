@@ -1,0 +1,63 @@
+﻿@model IEnumerable<eProject.Models.Users>
+
+@{
+    ViewData["Title"] = "AdminIndexUser";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>List of Users</h1>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="uname" placeholder="Enter name of Users..." />
+        <input type="submit" value="Search" class="btn-info" />
+    }
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "AdminDetailUser", new { id = item.User_Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

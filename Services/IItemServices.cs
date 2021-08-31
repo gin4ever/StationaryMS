@@ -10,5 +10,7 @@ namespace eProject.Services
     {
         List<Item> GetItems();
         Item GetItem(string itemCode);
+        Item CreateItem(Item newItem);
+        bool UpdateItem(Item editItem);
     }
 }
