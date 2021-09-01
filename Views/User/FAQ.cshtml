@@ -1,0 +1,181 @@
+﻿@model eProject.Models.Users
+
+@{
+    ViewData["Title"] = "FAQ";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    Users user = null;
+    List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
+    if (json != null)
+    {
+        JArray jsonResponse = JArray.Parse(json);
+
+        foreach (var item in jsonResponse)
+        {
+            JObject cartResult = (JObject)item;
+            listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
+        }
+    }
+    if (json_user_detail != null)
+    {
+        JObject jsonResponse = JObject.Parse(json_user_detail);
+        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
+    }
+}
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
+
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">FAQ</a> </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="all-product-grid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="default-title mt-4">
+                        <h2>Frequently Asked Questions</h2>
+                        <img src="images/line.svg" alt="">
+                    </div>
+                    <div class="panel-group accordion pt-1" id="accordion0">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingOne">
+                                <div class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseOne" href="#" aria-expanded="false" aria-controls="collapseOne">
+                                        What is business stationery?
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion0" style="">
+                                <div class="panel-body">
+                                    <p>
+                                        The term business stationery refers to a variety of branded materials a company uses in their daily activities.
+                                    </p>
+                                    <p>
+                                        These materials include business cards, letterheads, and envelopes, among many other items that use the same brand design elements.
+                                    </p>
+                                    <p>
+                                        These items are all customized to create a unified look shaping the identity of a business.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingTwo">
+                                <div class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" href="#" aria-expanded="false" aria-controls="collapseTwo">
+                                        Will I be able to see a proof of my order?
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion0">
+                                <div class="panel-body">
+                                    <p>
+                                        Yes, our team will make sure you are satisfied with the results before anything is finalized.
+                                    </p>
+                                    <p>
+                                        Whether it is a design or a complete print order,
+                                        you will be able to give the final approval to guarantee you are happy with the end result.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingThree">
+                                <div class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" href="#" aria-expanded="false" aria-controls="collapseThree">
+                                        How much do products cost?
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion0">
+                                <div class="panel-body">
+                                    <p>
+                                        The cost will depend on the products you select, the quantities and printing options.
+                                    </p>
+                                    <p>
+                                        The good news is you can customize a solution that adjusts to your budget and meets your expectations.
+                                    </p>
+                                    <p>
+                                        Please contact to your Manager for current stationery pricing
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingFour">
+                                <div class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseFour" href="#" aria-expanded="false" aria-controls="collapseFour">
+                                        Can I just call or fax in my order?
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion0">
+                                <div class="panel-body">
+                                    <p>
+                                        No, you can using Company System to order.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingFive">
+                                <div class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseFive" href="#" aria-expanded="false" aria-controls="collapseFive">
+                                        How soon will my order be delivered?
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion0">
+                                <div class="panel-body">
+                                    <p>
+                                        As soon as we can
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingSix">
+                                <div class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseSix" href="#" aria-expanded="false" aria-controls="collapseSix">
+                                        What can I order?
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix" data-parent="#accordion0">
+                                <div class="panel-body">
+                                    <p>
+                                        We have a suite of products from which to choose.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

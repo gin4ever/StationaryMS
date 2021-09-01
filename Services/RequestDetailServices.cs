@@ -12,17 +12,30 @@ namespace eProject.Services
 
         private StationeryContext requestcontext;
         private StationeryContext context;
-
-        public RequestDetailServices(StationeryContext requestcontext, StationeryContext context)
+        private StationeryContext vRequestItemcontext;
+        public RequestDetailServices(StationeryContext requestcontext, StationeryContext context, StationeryContext vRequestItemcontext)
         {
             this.context = context;
             this.requestcontext = requestcontext;
+            this.vRequestItemcontext = vRequestItemcontext;
         }
 
         public List<RequestDetail> GetRequestDetails(int reqId)
         {
             List<RequestDetail> listRequestDetail = context.RequestDetail.Where(i => i.Request_Id.Equals(reqId)).ToList();
             return listRequestDetail;
+        }
+
+        public List<vRequestItem> GetAllRequestDetails(int reqId)
+        {
+            List<vRequestItem> vRequestItem = vRequestItemcontext.vRequestItem.Where(i => i.Request_Id.Equals(reqId)).ToList();
+            return vRequestItem;
+        }
+
+        public List<vRequestItem> GetAllItembyDept(int dep)
+        {
+            List<vRequestItem> vRequestItem = vRequestItemcontext.vRequestItem.Where(i => i.Department_Id.Equals(dep)).ToList();
+            return vRequestItem;
         }
 
         public bool SaveRequestDetail(RequestDetail requestDetail)
@@ -102,6 +115,8 @@ namespace eProject.Services
            
             return true;
         }
+
+
 
     }
 }

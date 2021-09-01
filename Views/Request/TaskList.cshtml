@@ -1,4 +1,5 @@
-﻿@using Newtonsoft.Json.Linq
+﻿@model IEnumerable<eProject.Models.Users>
+@using Newtonsoft.Json.Linq
 @using Newtonsoft.Json
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
@@ -41,11 +42,11 @@
                 <div class="col-md-10">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">Task List</li>
+                            <li class="breadcrumb-item active" aria-current="page"><<a href="#">Task List</a></li>
                         </ol>
                     </nav>
                 </div>
-            
+
             </div>
         </div>
     </div>
@@ -104,12 +105,12 @@
         {
             <div class="alert alert-warning">
                 <ul>
-                    <li>There is no Result</li>
+                    <li>There is no pending Request</li>
                 </ul>
             </div>
 
         }
-        <div class="col-md-12">
+        <div style="text-align:center" class="col-md-12">
             <div class="blog-more-btn">
                 <div class="pagination-area text-center">
                     <nav aria-label="navigation">

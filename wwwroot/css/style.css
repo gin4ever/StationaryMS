@@ -5667,6 +5667,7 @@ textarea {
 }
 
 .pagination-area .page-numbers.current, .pagination-area .page-numbers:hover {
+    margin:auto;
     background: #f55d2c;
 	color: #fff !important;
 	transition: all .2s ease-in-out;

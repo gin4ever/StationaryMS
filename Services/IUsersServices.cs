@@ -14,7 +14,8 @@ namespace eProject.Services
         Users GetUser(string uname);
         Users GetUserByRoleID(int RoleId, int deptcode);
         bool UpdateProfile(Users editUser);
-
+        Users GetUser(int userId);
         int CountRole(Users department);
+        Users GetUserByRole(int RoleId);
     }
 }

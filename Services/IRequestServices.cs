@@ -20,6 +20,6 @@ namespace eProject.Services
         bool DeleteRequest(int rqId);
         bool UpdateRequest(Request updateRequest);
         List<Request> GetRequestsByApproverID(int user_id);
-
+        List<Report> GetRequestsByDepartment(int department_Id);
     }
 }

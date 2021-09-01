@@ -15,9 +15,13 @@ namespace eProject.Controllers
     public class UserController : Controller
     {
         private IUsersServices services;
-        public UserController(IUsersServices services)
+        private IRoleServices roleservices;
+        private IDepartmentServices departmentservices;
+        public UserController(IDepartmentServices departmentservices, IRoleServices roleservices, IUsersServices services)
         {
             this.services = services;
+            this.roleservices = roleservices;
+            this.departmentservices = departmentservices;
         }
         public IActionResult Index(string name)
         {
@@ -59,10 +63,13 @@ namespace eProject.Controllers
             return View(model);
 
         }
-
+        //log in
         [HttpGet]
         public IActionResult Login()
         {
+            //notification
+            ViewBag.alertlogin = TempData["alertlogin"];
+            ViewBag.messagelogin = TempData["messagelogin"];
             return View();
         }
 
@@ -88,16 +95,26 @@ namespace eProject.Controllers
                     HttpContext.Session.SetInt32("currentRole", user.Role_Id);
 
                     HttpContext.Session.SetString("user_session", JsonConvert.SerializeObject(acc));
-                    return RedirectToAction("Index","Request");
+                    return RedirectToAction("Profile","User");
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Login");
+                    //notification
+                    List<string> login = new List<string>();
+                    login.Add("Recheck your username or password!");
+                    TempData["alertlogin"] = "warning";
+                    TempData["messagelogin"] = login;
+                    return RedirectToAction("Login", "User");
                 }
             }
             catch (Exception e)
             {
-                return RedirectToAction("Index", "Login");
+                //notification
+                List<string> login = new List<string>();
+                login.Add("Recheck your username or password!");
+                TempData["alertlogin"] = "warning";
+                TempData["messagelogin"] = login;
+                return RedirectToAction("Login", "User");
             }
 
 
@@ -111,29 +128,40 @@ namespace eProject.Controllers
             return RedirectToAction("Login");
         }
     
-        //hien thi profile
+        //show profile
         [HttpGet]
-        public IActionResult Profile(string uname)
+        public IActionResult Profile(Users user)
         {
-            string json_user_session = HttpContext.Session.GetString("user_session");
-            JObject jsonResponseUser = null;
-            Users user = null;
-            if (json_user_session != null)
+            try { 
+                    string json_user_session = HttpContext.Session.GetString("user_session");
+                    JObject jsonResponseUser = null;
+                    //Users user = null;
+                    if (json_user_session != null)
+                    {
+                        //get session User
+                        jsonResponseUser = JObject.Parse(json_user_session);
+                        user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                        var username = HttpContext.Session.GetString("username");
+                        ViewBag.session = username;
+                       
+                        Users userinfo = services.GetUser(username);
+                        ViewBag.info = userinfo;
+                        ViewBag.role = roleservices.GetRole(user.Role_Id).RoleName;
+                        ViewBag.department = departmentservices.GetDepartment(user.Department_Id).DepartmentName;
+                        return View(userinfo);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Login", "User");
+                    }
+                }
+            catch (Exception e)
             {
-                //lấy session User
-                jsonResponseUser = JObject.Parse(json_user_session);
-                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
-                ViewBag.session = HttpContext.Session.GetString("username");
+                return RedirectToAction("Login", "User");
             }
-            ViewBag.session = HttpContext.Session.GetString("username");
-            ViewBag.data = services.GetUser(uname);
-            return View();
-           
+
         }
-
-
-
-
+        //create account for testing
         [HttpGet]
         public IActionResult Create()
         {
@@ -156,6 +184,131 @@ namespace eProject.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
             }
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult ChangePassword(string uname)
+        {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session user
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                if (user != null)
+                {
+                    ViewBag.session = HttpContext.Session.GetString("username");
+                    var model = services.GetUser(uname);
+                    //notification
+                    ViewBag.alertchangepass = TempData["alertchangepass"];
+                    ViewBag.messagechangepass = TempData["messagechangepass"];
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ChangePassword(Users editUser)
+        {
+            try
+            {
+                string json_user_session = HttpContext.Session.GetString("user_session");
+                JObject jsonResponseUser = null;
+                Users user = null;
+                if (json_user_session != null)
+                {
+                    //get session User
+                    jsonResponseUser = JObject.Parse(json_user_session);
+                    user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                    ViewBag.session = HttpContext.Session.GetString("username");
+                    if (user == null)
+                    {
+                        return RedirectToAction("Index", "Login");
+                    }
+                    
+                        List<string> changepass = new List<string>();
+                        var currentpass = services.GetUser(editUser.Username).Password;
+                        var identifypass = PinCodeSecurity.pinEncrypt(editUser.Password);
+                    if (currentpass == identifypass)
+                    {
+                        var newpass = PinCodeSecurity.pinEncrypt(editUser.NewPassword);
+                        var confirmnewpass = PinCodeSecurity.pinEncrypt(editUser.ConfirmPassword);
+                        if (newpass != currentpass)
+                        {
+                            if (newpass == confirmnewpass)
+                            {
+                                services.UpdateProfile(editUser);
+                                //notification
+                                changepass.Add("Password is updated successfully!");
+                                TempData["alertchangepass"] = "success";
+                                TempData["messagechangepass"] = changepass;
+                            }
+                            else
+                            {
+                                //notification
+                                changepass.Add("New password and confirm new password must be matched!");
+                                TempData["alertchangepass"] = "danger";
+                                TempData["messagechangepass"] = changepass;
+                            }
+                        }
+                        else
+                        {
+                            //notification
+                            changepass.Add("Your password is not changed compare with previous one. Change your password!");
+                            TempData["alertchangepass"] = "danger";
+                            TempData["messagechangepass"] = changepass;
+                        }
+                    }
+                    else
+                    {
+                        //notification
+                        changepass.Add("Recheck your current password!");
+                        TempData["alertchangepass"] = "danger";
+                        TempData["messagechangepass"] = changepass;
+                    }
+                    return Redirect(Request.Headers["Referer"].ToString());
+                }
+                
+            }
+            catch (Exception e)
+            {
+                ViewBag.Msg = e.Message;
+            }
+            return View();
+        }
+
+        public IActionResult FAQ()
+        {
+
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+
+            if (json_user_session != null)
+            {
+                    //get session User
+                    jsonResponseUser = JObject.Parse(json_user_session);
+                    user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                    ViewBag.session = HttpContext.Session.GetString("username");
+                if (user != null)
+                    {
+                        return View();
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
+            
+            return RedirectToAction("Login", "User");
         }
 
     }

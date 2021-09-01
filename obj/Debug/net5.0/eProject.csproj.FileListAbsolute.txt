@@ -288,13 +288,8 @@ C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\scopedcss\bundle\eProj
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\eProject.TagHelpers.input.cache
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\eProject.TagHelpers.output.cache
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\eProject.RazorCoreGenerate.cache
-C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Item\Index.cshtml.g.cs
-C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Login\Create.cshtml.g.cs
-C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Login\Login.cshtml.g.cs
-C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Login\Profile.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Shared\_Layout_Admin.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -315,7 +310,6 @@ C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\User\Creat
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\User\Profile.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Index.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Shared\_OrderDetail.cshtml.g.cs
-C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Create.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Submit.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Details.cshtml.g.cs
@@ -325,4 +319,7 @@ C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Shared\_La
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\TaskList.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Action.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\TaskHistory.cshtml.g.cs
+C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\User\ChangePassword.cshtml.g.cs
+C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\Request\Report.cshtml.g.cs
 C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\eProject.csproj.AssemblyReference.cache
+C:\Users\sgn-ginnyn\Desktop\StationaryMS\obj\Debug\net5.0\Razor\Views\User\FAQ.cshtml.g.cs

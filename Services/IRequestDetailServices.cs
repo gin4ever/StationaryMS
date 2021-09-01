@@ -13,7 +13,7 @@ namespace eProject.Services
         bool UpdateRequestDetail(RequestDetail editRequest);
         RequestDetail GetItem(int rqId);
         bool DelItem(int rqId);
-        
-
+        List<vRequestItem> GetAllRequestDetails(int reqId);
+        List<vRequestItem> GetAllItembyDept(int dep);
     }
 }

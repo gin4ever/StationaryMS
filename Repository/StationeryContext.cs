@@ -19,5 +19,7 @@ namespace eProject.Repository
         public DbSet<Supplier> Supplier { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Department> Department { get; set; }
+        public DbSet<vRequestItem> vRequestItem { get; set; }
+        public DbSet<Report> Report { get; set; }
     }
 }

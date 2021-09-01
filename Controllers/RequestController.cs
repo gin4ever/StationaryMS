@@ -10,6 +10,7 @@ using eProject.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eProject.Controllers
 {
@@ -65,7 +66,6 @@ namespace eProject.Controllers
                     (c => c.Status.ToUpper().Contains(keyword.ToUpper()) ||
                     c.Status.ToLower().Contains(keyword.ToLower()) ||
                     c.Status.Equals(keyword)).ToList().ToPagedList(pageNumber, pageSize);
-                    
                 }
 
                 return View();
@@ -272,7 +272,7 @@ namespace eProject.Controllers
                     HttpContext.Session.Remove("cart");
 
                     // return success message
-                    messages.Add("Submit success. Click <a href='" + Url.Action("Details", "Request", new { id=requestID }) + "'><u>here</u></a> to review your request");
+                    messages.Add("Submit your request successfully. Click <a href='" + Url.Action("Details", "Request", new { id=requestID }) + "'><u>here</u></a> to review your request");
                     TempData["alert"] = "success";
                     TempData["message"] = messages;
                 }
@@ -308,7 +308,9 @@ namespace eProject.Controllers
             int pageSize = 10;
             int pageNumber = page ?? 1;
             //count total amount of request
-            List<RequestDetail> item = requestdetailservices.GetRequestDetails(id).ToList();
+            List<vRequestItem> item = requestdetailservices.GetAllRequestDetails(id).ToList();
+            //show requestId
+            ViewBag.reqId = id;
             int count = item.ToList().Count;
             decimal TotalAmount = 0;
             for (int i = 0; i < count; i++)
@@ -318,17 +320,23 @@ namespace eProject.Controllers
 
             if (string.IsNullOrEmpty(itemName))
             {
-                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
+                //ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
+                ViewBag.itemList = item.ToPagedList(pageNumber, pageSize);
                 ViewBag.requestTotal = TotalAmount;
                 return View();
             }
             else
             {
                 ViewBag.requestTotal = TotalAmount;
-                ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
-                    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
-                c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-                c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
+                //ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
+                //    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+                //c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+                //c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
+
+                ViewBag.itemList = item.Where
+                (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
+            c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
+            c.ItemCode.Equals(itemName)).ToPagedList(pageNumber, pageSize);
             }
             return View();
         }
@@ -380,7 +388,7 @@ namespace eProject.Controllers
         //go to edit
         [HttpGet]
         [Route("Index/Edit/{id?}")]
-        public IActionResult Edit(RequestDetail req, int? page, string itemName)
+        public IActionResult Edit(vRequestItem req, int? page, string itemName)
         {
             string json_user_session = HttpContext.Session.GetString("user_session");
             JObject jsonResponseUser = null;
@@ -397,34 +405,36 @@ namespace eProject.Controllers
                 }
             }
             //count total amount of request
-            List<RequestDetail> item = requestdetailservices.GetRequestDetails(req.Id).ToList();
-            int count = item.ToList().Count;
+            List<vRequestItem> item = requestdetailservices.GetAllRequestDetails(req.Id).ToList();
+            int count = item.Count;
             decimal TotalAmount = 0;
             for (int i = 0; i < count; i++)
             {
                 TotalAmount += item[i].Total;
             }
-            int pageSize = 10;
-            int pageNumber = page ?? 1;
+            //show requestId
+            ViewBag.reqId = req.Id;
+            ViewBag.requestTotal = TotalAmount;
 
             //notification
             ViewBag.AlertDelItem = TempData["alertDelItem"];
             ViewBag.MessageDelItem = TempData["messageDelItem"];
 
+            //show page by search
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
             if (string.IsNullOrEmpty(itemName))
             {
-                ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).ToList().ToPagedList(pageNumber, pageSize);
-                ViewBag.requestTotal = TotalAmount;
-
+                ViewBag.itemList = item.ToPagedList(pageNumber, pageSize);
+                
                 return View();
             }
             else
             {
-                ViewBag.itemList = requestdetailservices.GetRequestDetails(req.Id).Where
+                ViewBag.itemList = item.Where
                     (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
                 c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-                c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
-                ViewBag.requestTotal = TotalAmount;
+                c.ItemCode.Equals(itemName)).ToPagedList(pageNumber, pageSize);
             }
 
             return View(req);
@@ -485,6 +495,8 @@ namespace eProject.Controllers
                 }
             }
             RequestDetail model = requestdetailservices.GetItem(id);
+            ViewBag.itemName = itemServices.GetItem(model.ItemCode).Description;
+            ViewBag.itemImage = itemServices.GetItem(model.ItemCode).Images;
             //notification
             ViewBag.AlertUpdate = TempData["alertu"];
             ViewBag.MessageUpdate = TempData["messageu"];
@@ -531,7 +543,7 @@ namespace eProject.Controllers
             //return RedirectToAction("Edit", new { id = model.Request_Id });
         }
 
-
+        //task list for role >0
         public IActionResult TaskList(int? page, string Submit, DateTime fromDate, DateTime toDate)
         {
             string json_user_session = HttpContext.Session.GetString("user_session");
@@ -544,25 +556,26 @@ namespace eProject.Controllers
                 user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
                 ViewBag.session = HttpContext.Session.GetString("username");
                 List<Request> taskList = services.GetRequestsByApproverID(user.User_Id).Where(a => a.Status.Equals("Pending") || a.Status.Equals("Forwarded")).ToList();
+                
                 //show content
                 int pageSize = 10;
                 int pageNumber = page ?? 1;
-                if (Submit ==null || Submit.Equals("Search"))
+                if (Submit == null || Submit.Equals("Search"))
                 {
                     ViewBag.itemList = taskList.ToPagedList(pageNumber, pageSize);
                     return View();
                 }
                 else
                 {
-                    ViewBag.itemList = taskList.Where(a=>(a.DateRequest >= fromDate) && (a.DateRequest<= toDate)).ToPagedList(pageNumber, pageSize);
+                    ViewBag.itemList = taskList.Where(a => (a.DateRequest >= fromDate) && (a.DateRequest <= toDate)).ToPagedList(pageNumber, pageSize);
                     return View();
                 }
             }
             return View("~/Views/User/Login.cshtml");
         }
-
+        //action for role>0
         [HttpGet]
-        public IActionResult Action(int id, int? page, string itemName)
+        public IActionResult Action(int id, int? page)
         {
             string json_user_session = HttpContext.Session.GetString("user_session");
             JObject jsonResponseUser = null;
@@ -583,35 +596,22 @@ namespace eProject.Controllers
             //count total amount of request
             List<RequestDetail> item = requestdetailservices.GetRequestDetails(id).ToList();
             Request req = services.GetRequest(item[0].Request_Id);
+           
+
             int count = item.ToList().Count;
             decimal TotalAmount = 0;
             for (int i = 0; i < count; i++)
             {
                 TotalAmount += item[i].Total;
             }
-            //if (string.IsNullOrEmpty(itemName))
-            //{
+                var requesterId = userservices.GetUser(req.User_Id);
                 ViewBag.reqId = req.Request_Id;
                 ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
                 ViewBag.requestTotal = TotalAmount;
+                ViewBag.requesterName = requesterId.Username;
                 //notification
                 ViewBag.AlertAction = TempData["alerta"];
                 ViewBag.MessageAction = TempData["messagea"];
-            //    return View();
-            //}
-            //else
-            //{
-            //    ViewBag.requestTotal = TotalAmount;
-            //    ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
-            //        (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
-            //    c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-            //    c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
-            //    //notification
-            //    ViewBag.AlertAction = TempData["alerta"];
-            //    ViewBag.MessageAction = TempData["messagea"];
-            //}
-
-            
             return View();
         }
 
@@ -640,6 +640,10 @@ namespace eProject.Controllers
             //get highest role in company
             List<Role> HighestApproberId = roleservices.GetRoles().OrderByDescending(a => a.Role_Id).ToList();
             var highestRole = HighestApproberId[0].Role_Id;
+            var highestUserRole = userservices.GetUserByRole(highestRole);
+            var highestUserId = highestUserRole.User_Id;
+            //highest usderID in company
+            var highetUser = userservices.GetUser(highestRole);
             //search UserID of next approver
             Users approverId = userservices.GetUserByRoleID(approverRole, deptcode);
             //get budget of current approver
@@ -711,15 +715,16 @@ namespace eProject.Controllers
             else
             {
                 
-                if (submit.Equals("Approved"))
+                if (submit.Equals("Approve"))
                 {
                     req.Status = "Approved";
                     req.ApprovedDate = DateTime.Now;
-                    req.Approver = highestRole;
+                    req.Approver = highestUserId;
                     // return success message
                     mess.Add("Approve action is succeeded.");
                     TempData["alerta"] = "success";
                     TempData["messagea"] = mess;
+                    services.UpdateRequest(req);
                 }
                 else if (submit.Equals("Forward"))
                 {
@@ -732,20 +737,19 @@ namespace eProject.Controllers
                 {
                     req.Status = "Rejected";
                     req.ApprovedDate = DateTime.Now;
-                    req.Approver = highestRole;
+                    req.Approver = highestUserId;
                     // return success message
                     mess.Add("Reject action is succeeded.");
                     TempData["alerta"] = "success";
                     TempData["messagea"] = mess;
-
+                    services.UpdateRequest(req);
                 }
-                services.UpdateRequest(req);
+                
                 return RedirectToAction("Action", "Request");
             }
             
         }
-
-        [HttpGet]
+        //task history of role>0
         public IActionResult TaskHistory(int? page, string Submit, DateTime fromDate, DateTime toDate)
         {
             string json_user_session = HttpContext.Session.GetString("user_session");
@@ -764,8 +768,7 @@ namespace eProject.Controllers
 
                 int pageSize = 10;
                 int pageNumber = page ?? 1;
-                List<Request> taskList = services.GetRequestsByApproverID(user.User_Id).Where(a => a.Status.Equals("Rejeted") || a.Status.Equals("Approved")).ToList();
-
+                List<Request> taskList = services.GetRequestsByApproverID(user.User_Id).Where(a => a.Status.Equals("Rejeted") || a.Status.Equals("Approved") || a.Status.Equals("Forwarded")).ToList();
                 if (Submit == null || Submit.Equals("Search"))
                 {
                     ViewBag.itemList = taskList.ToList().ToPagedList(pageNumber, pageSize);
@@ -779,5 +782,79 @@ namespace eProject.Controllers
             }
             return View("~/Views/User/Login.cshtml");
         }
+
+        //report for role >0
+        public IActionResult Report(string Filter, DateTime fromDate, DateTime toDate, string Product)
+        {
+            string json_user_session = HttpContext.Session.GetString("user_session");
+            JObject jsonResponseUser = null;
+            Users user = null;
+            if (json_user_session != null)
+            {
+                //get session User
+                jsonResponseUser = JObject.Parse(json_user_session);
+                user = JsonConvert.DeserializeObject<Users>(jsonResponseUser.ToString());
+                int headcount = userservices.GetUsers().Where(a=>a.Department_Id.Equals(user.Department_Id)).Count();
+                ViewBag.item = itemServices.GetItems();
+                List<vRequestItem> listReport = requestdetailservices.GetAllItembyDept(user.Department_Id).Where(a => a.Status.Equals("Approved")).ToList();
+
+                List<Item> Item = itemServices.GetItems();
+                SelectList itemList = new SelectList(Item, "Description", "Description");
+
+                if (user != null)
+                {
+                    ViewBag.session = HttpContext.Session.GetString("username");
+                    if (string.IsNullOrEmpty(Filter))
+                    {
+
+                        decimal TotalAmount = 0;
+                        ViewBag.itemList = listReport.ToList();
+                        ViewBag.Item = itemList;
+                        ViewBag.requestTotal = TotalAmount;
+
+                        int count = listReport.Count();
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            TotalAmount += listReport[i].Total;
+                        }
+                        ViewBag.requestTotal = TotalAmount;
+                        ViewBag.percentage = Math.Round((TotalAmount / 100), 2);
+                        ViewBag.perheadcount = Math.Round((TotalAmount / headcount), 2);
+                       
+
+                        return View();
+                    }
+                    else
+                    {
+                        ViewBag.Item = itemList;
+
+                        decimal TotalAmount = 0;
+                        var showlist = listReport.Where(a => ((a.DateRequest >= fromDate) || (a.DateRequest <= toDate)) && (a.Description == Product)).ToList();
+                        ViewBag.itemList = showlist;
+                        int count = showlist.Count();
+                        ViewBag.productname = Product;
+                        
+                        for (int i = 0; i < count; i++)
+                        {
+                            TotalAmount += showlist[i].Total;
+                        }
+                        ViewBag.requestTotal = TotalAmount;
+                        ViewBag.percentage = Math.Round((TotalAmount / 100),2);
+                        ViewBag.perheadcount = Math.Round((TotalAmount / headcount),2);
+                      
+                        return View();
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
+            }
+            return View();
+        }
+
+
+
     }
 }

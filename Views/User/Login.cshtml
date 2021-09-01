@@ -15,7 +15,7 @@
                 <span asp-validation-for="Username" class="text-danger"></span>
                 <div class="input-group-append">
                     <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
+                        <span class="fa fa-user"></span>
                     </div>
                 </div>
             </div>
@@ -28,20 +28,31 @@
                     </div>
                 </div>
             </div>
-            <div class="social-auth-links text-center mb-3">
+            
+                @if (@ViewBag.alertlogin != null && @ViewBag.alertlogin.ToString().Length > 0)
+                {
+                    <div class="alert alert-@ViewBag.alertlogin">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <ul style="list-style: none; padding:0; margin:0">
+                            @foreach (var a in @ViewBag.messagelogin)
+                            {
+                                <li>@Html.Raw(a)</li>
+                            }
+                        </ul>
+                    </div>
+                }
                 <!-- /.col -->
-                <div>
+                <div style="text-align:center">
                     <input type="submit" value="Sign in" class="btn btn-primary" />
                 </div>
                 <!-- /.col -->
-            </div>
         </form>
         <!-- /.social-auth-links -->
 
-        <div class="social-auth-links text-center mb-3">
+        @*<div class="social-auth-links text-center mb-3">
             <a href="forgot-password.html">I forgot my password</a>
         </div>
-        @*<div class="social-auth-links text-center mb-3">
+        <div class="social-auth-links text-center mb-3">
             @Html.ActionLink("Open Account", "Create", "User")
         </div>*@
     </div>
