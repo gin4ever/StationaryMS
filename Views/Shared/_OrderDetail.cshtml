@@ -4,8 +4,6 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
-    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
-    Users user = null;
     List<CartItem> listCart = new List<CartItem>();
     decimal total_money = 0;
     if (json != null)
@@ -18,16 +16,11 @@
             listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
         }
     }
-    if (json_user_detail != null)
-    {
-        JObject jsonResponse = JObject.Parse(json_user_detail);
-        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
-    }
 }
 
 <div class="bs-canvas bs-canvas-left position-fixed bg-cart h-100">
     <div class="bs-canvas-header side-cart-header p-3 ">
-        <div class="d-inline-block  main-cart-title">My Cart <span>(@listCart.Count Items)</span></div>
+        <div class="d-inline-block  main-cart-title">My Request <span>(@listCart.Count Items)</span></div>
         <button type="button" class="bs-canvas-close close" aria-label="Close"><i class="uil uil-multiply"></i></button>
     </div>
     <div class="bs-canvas-body">
@@ -39,22 +32,22 @@
                     total_money += cart.Item.Price * cart.Quantity;
                     <div class="cart-item">
                         <div class="cart-product-img">
-                            <img src="@cart.Item.Images" width="88" height="88">
+                            @*<img src="@cart.Item.Images" width="88" height="88">*@
+                            <img src="~/@Url.Content(cart.Item.Images)" width="88" height="88">
                         </div>
                         <div class="cart-text">
                             <h4>@cart.Item.Description</h4>
 
-                            <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-100">
+                            <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-10">
                                 <div class="qty-group">
                                     <div class="quantity buttons_added">
-                                        <input type="hidden" name="id" value="@cart.Item.Description" />
+                                        <input type="hidden" name="id" value="@cart.Item.ItemCode" />
                                         <input type="button" value="-" class="minus minus-btn">
                                         <input type="number" step="1" name="quantity" value="@cart.Quantity" class="input-text qty text">
                                         <input type="button" value="+" class="plus plus-btn">
                                     </div>
-                                    <div class="cart-item-price">$@cart.Item.Price </div>
+                                    <div class="cart-item-price">USD @cart.Item.Price </div>
                                 </div>
-
                                 <button type="submit" name="button" value="delete" class="cart-close-btn"><i class="uil uil-multiply"></i></button>
                                 <button type="submit" name="button" value="update" class="btn btn-link btn-xs float-right"><span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span></button>
                             </form>
@@ -69,9 +62,20 @@
             <h2>Total</h2>
             <span>$@total_money</span>
         </div>
-        <div class="checkout-cart">
-            <a href="@Url.Action("Submit", "Request")" class="cart-checkout-btn hover-btn">Proceed to Submit</a>
-        </div>
+
+
+        @if (listCart.Count > 0)
+        {
+            <div class="checkout-cart">
+                <a href="@Url.Action("Submit", "Request")" class="cart-checkout-btn hover-btn">Proceed to Submit</a>
+            </div>
+        }
+        else
+        {
+            <div class="checkout-cart">
+                <a href="@Url.Action("Create", "Request")" class="cart-checkout-btn hover-btn">Select your item</a>
+            </div>
+        }
     </div>
 </div>
 @*Cart Sidebar Offsetl End*@

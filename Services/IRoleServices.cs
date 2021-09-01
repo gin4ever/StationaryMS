@@ -9,9 +9,13 @@ namespace eProject.Services
     public interface IRoleServices
     {
         List<Role> GetRoles();
+        int CountRole(Department department);
+        Role GetRole(int id);
+        Role highestRole();
+
+
         bool AddRole(Role newRole);
         bool UpdateRole(Role editRole);
-        Role GetRole(int id);
         bool DeleteRole(int id);
     }
 }

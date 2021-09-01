@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using eProject.Services;
 using eProject.Repository;
 using Microsoft.EntityFrameworkCore;
-
 namespace eProject
 {
     public class Startup
@@ -36,20 +35,20 @@ namespace eProject
             services.AddScoped<IRequestServices, RequestServices>();
             services.AddScoped<IRoleServices, RoleServices>();
             services.AddScoped<ISupplierServices, SupplierServices>();
+            services.AddScoped<IRequestDetailServices, RequestDetailServices>();//add scope RequestDetailService
+
             services.AddScoped<IRequestItemServices, RequestItemServices>();
             services.AddScoped<IItemCategorySupplierServices, ItemCategorySupplierServices>();
             services.AddScoped<IUserRoleDepartment, UserRoleDepartment>();
-            services.AddScoped<IRequestDetailServices, RequestDetailServices>();//add scope RequestDetailService
             services.AddScoped<INotiServices, NotiServices>();
 
-            services.AddSession();
-
             services.AddHttpContextAccessor();
+            // set session
             services.AddDistributedMemoryCache();
 
+            // set up life time for session
+            services.AddSession();
             services.AddControllersWithViews();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,17 +63,18 @@ namespace eProject
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+            app.UseSession();
+
 
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Admin}/{action=Login}/{id?}");
+                    pattern: "{controller=User}/{action=Login}/{id?}");
             });
         }
     }

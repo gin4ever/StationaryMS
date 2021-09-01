@@ -20,21 +20,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" placeholder="Enter your password..."/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             @*Your password not correct!*@
             <div style="color:red">@ViewBag.errorPassIdentify</div>
             <div class="form-group">
                 <label asp-for="NewPassword" class="control-label"></label>
-                <input asp-for="NewPassword" class="form-control" />
+                <input asp-for="NewPassword" class="form-control" placeholder="Enter your new password..."/>
                 <span asp-validation-for="NewPassword" class="text-danger"></span>
             </div>
             @*Your new password must different with your current password!*@
             <div style="color:red">@ViewBag.errorPass</div>
             <div class="form-group">
                 <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="Enter your confirm password..."/>
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">

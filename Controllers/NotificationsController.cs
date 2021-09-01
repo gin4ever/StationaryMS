@@ -22,7 +22,7 @@ namespace eProject.Controllers
             return View();
         }
 
-        public JsonResult GetNotifications(bool bIsGetOnlyUnread=false)
+        public JsonResult GetNotifications(bool bIsGetOnlyUnread = false)
         {
             _oNotification = new List<Noti>();
             _oNotification = _notiService.GetNotifications(bIsGetOnlyUnread);

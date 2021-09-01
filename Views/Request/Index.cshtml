@@ -4,7 +4,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
-    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_session");
     Users user = null;
     List<CartItem> listCart = new List<CartItem>();
     decimal total_money = 0;
@@ -34,66 +34,116 @@
 }
 
 
-<h2>Request List</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<div>
-    @using (Html.BeginForm())
-    {
-        <input type="text" name="keyword" placeholder="Enter status..." />
-        <input type="submit" value="Search" class="btn-info" />
-    }
-</div>
-
-Page @Html.PagedListPager(pageList, page => Url.Action("Index", new { page }))
-
-@if (@ViewBag.Alert != null && @ViewBag.Alert.ToString().Length > 0)
-{
-    <div class="alert alert-@ViewBag.Alert">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <ul>
-            @foreach (var message in @ViewBag.Message)
-            {
-                <li>@Html.Raw(@message)</li>
-            }
-
-
-        </ul>
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-10">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Request List</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-2">
+                    <nav aria-label="breadcrumb">
+                        <ol style="float: right; margin-right: 20px">
+                            <li class="breadcrumb-item" style="color: #2b2f4c; font-weight: bolder" ><a href="@Url.Action("Create", "Request")">Create New</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
-}
-else
-{<div>Hello</div>}
-<table class="table">
-    <tr>
-        <th>Request ID</th>
-        <th>Date Request</th>
-        <th>Approved Date</th>
-        <th>Status</th>
-        <th>Reason</th>
-        <th>Action</th>
 
-    </tr>
-    @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
-    {
-        @foreach (var item in ViewBag.itemList)
+    <div style="margin-left: 10px; margin-right: 10px">
+        <div class="container">
+            <div class="text-center" style="padding:10px">
+                @using (Html.BeginForm())
+                {
+                    <input type="text" style="height:30px" name="keyword" placeholder="Enter status..." />
+                    <input type="submit" value="Search" class="btn-info" />
+                }
+            </div>
+        </div>
+
+
+        @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
         {
-            <tr>
-                <td>@item.Request_Id</td>
-                <td>@item.DateRequest</td>
-                <td>@item.ApprovedDate</td>
-                <td>@item.Status</td>
-                <td>@item.Reason</td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "CreateRequest", new { id = item.Request_Id })
-                    @Html.ActionLink("Details", "Details", "Request", new { id = item.Request_Id })
-                    @Html.ActionLink("Withdraw", "Details", "Request", new { id = item.Request_Id })
-                </td>
-            </tr>
+            @if (@ViewBag.AlertDelRequest != null && @ViewBag.AlertDelRequest.ToString().Length > 0)
+            {
+                <div class="alert alert-@ViewBag.AlertDelRequest">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <ul>
+                        @foreach (var delRequest in @ViewBag.MessageDelRequest)
+                        {
+                            <li>@Html.Raw(delRequest)</li>
+                        }
+                    </ul>
+                </div>
+            }
+            <table class="table table-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Date Request</th>
+                        <th>Approved Date</th>
+                        <th>Status</th>
+                        <th>Reason</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.itemList)
+                    {
+                        <tr>
+                            <td>@item.Request_Id</td>
+                            <td>@item.DateRequest</td>
+                            <td>@item.ApprovedDate</td>
+                            <td>@item.Status</td>
+                            <td>@item.Reason</td>
+                            <td>
+                                @if (item.Status == "Pending")
+                                {
+                                    @Html.ActionLink("Edit||", "Edit", "Request", new { id = item.Request_Id })
+                                }
+                                else
+                                {
+                                    <a href="#" style="color:darkgray">Edit||</a>
+                                }
+                                @Html.ActionLink("Details||", "Details", "Request", new { id = item.Request_Id })
+                                @Html.ActionLink("Remove", "DeleteRequest", "Request", new { id = item.Request_Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-    }
+        else
+        {
+            <div class="alert alert-warning">
+                <ul>
+                    <li>There is no Result</li>
+                </ul>
+            </div>
+        }
+        <div class="col-md-12">
+            <div class="blog-more-btn">
+                <div class="pagination-area text-center">
+                    <nav aria-label="navigation">
+                        <div>
+                            <h3 style="color:darkblue; font-size:14px">
+                                @if (pageList != null)
+                                {
+                                    @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
+                                }
 
-
-
-</table>
+                            </h3>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

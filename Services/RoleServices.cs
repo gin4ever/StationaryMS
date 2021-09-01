@@ -13,6 +13,43 @@ namespace eProject.Services
         {
             this.context = context;
         }
+        public List<Role> GetRoles()
+        {
+            return context.Role.ToList();
+        }
+        public int CountRole(Department department)
+        {
+            return context.Role.Where(i => i.Role_Id.Equals(department.Department_Id)).ToList().Count;
+
+        }
+
+        public Role GetRole(int id)
+        {
+            return context.Role.SingleOrDefault(a => a.Role_Id == id);
+        }
+
+        public Role highestRole()
+        {
+            var role = context.Role.ToList();
+            int count = role.Count();
+            var highestroleId = context.Role.SingleOrDefault(a=>a.Role_Id.Equals(role[count].Role_Id));
+            return highestroleId;
+        }
+
+        public bool UpdateRole(Role editRole)
+        {
+            var model = context.Role.SingleOrDefault(m => m.Role_Id.Equals(editRole.Role_Id));
+            if (model != null)
+            {
+                model.RoleName = editRole.RoleName;
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public bool AddRole(Role newRole)
         {
@@ -27,39 +64,6 @@ namespace eProject.Services
             if (model != null)
             {
                 context.Role.Remove(model);
-                context.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public Role GetRole(int id)
-        {
-            var model = context.Role.SingleOrDefault(m => m.Role_Id.Equals(id));
-            if (model != null)
-            {
-                return model;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public List<Role> GetRoles()
-        {
-            return context.Role.ToList();
-        }
-
-        public bool UpdateRole(Role editRole)
-        {
-            var model = context.Role.SingleOrDefault(m => m.Role_Id.Equals(editRole.Role_Id));
-            if (model != null)
-            {
-                model.RoleName = editRole.RoleName;
                 context.SaveChanges();
                 return true;
             }

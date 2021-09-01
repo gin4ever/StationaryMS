@@ -9,11 +9,17 @@ namespace eProject.Services
     public interface IRequestServices
     {
         List<Request> GetRequests();
-        bool UpdateRequest(Request request);
-        //  int SaveRequest(Request request);
+
+        Request GetRequest(int id);
+   
+        bool ApproveRequest(Request request);
         int SaveRequest(Request request);
         int CountRequest(int user_id);
         List<Request> GetRequestsByUserId(int user_id);
-        Request GetRequest(int id);
+
+        bool DeleteRequest(int rqId);
+        bool UpdateRequest(Request updateRequest);
+        List<Request> GetRequestsByApproverID(int user_id);
+        List<Report> GetRequestsByDepartment(int department_Id);
     }
 }
