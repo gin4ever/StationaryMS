@@ -75,7 +75,7 @@ namespace eProject.Services
             if (model != null)
             {
                 model.Username = editAdmin.Username;
-                model.Password = PinCodeSecurity.pinEncrypt(editAdmin.Password);
+                model.Password = PinCodeSecurity.pinEncrypt(editAdmin.NewPassword);
                 model.Fullname = editAdmin.Fullname;
                 model.Email = editAdmin.Email;
                 model.Images = editAdmin.Images;

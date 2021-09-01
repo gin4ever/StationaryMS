@@ -22,7 +22,11 @@ namespace eProject.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Confirm password doesn't match, Type again !")]
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "New Password from 1 to 20 chacracters!")]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
+        [Compare("NewPassword", ErrorMessage = "Confirm password doesn't match, Type again !")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 

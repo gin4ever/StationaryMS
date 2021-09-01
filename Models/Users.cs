@@ -40,5 +40,13 @@ namespace eProject.Models
         public int Department_Id { get; set; }
         public string Images { get; set; }
 
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "New Password from 1 to 20 chacracters!")]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
+        [Compare("Password", ErrorMessage = "Confirm password doesn't match, Type again !")]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
+
     }
 }
