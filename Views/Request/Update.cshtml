@@ -1,0 +1,143 @@
+﻿@model eProject.Models.RequestDetail
+@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
+    List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
+    if (json != null)
+    {
+        JArray jsonResponse = JArray.Parse(json);
+
+        foreach (var item in jsonResponse)
+        {
+            JObject cartResult = (JObject)item;
+            listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
+        }
+    }
+
+}
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Edit", "Request", new { id = Model.Request_Id})">Edit Request @Model.Request_Id</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Update</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <div style="margin-left: 10px; margin-right: 10px">
+        @using (Html.BeginForm("Update", "Request"))
+        {
+            @if (@ViewBag.AlertUpdate != null && @ViewBag.AlertUpdate.ToString().Length > 0)
+            {
+                <div class="alert alert-@ViewBag.AlertUpdate">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <ul>
+                        @foreach (var a in @ViewBag.MessageUpdate)
+                        {
+                            <li>@Html.Raw(a)</li>
+                        }
+                    </ul>
+                </div>
+            }
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <input type="hidden" asp-for="Id" readonly />
+            <table class="table table-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>@Html.LabelFor(model => model.ItemCode)</th>
+                        <th>@Html.LabelFor(model => model.Quantity)</th>
+                        <th>@Html.LabelFor(model => model.Price)  (USD)</th>
+                        <th>@Html.LabelFor(model => model.Total) (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="~/@Url.Content(ViewBag.itemImage)" width="88" height="88">
+                        </td>
+                        <td>
+                            <input class="form-control text-box single-line" readonly="readonly" type="text" value="@ViewBag.itemName" />
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.ItemCode, "", new { @class = "text-danger" })
+                        </td>
+
+                        <td>
+                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @min = "1" } })
+                            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <input class="btn btn-primary"  type="button" value="Go Back" onclick="location.href='@Url.Action("Edit", "Request", new { id = Model.Request_Id})'" />
+            </div>
+
+        }
+
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#Quantity,#Price").keyup(function () {
+            var q = $("#Quantity").val();
+            var p = $("#Price").val();
+            var result = "";
+            if (q !== "" && q > 0 && p !== "" && $.isNumeric(q) && $.isNumeric(p)) {
+                result = parseFloat(q) * parseFloat(p);
+                $("#Total").val(result);
+            } else {
+                $("#Total").val(0);
+            }
+        });
+    });
+</script>
+

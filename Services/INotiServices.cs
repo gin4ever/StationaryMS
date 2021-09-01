@@ -11,3 +11,4 @@ namespace eProject.Services
         List<Noti> GetNotifications(bool bIsGetOnlyUnread);
     }
 }
+

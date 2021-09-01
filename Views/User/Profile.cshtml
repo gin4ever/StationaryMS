@@ -31,62 +31,106 @@
         user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
     }
 }
+<style>
+    th.style {
+        color: #0000CD;
+        width: 150px;
+        color: #191970;
+    }
+    th.style2 {
+        color: #0000CD;
+    }
+    .table {
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+        border-radius: 15%;
+        -moz-border-radius: 15%;
+        -webkit-border-radius: 15%;
+    }
+    h2 {
+        text-align: center;
+        color: #191970;
+    }
+    h3 {
+        text-align: center;
+        color: #0000CD;
+    }
 
-<h1>Welcome @Html.DisplayFor(model => model.Fullname)</h1>
+    th img {
+        border-radius: 15%;
+        -moz-border-radius: 15%;
+        -webkit-border-radius: 15%;
+        width: 100px;
+        display: block; 
+        margin-left: auto; 
+        margin-right: auto;
+    }
+</style>
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Fullname)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Fullname)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Role_Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Role_Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Department_Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Department_Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Images)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/@Url.Content(Model.Images)" width="100" />
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Change Password", "ChangePassword", new { uname = Model.Username }) 
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Profile</a> </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Stationery Management System</h2>
+    <h3>Welcome @Html.DisplayFor(model => model.Fullname)</h3>
+    <div style="margin-left: 10px; margin-right: 10px">
+        <div class="container-fluit">
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="2"> <img src="~/@Url.Content(Model.Images)"/></th>
+                </tr>
+                <tr>
+                    <th class="style">@Html.DisplayNameFor(model => model.User_Id)</th>
+                    <th class="style2">@Html.DisplayFor(model => model.User_Id)</th>
+                </tr>
+                <tr>
+                    <th class="style">@Html.DisplayNameFor(model => model.Username)</th>
+                    <th class="style2">@Html.DisplayFor(model => model.Username)</th>
+                </tr>
+                <tr>
+                    <th class="style">@Html.DisplayNameFor(model => model.Fullname)</th>
+                    <th class="style2">@Html.DisplayFor(model => model.Fullname)</th>
+                </tr>
+                <tr>
+                    <th class="style">@Html.DisplayNameFor(model => model.Phone)</th>
+                    <th class="style2">@Html.DisplayFor(model => model.Phone)</th>
+                </tr>
+                <tr>
+                    <th class="style">@Html.DisplayNameFor(model => model.Email)</th>
+                    <th class="style2">@Html.DisplayFor(model => model.Email)</th>
+                </tr>
+                <tr>
+                    <th class="style">@Html.DisplayNameFor(model => model.Address)</th>
+                    <th class="style2">@Html.DisplayFor(model => model.Address)</th>
+                </tr>
+                <tr>
+                    <th class="style">Department</th>
+                    <th class="style2">@ViewBag.department</th>
+                </tr>
+                <tr>
+                    <th class="style">Position</th>
+                    <th class="style2">@ViewBag.role</th>
+                </tr>
+                <tr>
+                    <th colspan="2" class="style" style="text-align: center; color: #9ACD32 ">@Html.ActionLink("Change Password", "ChangePassword", new { uname = Model.Username })</th>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
 </div>

@@ -7,6 +7,7 @@
     string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_session");
     Users user = null;
     List<CartItem> listCart = new List<CartItem>();
+    decimal total_money = 0;
     if (json != null)
     {
         JArray jsonResponse = JArray.Parse(json);
@@ -23,25 +24,24 @@
         user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
     }
 }
+
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 @{
-    ViewData["Title"] = "Details";
-    var pageList = (IPagedList)ViewBag.itemList;
+    ViewData["Title"] = "Task List";
+  //  var pageList = (IPagedList)ViewBag.itemList;
     Layout = "~/Views/Shared/_Layout_User.cshtml";
 }
-@section css{
-    <link href="~/css/step-wizard.css" rel="stylesheet" />
-}
+
+
 <div class="wrapper">
     <div class="gambo-Breadcrumb">
         <div class="container-fluit">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-10">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            @*<li class="breadcrumb-item"><a href="@Url.Action("Index", "Request")">Request List</a></li>*@
-                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Detail</a> </li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Report</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -49,56 +49,61 @@
         </div>
     </div>
 
+
     <div style="margin-left: 10px; margin-right: 10px">
         <div class="container">
-            <div><p style="font-weight:bolder">Requesr ID: @ViewBag.reqId</p></div>
             <div class="text-center" style="padding:10px">
                 @using (Html.BeginForm())
                 {
-                    <input type="text" style="height:30px" name="itemName" placeholder="Enter item description..." />
-                    <input type="submit" value="Search" class="btn-info" />
+                    @Html.Label("From:");
+                    <input type="datetime-local" name="fromDate" />
+                    @Html.Label("To:");
+                    <input type="datetime-local" name="toDate" />
+                    <div style="text-align:center; margin:auto; width:300px">
+                        @Html.DropDownList("Product", (IEnumerable<SelectListItem>)ViewBag.Item, new { @class = "form-control" })
+                    </div>
+                    <br />
+                    <input type="submit" value="Filter" name="Filter" class="btn-info" />
+                    <input type="submit" value="Reset" name="Submit" class="btn-info" />
+                    <br />
+                    <br />
+
                 }
             </div>
         </div>
-        @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
+
+        <row>
+            <div>@Html.Label("Product:") @ViewBag.productname</div>
+            <div>@Html.Label("Current expense: (USD)") @ViewBag.requestTotal</div>
+            <div>@Html.Label("Percentage: (%)") @ViewBag.percentage</div>
+            <div>@Html.Label("Expense per headcount: (USD)") @ViewBag.perheadcount</div>
+
+        </row>
+        @if (ViewBag.itemList != null)
         {
             <table class="table table-bordered" border="1">
                 <thead>
                     <tr>
-                        <th>Image</th>
                         <th>Description</th>
-                        <th>Item Code</th>
-                        <th>Quantity</th>
-                        <th>Price (USD)</th>
-                        <th>Total (USD)</th>
+                        <th>Employee Name</th>
+                        <th>Date Request</th>
+                        <th>Approved Date</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
-
-                @foreach (var item in ViewBag.itemList)
-                {
-                    <tbody>
+                <tbody>
+                    @foreach (var item in ViewBag.itemList)
+                    {
                         <tr>
-                            <td>
-                                <img src="~/@Url.Content(item.Images)" width="88" height="88">
-                            </td>
-                            <td>
-                                @item.Description
-                            </td>
-                            <td>@item.ItemCode</td>
-                            <td>@item.Quantity</td>
-                            <td>@item.Price</td>
+                            <td>@item.Description</td>
+                            <td>@item.Username</td>
+                            <td>@item.DateRequest</td>
+                            <td>@item.ApprovedDate</td>
                             <td>@item.Total</td>
+                         
                         </tr>
-
-                    </tbody>
-                }
-                <tfoot>
-                    <tr>
-                        <td colspan="4">Total amount of Request  (USD)</td>
-                        <td style="font-weight:bolder;color:coral">@ViewBag.requestTotal</td>
-                    </tr>
-                </tfoot>
-
+                    }
+                </tbody>
             </table>
         }
         else
@@ -109,8 +114,7 @@
                 </ul>
             </div>
         }
-
-        <div class="col-md-12">
+        @*<div class="col-md-12">
             <div class="blog-more-btn">
                 <div class="pagination-area text-center">
                     <nav aria-label="navigation">
@@ -118,24 +122,15 @@
                             <h3 style="color:darkblue; font-size:14px">
                                 @if (pageList != null)
                                 {
-                                    @Html.PagedListPager(pageList, page => Url.Action("Details", new { page }))
+                                    @Html.PagedListPager(pageList, page => Url.Action("Create", new { page }))
                                 }
+
                             </h3>
                         </div>
                     </nav>
                 </div>
             </div>
-        </div>
-        @*<input class="btn btn-primary" type="button" value="Go Back" onclick="location.href='@Url.Action("Index", "Request")'" />*@
-
-        <button class="btn btn-primary" onclick="goBack()">Go Back</button>
-
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-
-
+        </div>*@
     </div>
+
 </div>

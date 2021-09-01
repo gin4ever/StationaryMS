@@ -75,7 +75,7 @@ namespace eProject.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Login","Admin");
+                    return RedirectToAction("Login", "Admin");
                 }
             }
             return View();

@@ -4,8 +4,6 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
-    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
-    Users user = null;
     List<CartItem> listCart = new List<CartItem>();
     decimal total_money = 0;
     if (json != null)
@@ -18,42 +16,34 @@
             listCart.Add(JsonConvert.DeserializeObject<CartItem>(cartResult.ToString()));
         }
     }
-    if (json_user_detail != null)
-    {
-        JObject jsonResponse = JObject.Parse(json_user_detail);
-        user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
-    }
 }
 @{
     ViewData["Title"] = "Submit";
     Layout = "~/Views/Shared/_Layout_User.cshtml";
 }
-
 @section css{
     <link href="~/css/step-wizard.css" rel="stylesheet" />
 }
-
-
-<h2>Submit Request</h2>
 <!-- Body Start -->
 <div class="wrapper">
     <div class="gambo-Breadcrumb">
-        <div class="container">
+        <div class="container-fluit">
             <div class="row">
                 <div class="col-md-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Create", "Request")">Create New</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Submit Request</a></li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="all-product-grid">
         <div class="container">
-            <form method="POST" action="@Url.Action("SubmitRequest", "Request")">
+            <form method="POST" action="@Url.Action("Submit", "Request")">
                 <div class="row">
                     <div class="col-md-12">
                         @if (@ViewBag.Alert != null && @ViewBag.Alert.ToString().Length > 0)
@@ -70,85 +60,68 @@
                         }
                     </div>
                 </div>
-
-                @*LEFT*@
-                    <div class="col-lg-5 col-md-4">
-                        <div id="checkout_wizard" class="checkout accordion left-chck145">
-                            <div class="checkout-step">
-                                <div class="checkout-card" id="headingFour">
-                                    <span class="checkout-step-number">3</span>
-                                    <h4 class="checkout-step-title">
-                                        <button class="wizard-btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Payment</button>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#checkout_wizard">
-                                    <div class="checkout-step-body">
-                                        <div class="payment_method-checkout">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="pymnt_title mb-4">
-                                                                    <h4>Credit / Debit Card</h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-group mt-1">
-                                                                    <label class="control-label">Holder Name*</label>
-                                                                    <div class="ui search focus">
-                                                                        <div class="ui left icon input swdh11 swdh19">
-                                                                            <textarea class="form-control" name="Reason" rows="3"></textarea>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                @if (listCart.Count > 0)
+                {
+                    <div class="row">
+                        @*LEFT*@
+                        <div class="col-lg-5 col-md-4">
+                            <div id="checkout_wizard" class="checkout accordion left-chck145">
+                                <div class="checkout-step">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="pymnt_title mb-12">
+                                                    <h4>Reason of your request</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" style="display:block">
+                                                <div class="form-group mt-1">
+                                                    <div class="ui search focus">
+                                                        <div class="ui left icon input swdh11 swdh19">
+                                                            <textarea class="form-control" name="Reason" rows="3"></textarea>
                                                         </div>
                                                     </div>
-                                                    <button type="submit" class="next-btn16 hover-btn">Finish order</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="submit" value="finish" class="next-btn16 hover-btn">Finish request</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @*Right*@
-                    <div class="col-lg-7 col-md-8">
-                        <div class="pdpt-bg mt-0">
-                            <div class="pdpt-title">
-                                <h4>Order Summary</h4>
-                            </div>
-                            <div class="right-cart-dt-body">
-                                @if (listCart.Count > 0)
-                                {
+                        @*Right*@
+                        <div class="col-lg-6 col-md-7">
+                            <div class="pdpt-bg mt-0">
+                                <div class="pdpt-title">
+                                    <h4>Selected Items</h4>
+                                </div>
+                                <div class="right-cart-dt-body">
                                     @foreach (CartItem cart in listCart)
                                     {
                                         total_money += cart.Item.Price * cart.Quantity;
                                         <div class="cart-item border_radius">
                                             <div class="cart-product-img">
-                                                <img src="@cart.Item.Images" width="87" height="87">
+                                                <img src="~/@Url.Content(cart.Item.Images)" width="87" height="87">
                                             </div>
                                             <div class="cart-text">
                                                 <h4>@cart.Item.Description</h4>
-                                                <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-10">
-                                                    <div class="cart-item-price">$@cart.Item.Price</div>
-                                                    <button type="submit" name="button" value="delete" class="cart-close-btn"><i class="uil uil-multiply"></i></button>
+                                                <form action="@Url.Action("AddToCart", "Request")" method="get" class="w-100">
+                                                    <input type="hidden" name="id" value="@cart.Item.ItemCode" />
+                                                    <div name="quantity" class="cart-item-price">USD @cart.Item.Price </div>
                                                 </form>
                                             </div>
                                         </div>
                                     }
-                                }
-                            </div>
-                            <div class="main-total-cart">
-                                <h2>Total</h2>
-                                <span>$@total_money</span>
+
+                                </div>
+                                <div class="main-total-cart">
+                                    <h2>Total: <span>USD @total_money</span></h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                
+                }
+
             </form>
         </div>
     </div>

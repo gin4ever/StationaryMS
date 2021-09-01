@@ -62,6 +62,21 @@ namespace eProject.Services
             {
                 return null;
             }
+
+        }
+
+        public Users GetUserByRoleID(int RoleID, int deptcode)
+        {
+            var model = context.Users.FirstOrDefault(u => u.Role_Id.Equals(RoleID) && u.Department_Id.Equals(deptcode));
+            if (model != null)
+            {
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         public List<Users> GetUsers()
@@ -71,7 +86,49 @@ namespace eProject.Services
 
         public bool UpdateProfile(Users editUser)
         {
-            throw new NotImplementedException();
+            var model = context.Users.SingleOrDefault(m => m.Username.Equals(editUser.Username));
+            if (model != null)
+            {
+                model.Password = PinCodeSecurity.pinEncrypt(editUser.NewPassword);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Users GetUser(int userId)
+        {
+            var model = context.Users.SingleOrDefault(u => u.User_Id.Equals(userId));
+            if (model != null)
+            {
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public int CountRole(Users department)
+        {
+            return context.Users.Where(i => i.Department_Id.Equals(department.Department_Id)).ToList().Count;
+        }
+
+        public Users GetUserByRole(int RoleId)
+        {
+            var model = context.Users.FirstOrDefault(u => u.Role_Id.Equals(RoleId));
+            if (model != null)
+            {
+                return model;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

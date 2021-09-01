@@ -4,7 +4,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     string json = HttpContextAccessor.HttpContext.Session.GetString("cart");
-    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_detail");
+    string json_user_detail = HttpContextAccessor.HttpContext.Session.GetString("user_session");
     Users user = null;
     List<CartItem> listCart = new List<CartItem>();
     decimal total_money = 0;
@@ -24,6 +24,9 @@
         user = JsonConvert.DeserializeObject<Users>(json_user_detail.ToString());
     }
 }
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -80,41 +83,53 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
+                @*<li class="nav-item d-none d-sm-inline-block">
+                    <a href="@Url.Action("Profile", "User")" class="nav-link">Home</a>
+                </li>*@
+                @*<li class="nav-item d-none d-sm-inline-block">
+                    <a href="@Url.Action("Contact", "User")" class="nav-link">Contact</a>
+                </li>*@
             </ul>
+
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <div class="header_cart order-1">
-                        <a href="#" class="cart__btn t"> <i class="far fa-bell"></i>Hi, @ViewBag.session</a>
-                    </div>
 
-                </li>
                 <li class="nav-item dropdown">
                     <div class="header_cart order-1">
                         <a href="#" class="cart__btn hover-btn pull-bs-canvas-left"
                            title="Cart">
                             <i class="uil uil-shopping-cart-alt"></i><span>Cart</span><ins>@listCart.Count</ins>
-                            <i class="uil uil-angle-down"></i>
+
                         </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <div class="header_cart order-1">
+                        <a href="@Url.Action("Profile", "User")" class="cart__btn t"> <i class="fa fa-user" style="font-size:11px"></i><span>Hi, @ViewBag.session</span></a>
+                        @*<i class="uil uil-angle-down"></i>*@
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <div class="header_cart order-1">
+                        <a href="@Url.Action("Logout", "User")" class="cart__btn t"><i class="fas fa-sign-out-alt" style="font-size:12px"></i><span>Log out</span></a>
                     </div>
                 </li>
             </ul>
         </nav>
 
+
+
+
+
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                     style="opacity: .8">
+            <a href="#" class="brand-link">
+                <img src="~/dist/img/companyLogo.PNG" alt="Company Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8" />
                 <span class="brand-text font-weight-light">HMT Technologies</span>
             </a>
 
@@ -123,10 +138,10 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="~/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="~/@Url.Content(user.Images)" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">@ViewBag.session</a>
+                        <a href="#" class="d-block">Welcome: @ViewBag.session</a>
                     </div>
                 </div>
 
@@ -134,7 +149,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
+                            with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="@Url.Action("Profile", "User")" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -151,7 +166,6 @@
                                 <p>
                                     Request Management
                                     <i class="fas fa-angle-left right"></i>
-                                    @*<span class="badge badge-info right">6</span>*@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -170,36 +184,35 @@
                             </ul>
                         </li>
 
-                        @*Task List*@
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Task Management
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Items</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Categories</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Suppliers</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (user.Role_Id > 0)
+                        {
+                            @*Task List*@
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-pie"></i>
+                                    <p>
+                                        Task Management
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("TaskList", "Request")" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Task List</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("TaskHistory", "Request")" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Task List History</p>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+
+
 
                         @*Report*@
                         <li class="nav-item has-treeview">
@@ -212,20 +225,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/UI/general.html" class="nav-link">
+                                    <a href="@Url.Action("Report", "Request")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create New</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Report", "Report")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Report List</p>
-                                    </a>
-                                </li>
-
+                                
                             </ul>
                         </li>
+                        }
+
 
                         @*FAQ*@
                         <li class="nav-item has-treeview">
@@ -246,17 +255,17 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color:#fff">
             @RenderBody()
             <partial name="_OrderDetail" />
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             @*<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>*@
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0
-            </div>
+            All rights reserved HMT Technologies.
+            @*<div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 3.0.5
+        </div>*@
         </footer>
 
         <!-- Control Sidebar -->
@@ -300,7 +309,6 @@
     <script src="~/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/dist/js/demo.js"></script>
-
     <!-- Javascripts -->
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -310,6 +318,6 @@
     <script src="~/js/custom.js"></script>
     <script src="~/js/product.thumbnail.slider.js"></script>
     <script src="~/js/offset_overlay.js"></script>
-    <script src="~/js/night-mode.js"></script>
+    @*<script src="~/js/night-mode.js"></script>*@
 </body>
 </html>
