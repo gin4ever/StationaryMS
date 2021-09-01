@@ -186,6 +186,7 @@ namespace eProject.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Admins editAdmin, IFormFile file)
         {
             try
@@ -198,8 +199,30 @@ namespace eProject.Controllers
                         var stream = new FileStream(filepath, FileMode.Create);
                         file.CopyToAsync(stream);
                         editAdmin.Images = "images/" + file.FileName;
-                        services.updateAdmin(editAdmin);
-                        return RedirectToAction("Index");
+
+                        var currentpass = services.GetAdmin(editAdmin.Username).Password;
+                        ViewBag.pass = currentpass;
+                        var identifypass = PinCodeSecurity.pinEncrypt(editAdmin.Password);
+                        if (currentpass == identifypass)
+                        {
+                            var newpass = PinCodeSecurity.pinEncrypt(editAdmin.NewPassword);
+                            var confirmnewpass = PinCodeSecurity.pinEncrypt(editAdmin.ConfirmPassword);
+                            if (currentpass != newpass)
+                            {
+                                services.updateAdmin(editAdmin);
+                                return RedirectToAction("Index");
+                            }
+                            else
+                            {
+                                ViewBag.errorPass = "Your new password must different with your current password!";
+                                return View("Edit");
+                            }
+                        }
+                        else
+                        {
+                            ViewBag.errorPassIdentify = "Your password not correct!";
+                            return View("Edit");
+                        }
                     }
                     else
                     {
