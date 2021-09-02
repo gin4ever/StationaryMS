@@ -325,9 +325,9 @@ namespace eProject.Controllers
             {
                 ViewBag.requestTotal = TotalAmount;
                 ViewBag.itemList = item.Where
-                (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
-            c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-            c.ItemCode.Equals(itemName)).ToPagedList(pageNumber, pageSize);
+                (c => c.Description.ToUpper().Contains(itemName.ToUpper()) ||
+            c.Description.ToLower().Contains(itemName.ToLower()) ||
+            c.Description.Equals(itemName)).ToPagedList(pageNumber, pageSize);
             }
             return View();
         }
