@@ -4,38 +4,59 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
 
-<h1>My Profile</h1>
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            @*<li class="breadcrumb-item"><a href="@Url.Action("Index", "Admin")">Index</a></li>*@
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Profile</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-left: 10px; margin-right: 10px">
+        <div class="container">
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        <img src="~/@Url.Content(Model.Images)" width="100" />
+                    </dt>
+                    <dd class="col-sm-10">
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            <img src="~/@Url.Content(Model.Images)" width="100" />
-        </dt>
-        <dd class="col-sm-10">
-            
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Fullname)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Fullname)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Username)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Username)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Fullname)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Fullname)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                @Html.ActionLink("Change Profile", "Edit", new { uname = Model.Username })
+            </div>
 </div>
-<div>
-    @Html.ActionLink("Change Profile", "Edit", new { uname = Model.Username })
+</div>
 </div>

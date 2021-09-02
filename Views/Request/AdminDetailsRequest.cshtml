@@ -1,65 +1,90 @@
-﻿@model eProject.Models.vRequestItem
-
+﻿
 @{
     ViewData["Title"] = "AdminDetailsRequest";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            @*<li class="breadcrumb-item"><a href="@Url.Action("Index", "Request")">Request List</a></li>*@
+                            <li class="breadcrumb-item active" aria-current="page"><a>Detail Requesr ID: @ViewBag.reqId</a> </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h1>Request Details</h1>
+    <div style="margin-left: 10px; margin-right: 10px">
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Request_Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Request_Id)
-        </dd>
-        <dt class="col-sm-2">
-            Item Code
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ItemCode)
-        </dd>
-        <dt class="col-sm-2">
-            Item Name
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Unit)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Unit)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Images)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/@Url.Content(Model.Images)" width="100" />
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="AdminIndexRequest">Back to List</a>
+        @if (ViewBag.itemList != null && ViewBag.itemList.Count > 0)
+        {
+            <table class="table table-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Item Code</th>
+                        <th>Quantity</th>
+                        <th>Price (USD)</th>
+                        <th>Total (USD)</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.itemList)
+                {
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="~/@Url.Content(item.Images)" width="88" height="88">
+                            </td>
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>@item.ItemCode</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price</td>
+                            <td>@item.Total</td>
+                        </tr>
+
+                    </tbody>
+                }
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Total amount of Request  (USD)</td>
+                        <td style="font-weight:bolder;color:coral">@ViewBag.requestTotal</td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <ul>
+                    <li>There is no Result</li>
+                </ul>
+            </div>
+        }
+
+      
+        @*<input class="btn btn-primary" type="button" value="Go Back" onclick="location.href='@Url.Action("Index", "Request")'" />*@
+
+        <button class="btn btn-primary" onclick="goBack()">Go Back</button>
+
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
+
+    </div>
 </div>

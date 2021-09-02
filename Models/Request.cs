@@ -12,7 +12,7 @@ namespace eProject.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Request_Id { get; set; }
-
+        public string Title { get; set; }
         [Required]
         [StringLength(250, MinimumLength = 1, ErrorMessage = "Reason from 1 to 250 chacracters!")]
         public string Reason { get; set; }
@@ -34,7 +34,7 @@ namespace eProject.Models
         }
         public int Approver { get; set; }
         public bool IsRead { get; set; }
-        public string Title { get; set; }
+        
 
     }
 }

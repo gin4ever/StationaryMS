@@ -25,7 +25,7 @@ namespace eProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string url = "server=sgn-ginnyn-lx\\ginny;database=stationerydb;uid=sa;pwd=Xuanha2912@";
+            string url = "server=sgn-ginnyn-lx\\sqlexpress;database=stationerydb;Trusted_Connection= true";
             services.AddDbContext<StationeryContext>(options => options.UseSqlServer(url));
             services.AddScoped<IUsersServices, UsersServices>();
             services.AddScoped<IItemServices, ItemServices>();

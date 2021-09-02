@@ -248,9 +248,7 @@ namespace eProject.Controllers
 
                     throw;
                 }
-                
                 var requestID = services.SaveRequest(request);
-
                 if (requestID > 0)
                 {
                     // add info into request detail
@@ -319,7 +317,6 @@ namespace eProject.Controllers
 
             if (string.IsNullOrEmpty(itemName))
             {
-                //ViewBag.itemList = requestdetailservices.GetRequestDetails(id).ToList().ToPagedList(pageNumber, pageSize);
                 ViewBag.itemList = item.ToPagedList(pageNumber, pageSize);
                 ViewBag.requestTotal = TotalAmount;
                 return View();
@@ -327,11 +324,6 @@ namespace eProject.Controllers
             else
             {
                 ViewBag.requestTotal = TotalAmount;
-                //ViewBag.itemList = requestdetailservices.GetRequestDetails(id).Where
-                //    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
-                //c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-                //c.ItemCode.Equals(itemName)).ToList().ToPagedList(pageNumber, pageSize);
-
                 ViewBag.itemList = item.Where
                 (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
             c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
@@ -431,9 +423,9 @@ namespace eProject.Controllers
             else
             {
                 ViewBag.itemList = item.Where
-                    (c => c.ItemCode.ToUpper().Contains(itemName.ToUpper()) ||
-                c.ItemCode.ToLower().Contains(itemName.ToLower()) ||
-                c.ItemCode.Equals(itemName)).ToPagedList(pageNumber, pageSize);
+                    (c => c.Description.ToUpper().Contains(itemName.ToUpper()) ||
+                c.Description.ToLower().Contains(itemName.ToLower()) ||
+                c.Description.Equals(itemName)).ToPagedList(pageNumber, pageSize);
             }
 
             return View(req);
@@ -879,6 +871,7 @@ namespace eProject.Controllers
             return View();
         }
 
+        [Route("AdminIndexRequest/AdminDetailsRequest/{id?}")]
         public IActionResult AdminDetailsRequest(int id)
         {
             string json_admin_session = HttpContext.Session.GetString("admin_session");
@@ -889,12 +882,20 @@ namespace eProject.Controllers
                 //lấy session Admin
                 jsonResponseAdmin = JObject.Parse(json_admin_session);
                 admin = JsonConvert.DeserializeObject<Admins>(jsonResponseAdmin.ToString());
-
+                List<vRequestItem> item = requestdetailservices.GetAllRequestDetails(id).ToList();
+                ViewBag.reqId = id;
                 if (admin != null)
                 {
                     ViewBag.session = HttpContext.Session.GetString("username");
-                    var model = riServices.GetRequestItem(id);
-                    return View(model);
+                    int count = item.ToList().Count;
+                    decimal TotalAmount = 0;
+                    for (int i = 0; i < count; i++)
+                    {
+                        TotalAmount += item[i].Total;
+                    }
+                    ViewBag.itemList = item.ToList();
+                    ViewBag.requestTotal = TotalAmount;
+                    return View();
                 }
                 else
                 {
