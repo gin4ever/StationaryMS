@@ -5,63 +5,88 @@
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h1>List of Suppliers</h1>
-
-<div>
-    @using (Html.BeginForm())
-    {
-        <input type="text" name="sname" placeholder="Enter supplier name..." />
-        <input type="submit" value="Search" class="btn-info" />
-    }
-</div>
-
-<p>
-    <a asp-action="AdminCreateSupplier">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SupplierCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SupplierName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SupplierCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SupplierName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "AdminEditSupplier", "Supplier", new { code = item.SupplierCode })|
-                @Html.ActionLink("Delete", "AdminDeleteSupplier", "Supplier", new { code = item.SupplierCode })
-            </td>
-        </tr>
+@{
+    ViewData["Title"] = "AdminCreateDepartment";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
-    </tbody>
-</table>
+
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-10">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Supplier List</a></li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-left: 10px; margin-right: 10px">
+        <div class="text-center" style="padding:10px">
+            @using (Html.BeginForm())
+            {
+                <input type="text" name="sname" placeholder="Enter supplier name..." />
+                <input type="submit" value="Search" class="btn-info" />
+            }
+        </div>
+
+        <p>
+            <a asp-action="AdminCreateSupplier">Create New</a>
+        </p>
+        <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SupplierCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SupplierName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContactName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SupplierCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SupplierName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "AdminEditSupplier", "Supplier", new { code = item.SupplierCode })|
+                            @Html.ActionLink("Delete", "AdminDeleteSupplier", "Supplier", new { code = item.SupplierCode })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+</div>

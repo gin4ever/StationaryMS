@@ -4,38 +4,59 @@
     ViewData["Title"] = "AdminDetailsItem";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
 
-<h1>Item Details</h1>
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("AdminIndexItem", "Item")">Item List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">Item Details</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-left: 10px; margin-right: 10px">
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            <img src="~/@Url.Content(Model.Images)" width="100" />
-        </dt>
-        <dd class="col-sm-10">
 
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SupplierName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SupplierName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemCode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ItemCode)
-        </dd>
-    </dl>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        <img src="~/@Url.Content(Model.Images)" width="100" />
+                    </dt>
+                    <dd class="col-sm-10">
+
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.SupplierName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.SupplierName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.ItemCode)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.ItemCode)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-action="AdminIndexItem">Back to List</a>
+            </div>
 </div>
-<div>
-    <a asp-action="AdminIndexItem">Back to List</a>
 </div>

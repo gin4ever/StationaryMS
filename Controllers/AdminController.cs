@@ -126,6 +126,25 @@ namespace eProject.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            string json_admin_session = HttpContext.Session.GetString("admin_session");
+            JObject jsonResponseAdmin = null;
+            Admins admin = null;
+            if (json_admin_session != null)
+            {
+                //lấy session Admin
+                jsonResponseAdmin = JObject.Parse(json_admin_session);
+                admin = JsonConvert.DeserializeObject<Admins>(jsonResponseAdmin.ToString());
+
+                if (admin != null)
+                {
+                    ViewBag.session = HttpContext.Session.GetString("username");
+
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Admin");
+                }
+            }
             return View();
         }
 

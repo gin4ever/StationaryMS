@@ -9,6 +9,7 @@ using eProject.Services;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace eProject.Controllers
 {
@@ -160,30 +161,7 @@ namespace eProject.Controllers
             }
 
         }
-        //create account for testing
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public IActionResult Create(Users newUser)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    services.createUser(newUser);
-                    ModelState.AddModelError(string.Empty, "Congratulation!");
-                }
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError(string.Empty, e.Message);
-            }
-            return View();
-        }
 
         [HttpGet]
         public IActionResult ChangePassword(string uname)
@@ -367,6 +345,60 @@ namespace eProject.Controllers
                 {
                     return RedirectToAction("Login", "Admin");
                 }
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AdminCreateUser()
+        {
+            string json_admin_session = HttpContext.Session.GetString("admin_session");
+            JObject jsonResponseAdmin = null;
+            Admins admin = null;
+            if (json_admin_session != null)
+            {
+                //lấy session Admin
+                jsonResponseAdmin = JObject.Parse(json_admin_session);
+                admin = JsonConvert.DeserializeObject<Admins>(jsonResponseAdmin.ToString());
+
+                if (admin != null)
+                {
+                    ViewBag.session = HttpContext.Session.GetString("username");
+
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Admin");
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AdminCreateUser(Users newUser, IFormFile file)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (file.Length > 0)
+                    {
+                        var filepath = Path.Combine("wwwroot/images", file.FileName);
+                        var stream = new FileStream(filepath, FileMode.Create);
+                        file.CopyToAsync(stream);
+                        newUser.Images = "images/" + file.FileName;
+                        services.createUser(newUser);
+                        return RedirectToAction("AdminIndexUser");
+                    }
+                    else
+                    {
+                        ViewBag.Msg = "Cannot create new Admin";
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.Msg = e.Message;
             }
             return View();
         }

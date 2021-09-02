@@ -4,60 +4,81 @@
     ViewData["Title"] = "AdminIndexUser";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-10">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="#">User List</a></li>
+                        </ol>
+                    </nav>
+                </div>
 
-<h1>List of Users</h1>
+            </div>
+        </div>
+    </div>
 
-<div>
-    @using (Html.BeginForm())
-    {
-        <input type="text" name="uname" placeholder="Enter name of Users..." />
-        <input type="submit" value="Search" class="btn-info" />
-    }
+    <div style="margin-left: 10px; margin-right: 10px">
+
+        <div class="text-center" style="padding:10px">
+            @using (Html.BeginForm())
+            {
+    <input type="text" name="uname" placeholder="Enter name of Users..." />
+                    <input type="submit" value="Search" class="btn-info" />            }
+        </div>
+
+        <p>
+            <a asp-action="AdminCreateUser">Create New</a>
+        </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fullname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "AdminDetailUser", new { id = item.User_Id })
+        </td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fullname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fullname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "AdminDetailUser", new { id = item.User_Id })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

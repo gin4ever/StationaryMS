@@ -4,35 +4,56 @@
     ViewData["Title"] = "AdminEditCategory";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-10">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="@Url.Action("AdminIndexCategory", "Category")">Categories List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">/<a href="#">Edit Category</a></li>
 
-<h1>Edit Category</h1>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-left: 10px; margin-right: 10px">
 
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AdminEditCategory">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Category_Id" />
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="AdminEditCategory">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Category_Id" />
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label"></label>
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
+        <div>
+            <a asp-action="AdminIndexCategory">Back to List</a>
+            <h3 style="color:red">@ViewBag.Msg</h3>
+        </div>
+
     </div>
 </div>
-
-<div>
-    <a asp-action="AdminIndexCategory">Back to List</a>
-    <h3 style="color:red">@ViewBag.Msg</h3>
-</div>
-

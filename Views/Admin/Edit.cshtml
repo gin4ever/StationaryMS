@@ -4,64 +4,86 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
+@section css{
+    <link href="~/css/step-wizard.css" rel="stylesheet" />
+}
 
-<h1>Edit Profile</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Admin_Id" />
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
+<div class="wrapper">
+    <div class="gambo-Breadcrumb">
+        <div class="container-fluit">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Admin")">Index</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">/<a href="#">Edit Profile</a></li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" placeholder="Enter your password..."/>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            @*Your password not correct!*@
-            <div style="color:red">@ViewBag.errorPassIdentify</div>
-            <div class="form-group">
-                <label asp-for="NewPassword" class="control-label"></label>
-                <input asp-for="NewPassword" class="form-control" placeholder="Enter your new password..."/>
-                <span asp-validation-for="NewPassword" class="text-danger"></span>
-            </div>
-            @*Your new password must different with your current password!*@
-            <div style="color:red">@ViewBag.errorPass</div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" placeholder="Enter your confirm password..."/>
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Fullname" class="control-label"></label>
-                <input asp-for="Fullname" class="form-control" />
-                <span asp-validation-for="Fullname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Images" class="control-label"></label>
-                <p></p>
-                @*<img src="~/@Url.Content(Model.Images)" width="100" />*@
-                <input type="file" name="file" id="file" asp-for="Images" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+    <div style="margin-left: 10px; margin-right: 10px">
+        <div class="container">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-    <h4 style="color:red">@ViewBag.Msg</h4>
-</div>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Admin_Id" />
+                        <div class="form-group">
+                            <label asp-for="Username" class="control-label"></label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" placeholder="Enter your password..." />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        @*Your password not correct!*@
+                        <div style="color:red">@ViewBag.errorPassIdentify</div>
+                        <div class="form-group">
+                            <label asp-for="NewPassword" class="control-label"></label>
+                            <input asp-for="NewPassword" class="form-control" placeholder="Enter your new password..." />
+                            <span asp-validation-for="NewPassword" class="text-danger"></span>
+                        </div>
+                        @*Your new password must different with your current password!*@
+                        <div style="color:red">@ViewBag.errorPass</div>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="control-label"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" placeholder="Enter your confirm password..." />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Fullname" class="control-label"></label>
+                            <input asp-for="Fullname" class="form-control" />
+                            <span asp-validation-for="Fullname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Images" class="control-label"></label>
+                            <p></p>
+                            @*<img src="~/@Url.Content(Model.Images)" width="100" />*@
+                            <input type="file" name="file" id="file" asp-for="Images" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Edit" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
 
+            <div>
+                <a asp-action="Index">Back to List</a>
+                <h4 style="color:red">@ViewBag.Msg</h4>
+            </div>
+
+            </div>
+</div>
+</div>

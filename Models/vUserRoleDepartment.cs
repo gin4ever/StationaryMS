@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
 namespace eProject.Models
 {
+    //[Keyless]
     [Table("vUserRoleDepartment")]
     public class vUserRoleDepartment
     {
